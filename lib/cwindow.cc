@@ -554,16 +554,22 @@ CWindow::WEvents (XEvent WEvent)
 
       if(disp)
       {
-        //pthread_mutex_lock (&Display_Lock);
+        int se=0;
+	if(Width != (uint)LEvent.xconfigure.width)se=1;
+        if(Height != (uint)LEvent.xconfigure.height)se=1;
+	//pthread_mutex_lock (&Display_Lock);
         XLockDisplay(disp);
         X = LEvent.xconfigure.x;
         Y = LEvent.xconfigure.y;
         Width=LEvent.xconfigure.width;
         Height=LEvent.xconfigure.height;
         Border = LEvent.xconfigure.border_width;
-        CreatePixmap(true);
-        on_show ();
-	Draw();
+	if(se)
+	{
+          CreatePixmap(true);
+          on_show ();
+	  Draw();
+	}
         XUnlockDisplay(disp);
         //pthread_mutex_unlock (&Display_Lock);
       }

@@ -55,7 +55,7 @@ public:
   void InitDraw (CControl * control);
   void DrawControl (CControl * control);
   void Create (CControl * control);
-  void Create (lxBitmap *bitmap);
+  void Create (CControl * control, lxBitmap *bitmap);
   void Destroy (void);
   void SetFont (CControl * control);
   void SetPen (int function);

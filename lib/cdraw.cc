@@ -28,6 +28,8 @@
 #include"../include/cmessage.h"
 #include"../include/capplication.h"
 
+#include"xevents.cc"
+
 #include<pthread.h>
 //extern pthread_mutex_t Display_Lock;
 
@@ -104,7 +106,12 @@ CDraw::SetWidth (uint width)
       XLockDisplay(disp);
       int en=XPending(disp);
       XEvent ev;
-      for(int i=0; i< en; i++)XNextEvent(disp,&ev); 
+      for(int i=0; i< en; i++)
+      {
+	      XNextEvent(disp,&ev); 
+              printf("event type %s  %lX  %lX\n",xevent_name(ev.type).c_str(),ev.xany.window,CPixmap);
+      }
+
       if (CPixmap != 0) XFreePixmap (Win->GetADisplay (), CPixmap);
       CPixmap =XCreatePixmap (Win->GetADisplay (), Win->GetWWindow (), width, Height, *(Win->GetADepth()));
       Canvas.SetDrawIn(CPixmap);
@@ -127,7 +134,11 @@ CDraw::SetHeight (uint height)
       XLockDisplay(disp);
       int en=XPending(disp);
       XEvent ev;
-      for(int i=0; i< en; i++)XNextEvent(disp,&ev); 
+      for(int i=0; i< en; i++)
+      {
+	      XNextEvent(disp,&ev); 
+              printf("event type %s  %lX  %lX\n",xevent_name(ev.type).c_str(),ev.xany.window,CPixmap);
+      }
 
       if (CPixmap != 0)XFreePixmap (Win->GetADisplay (), CPixmap);
       CPixmap =XCreatePixmap (Win->GetADisplay (), Win->GetWWindow (), Width, height, *(Win->GetADepth()));

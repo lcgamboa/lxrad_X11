@@ -80,7 +80,7 @@ CPaint::Create (CControl * control)
 };
   
 void 
-CPaint::Create (lxBitmap *bitmap)
+CPaint::Create (CControl * control, lxBitmap *bitmap)
 {
   Win = NULL;
   Owner = NULL;
