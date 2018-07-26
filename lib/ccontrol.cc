@@ -60,7 +60,7 @@ CControl::CControl (void)
   Pen = GXcopy;
   FOwner = NULL;
   PointerOn = false;
-  FontName = "-misc-fixed-medium-r-normal--10-100-75-75-c-60-iso8859-1";
+  FontName = "-misc-fixed-medium-r-normal--13-100-100-100-c-70-iso8859-1";
   SetClass ("CControl");
   PopupMenu = NULL;
   SetHint(""); 
