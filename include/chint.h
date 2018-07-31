@@ -35,7 +35,8 @@ class CHint:public CWindow
 {
 public:
   CLabel string1;
-  void MouseMove1 (CControl * control, uint x, uint y);
+  void MouseMove1 (CControl * control, uint button, uint x, uint y,
+		       uint state);
   CHint (void);
 };
 

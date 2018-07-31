@@ -589,5 +589,6 @@ bool
 CApplication::ProcessEvents (void)
 {
 //FIXME
+  printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
 return 0;
 }

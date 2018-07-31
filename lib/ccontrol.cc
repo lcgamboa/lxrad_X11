@@ -4,7 +4,7 @@
 
    ########################################################################
 
-   Copyright (c) : 2001  Luis Claudio Gamboa Lopes
+   Copyright (c) : 2001-2018  Luis Claudio Gamboa Lopes
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -1028,7 +1028,7 @@ CControl::mouse_move (XEvent event)
 {
 	//FIXME inverted coords
   if ((FOwner) && (EvMouseMove))
-    (FOwner->*EvMouseMove) (this, event.xmotion.y, event.xmotion.x);
+    (FOwner->*EvMouseMove) (this, 0, event.xmotion.y, event.xmotion.x, event.xmotion.state);
 };
 
 void
@@ -1114,16 +1114,14 @@ void
 CControl::key_press (XEvent event)
 {
   if ((FOwner) && (EvKeyboardPress))
-    (FOwner->*EvKeyboardPress) (this, event.xkey.keycode, event.xkey.x,
-			      event.xkey.y, event.xkey.state);
+    (FOwner->*EvKeyboardPress) (this, event.xkey.keycode, 0 , event.xkey.state);
 };
 
 void
 CControl::key_release (XEvent event)
 {
   if ((FOwner) && (EvKeyboardRelease))
-    (FOwner->*EvKeyboardRelease) (this, event.xkey.keycode, event.xkey.x,
-				event.xkey.y, event.xkey.state);
+    (FOwner->*EvKeyboardRelease) (this, event.xkey.keycode, 0 , event.xkey.state);
 };
 
 

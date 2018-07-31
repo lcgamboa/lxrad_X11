@@ -220,7 +220,7 @@ CSpind::GetDigits(void)
 }
 
 void
-CSpind::EditKeyPress (CControl * control, uint key, uint x, uint y, uint mask)
+CSpind::EditKeyPress (CControl * control, const uint key, const uint hk,  uint mask)
 {
   Update ();
 };

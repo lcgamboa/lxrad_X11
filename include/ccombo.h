@@ -64,7 +64,7 @@ public:
   String GetText(void);
   void SetReadOnly (bool r);
   //eventos
-  void EditKeyPress (CControl * control, uint key, uint x, uint y,uint mask);
+  void EditKeyPress (CControl * control, const uint key, const uint hk, uint mask);
   void TButtonPress (CControl * control, uint button, uint x, uint y,uint state);
   
   void combo_change (void);

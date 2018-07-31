@@ -49,7 +49,7 @@ CHint::CHint (void)
 };
 
 void
-CHint::MouseMove1 (CControl * control,uint x, uint y)
+CHint::MouseMove1 (CControl * control,uint button, uint x, uint y, uint state)
 {
   HideExclusive ();
 };

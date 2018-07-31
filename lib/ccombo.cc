@@ -238,7 +238,7 @@ CCombo::GetItems (void)
 
 //events
 void
-CCombo::EditKeyPress (CControl * control, uint key, uint x, uint y, uint mask)
+CCombo::EditKeyPress (CControl * control, const uint key, const uint hk,  uint mask)
 {
   Update ();
 };

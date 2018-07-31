@@ -74,13 +74,13 @@ using namespace std;
 #define EVMAX 100
 #define DOUBLECLICKTIME 400
 
-#define EVMOUSEMOVE              (void(CControl::*)(CControl*,uint,uint))
+#define EVMOUSEMOVE              (void(CControl::*)(CControl*,uint,uint,uint,uint))
 #define EVMOUSEBUTTONPRESS       (void(CControl::*)(CControl*,uint,uint,uint,uint))
 #define EVMOUSEBUTTONRELEASE     (void(CControl::*)(CControl*,uint,uint,uint,uint))
 #define EVMOUSEBUTTONCLICK       (void(CControl::*)(CControl*,uint,uint,uint,uint))
 #define EVMOUSEBUTTONDOUBLECLICK (void(CControl::*)(CControl*,uint,uint,uint,uint))
-#define EVKEYBOARDPRESS          (void(CControl::*)(CControl*,uint,uint,uint,uint))
-#define EVKEYBOARDRELEASE        (void(CControl::*)(CControl*,uint,uint,uint,uint))
+#define EVKEYBOARDPRESS          (void(CControl::*)(CControl*,uint,uint,uint))
+#define EVKEYBOARDRELEASE        (void(CControl::*)(CControl*,uint,uint,uint))
 #define EVKEYBOARDKEY            (void(CControl::*)(CControl*,uint,uint,uint,uint))
 #define EVPOINTERIN              (void(CControl::*)(CControl*))
 #define EVPOINTEROUT             (void(CControl::*)(CControl*))

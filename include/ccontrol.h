@@ -147,21 +147,14 @@ public:
   virtual void pointer_out (void);
   virtual void on_draw (void);
 
-  void (CControl::*EvMouseMove) (CControl * control, uint x, uint y);
-  void (CControl::*EvMouseButtonPress) (CControl * control, uint button, uint x,
-				      uint y, uint mask);
-  void (CControl::*EvMouseButtonRelease) (CControl * control, uint button,
-					uint x, uint y, uint mask);
-  void (CControl::*EvMouseButtonClick) (CControl * control, uint button, uint x,
-				      uint y, uint mask);
-  void (CControl::*EvMouseButtonDoubleClick) (CControl * control, uint button,
-					    uint x, uint y, uint mask);
-  void (CControl::*EvKeyboardPress) (CControl * control, uint key, uint x,
-				   uint y, uint mask);
-  void (CControl::*EvKeyboardRelease) (CControl * control, uint key, uint x,
-				     uint y, uint mask);
-  void (CControl::*EvKeyboardKey) (CControl * control, uint key, uint x, uint y,
-				 uint mask);
+  void (CControl::*EvMouseMove) (CControl * control, uint button, uint x, uint y, uint mask);
+  void (CControl::*EvMouseButtonPress) (CControl * control, uint button, uint x, uint y, uint mask);
+  void (CControl::*EvMouseButtonRelease) (CControl * control, uint button,uint x, uint y, uint mask);
+  void (CControl::*EvMouseButtonClick) (CControl * control, uint button, uint x, uint y, uint mask);
+  void (CControl::*EvMouseButtonDoubleClick) (CControl * control, uint button, uint x, uint y, uint mask);
+  void (CControl::*EvKeyboardPress) (CControl * control,const uint keyval,const uint hardware_keycode,const  uint state);
+  void (CControl::*EvKeyboardRelease) (CControl * control,const uint keyval,const uint hardware_keycode,const uint state);
+  void (CControl::*EvKeyboardKey) (CControl * control, uint key, uint x, uint y, uint mask);
   void (CControl::*PointerIn) (CControl * control);
   void (CControl::*PointerOut) (CControl * control);
   void (CControl::*EvOnDraw) (CControl * control);
