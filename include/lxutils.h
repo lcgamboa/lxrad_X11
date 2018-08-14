@@ -32,6 +32,8 @@
 #include<math.h>
 #include<Imlib2.h>
 
+class CWindow;
+
 //Compatibillity 
 #define CPWindow CWindow
 #define CImage CDraw
@@ -90,9 +92,8 @@ class lxBitmap
 private:
 Pixmap CPixmap;
 public:
-lxBitmap();
 ~lxBitmap();
-lxBitmap(lxImage img);
+lxBitmap(lxImage img, CWindow * win );
 Pixmap  GetPixmap(void);
 operator Pixmap() const;
 };

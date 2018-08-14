@@ -130,11 +130,6 @@ lxImage::operator Imlib_Image() const
   return Image;
 }
 //-------------------------------------------------------------------------
-lxBitmap::lxBitmap()
-{
- 
-    CPixmap =0;
-    }
 
 lxBitmap::~lxBitmap()
 {
@@ -142,9 +137,10 @@ lxBitmap::~lxBitmap()
     XFreePixmap (Application->GetADisplay (), CPixmap);
 }
 
-lxBitmap::lxBitmap(lxImage img)
+lxBitmap::lxBitmap(lxImage img, CWindow *win)
 {
-
+//FIXME use win parameter
+//
    imlib_context_set_image(img);
    int w = imlib_image_get_width();
    int h = imlib_image_get_height();
