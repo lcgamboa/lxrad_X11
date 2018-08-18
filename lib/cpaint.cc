@@ -259,7 +259,8 @@ CPaint::RaiserFrame (int x, int y, int w, int h, uint wb)
 void
 CPaint::Text (String text,  int x1, int y1)
 {
-  XDrawString (Disp, DrawIn, Agc, RX+x1, RY+y1,
+  //FIXME font size 13	
+  XDrawString (Disp, DrawIn, Agc, RX+x1, RY+y1+ 13 ,
 	       text.c_str (), text.size ());
 };
 

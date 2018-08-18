@@ -118,7 +118,7 @@ CLabel::Draw (void)
   Paint->InitDraw (this);
    
   Paint->Pen.SetColor (Owner->GetColor ());
-  //Paint->Pen.SetColor (ColorByName("yellow"));
+  //Paint->Pen.SetColor (ColorByName("red"));
   Paint->Rectangle ( 0, 0, Width, Height);
   /*
   Paint->Pen.SetColor (Color);
@@ -181,7 +181,7 @@ CLabel::CalcVirtual (void)
   if (Win == NULL)
     return;
 
-  uint TextWidth2;
+  uint TextWidth2=0;
   int xo = 0;
   bool mux=false;
 
