@@ -4,7 +4,7 @@
 
    ########################################################################
 
-   Copyright (c) : 2001  Luis Claudio Gambôa Lopes
+   Copyright (c) : 2001-2018  Luis Claudio Gamboa Lopes
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -85,6 +85,8 @@ CFileList::SetDir (String dir)
   struct dirent **files = NULL;
   int n;
 
+  chdir(dir);
+  
   Dir = dir;
   
   Scroll->SetPosition (0);
@@ -102,9 +104,9 @@ CFileList::SetDir (String dir)
   for (int cnt = 0; cnt < n; ++cnt)
     {
       if (dirs[cnt])
-	delete dirs[cnt];
+	free( dirs[cnt]);
     };
-    delete[]dirs;
+    free(dirs);
   
   dirs = NULL;
 
@@ -119,9 +121,9 @@ CFileList::SetDir (String dir)
   for (int cnt = 0; cnt < n; ++cnt)
     {
       if (files[cnt])
-	delete files[cnt];
+	free( files[cnt]);
     };
-   delete[]files;
+   free(files);
   
   files = NULL;
   
@@ -210,7 +212,7 @@ CFileList::Draw ()
       (SelectedItem - Scroll->GetPosition () <= ItemsCount))
     {
       SetColor ("dark blue");
-      XColor color =
+      lxColor color =
 	Items[SelectedItem - Scroll->GetPosition ()]->GetColor ();
       Items[SelectedItem - Scroll->GetPosition ()]->SetColor ("white");
       Items[SelectedItem - Scroll->GetPosition ()]->Draw ();
