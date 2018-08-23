@@ -308,9 +308,13 @@ CScroll::SetType (scrolltype type)
   if (Type != type)
     {
       Type = type;
+      /*
       int temp = GetWidth ();
       SetWidth (GetHeight ());
       SetHeight (temp);
+      */
+      SetWidth (Width);
+      SetHeight (Height);
       SetRange (Range);
       if (Type == st_vertical)
 	{
