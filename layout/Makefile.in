@@ -4,7 +4,7 @@ FLAGS = $(CFLAGS) -D_SHARE=\"${datadir}/lxrad_X11/icons\"
 
 OBJS = playout.o controlsdef.o layout1.o layout2.o layout3.o layout4.o layout5.o layout6.o layout7.o layout8.o layout9.o layout10.o
 
-LINK= -L../lib -llxrad_X11 -lX11 -lXpm
+LINK= -L../lib -llxrad_X11 -lX11 -lXpm -lminizip
 SLINK= -static -L../lib -llxrad_X11 @LIBS@ @X_LIBS@
 
 all: $(OBJS) 

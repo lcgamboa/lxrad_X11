@@ -1079,3 +1079,63 @@ bool CStringList::SaveToFile (string fname)
     eprint( "File not create!\n");
 };
 #endif
+
+
+
+
+String
+xml_out (String name, String type, String value)
+{
+  return (lxT("  <") + name + lxT(" type=\"") + type + lxT("\">") + value + lxT("</") + name + lxT(">"));
+};
+
+void
+xml_in (String data, String & name, String & type, String & value)
+{
+  int p0, p1, p2, p3;
+  if(data.size() > 0)
+  {
+
+  p0 = data.find (lxT("<"));
+  p1 = data.find (lxT("type="));
+  p2 = data.find (lxT("\">"));
+  p3 = data.find (lxT("</"));
+  name = data.substr (p0 + 1, p1 - p0 - 2);
+  type = data.substr (p1 + 6, p2 - p1 - 6);
+  value = data.substr (p2 + 2, p3 - p2 - 2);
+  }
+  else
+  {
+  name=lxT("");
+  type=lxT("");
+  value=lxT("");
+  }
+};
+
+
+String
+basename (const String & str)
+{
+#ifndef __WXMSW__
+  int pos = str.rfind (lxT("/"));
+#else
+  int pos = str.rfind (lxT("\\"));
+  if(pos == -1) 
+     pos = str.rfind (lxT("/"));
+#endif
+  return str.substr (pos + 1, str.size () - pos - 1);
+};
+
+String
+dirname (const String & str)
+{
+#ifndef __WXMSW__
+  int pos = str.rfind (lxT("/"));
+#else
+  int pos = str.rfind (lxT("\\"));
+  if(pos == -1) 
+     pos = str.rfind (lxT("/"));
+#endif
+  return str.substr (0, pos + 1);
+};
+

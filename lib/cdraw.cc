@@ -104,6 +104,7 @@ CDraw::SetWidth (uint width)
     {
       //pthread_mutex_lock (&Display_Lock);
       XLockDisplay(disp);
+      
       int en=XPending(disp);
       XEvent ev;
       for(int i=0; i< en; i++)
@@ -111,7 +112,7 @@ CDraw::SetWidth (uint width)
 	      XNextEvent(disp,&ev); 
               printf("event type %s  %lX  %lX\n",xevent_name(ev.type).c_str(),ev.xany.window,CPixmap);
       }
-
+      
       if (CPixmap != 0) XFreePixmap (Win->GetADisplay (), CPixmap);
       CPixmap =XCreatePixmap (Win->GetADisplay (), Win->GetWWindow (), width, Height, *(Win->GetADepth()));
       Canvas.SetDrawIn(CPixmap);
@@ -132,6 +133,7 @@ CDraw::SetHeight (uint height)
     {
       //pthread_mutex_lock (&Display_Lock);
       XLockDisplay(disp);
+
       int en=XPending(disp);
       XEvent ev;
       for(int i=0; i< en; i++)
@@ -139,7 +141,7 @@ CDraw::SetHeight (uint height)
 	      XNextEvent(disp,&ev); 
               printf("event type %s  %lX  %lX\n",xevent_name(ev.type).c_str(),ev.xany.window,CPixmap);
       }
-
+      
       if (CPixmap != 0)XFreePixmap (Win->GetADisplay (), CPixmap);
       CPixmap =XCreatePixmap (Win->GetADisplay (), Win->GetWWindow (), Width, height, *(Win->GetADepth()));
       Canvas.SetDrawIn(CPixmap);

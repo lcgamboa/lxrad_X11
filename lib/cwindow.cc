@@ -906,13 +906,11 @@ return 0;
 bool 
 CWindow::GetCanExitExclusive(void)
 {
-  printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
-  return 0;
+  return CanExitExclusive;
 }
   
 CWindow* 
 CWindow::GetWWidget (void)
 {
-  printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
   return this; 
 }

@@ -4,7 +4,7 @@
 
    ########################################################################
 
-   Copyright (c) : 2001  Luis Claudio Gambôa Lopes
+   Copyright (c) : 2001-2018  Luis Claudio Gamboa Lopes
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -137,6 +137,8 @@ public:
   unsigned int GetLinesCount (void) const;
 };
 #endif
+String xml_out (String name, String type, String value);
+void xml_in (String data, String & name, String & type, String & value);
 
 String eqparse (String & str, String & arg);
 String strndel (const String & str, uint n);
@@ -151,6 +153,9 @@ String btoa (bool b);
 
 String uppercase (const String & str);
 String lowercase (const String & str);
+
+String basename (const String & str);
+String dirname (const String & str);
 
 bool fgetline (FILE* file, String & str);
 

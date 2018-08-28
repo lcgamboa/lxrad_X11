@@ -31,7 +31,8 @@
 #include<unistd.h>
 #include<dirent.h>
 #include<sys/stat.h>
-
+#include <minizip/zip.h>
+#include <minizip/unzip.h>
 
 //-------------------------------------------------------------------------
 lxTextFile::lxTextFile()
@@ -332,139 +333,116 @@ String lxGetCwd(void)
 
 
 //-------------------------------------------------------------------------
-bool lxUnzipDir(const String &in_filename, const String &out_dirname)
+bool
+lxUnzipDir (const String &in_filename, const String &out_dirname) {
+ 
+ char fname[1024];
+ unzFile uzf =unzOpen (in_filename.c_str ());
+ 
+ if(uzf != NULL)
+ {
+   if(unzGoToFirstFile(uzf) == UNZ_OK)
+    {
+     do
+      {
+      unz_file_info finfo; 
+      unzGetCurrentFileInfo(uzf,&finfo,fname,1024,NULL,0,NULL,0);
+      
+      char *buff= (char *)malloc(finfo.uncompressed_size);
+      unzOpenCurrentFile(uzf);
+      unzReadCurrentFile(uzf,buff,finfo.uncompressed_size);
+      unzCloseCurrentFile(uzf);
+      
+      String dname=out_dirname;
+      dname+=dirname(fname);
+      
+      if(dname.length () > 0)
+       {
+        lxCreateDir(dname);
+       }
+      
+      String name=out_dirname;
+      name+=fname;
+      
+      FILE * fout=fopen(name.c_str(),"w");
+      if(fout)
+       {
+        fwrite(buff,finfo.uncompressed_size,1, fout);
+        fclose(fout);
+       }
+      free(buff);
+      }
+      while(unzGoToNextFile(uzf) == UNZ_OK);
+    }
+   
+   unzClose(uzf);
+ }
+ 
+ return 0;
+ }
+
+bool
+lxZipDir (const String &in_dirname, const String &out_filename)
 {
-  char cmd[1024];	
-  printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
-  //FIXME use library
-  
-  sprintf(cmd,"unzip %s -d%s\n",in_filename.c_str(),out_dirname.c_str()); 
-  
-  system(cmd);
- /*	
-    bool ret = true;
+CStringList paths =lxListDirRec(in_dirname);
+   
+String dname= basename(in_dirname.substr(0,in_dirname.length ()-1));
 
-        wxFileSystem::AddHandler(new wxZipFSHandler);
-        wxFileSystem fs;
-           
-        xauto_ptr<wxZipEntry> entry(new wxZipEntry);
-        do {    
-            wxFileInputStream in(in_filename);
-            if (!in)
-            {
-                wxLogError(_T("Can not open file '")+in_filename+_T("'."));
-                ret = false;
-                break;
-            }
-            wxZipInputStream zip(in);
-
-            //create dirs
-            while (entry.reset(zip.GetNextEntry()), entry.get() != NULL)
-            {
-                // access meta-data
-                wxString name = entry->GetName();
-                
-                if(dirname(name).Length() > 0)
-                {
-                    lxCreateDir(out_dirname+dirname(name));
-                }
-                
-                name = out_dirname + name;
-
-                    
-                // read 'zip' to access the entry's data
-                if (entry->IsDir())
-                {
-                    int perm = entry->GetMode();
-                    wxFileName::Mkdir(name, perm, wxPATH_MKDIR_FULL);
-                }
-                else
-                {
-                    zip.OpenEntry(*entry.get());
-                    if (!zip.CanRead())
-                    {
-                        wxLogError(_T("Can not read zip entry '")+entry->GetName()+_T("'."));
-                        ret = false;
-                        break;
-                    }
-                    wxFileOutputStream file(name);
-                    if (!file)
-                    {
-                         wxLogError(_T("Can not create file '")+name+_T("'."));
-                         ret = false;
-                         break;
-                    }
-                    zip.Read(file);
-                }
-                       
-            }
-        } while(false);
-    return ret;
-    */
-	return 0;
-}
+ if (paths.GetLinesCount () == 0)
+  {
+   return 1;
+  }
 
 
-bool 
-lxZipDir(const String &in_dirname, const String &out_filename)
-{
-  printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
-/*	
-   wxString sep(wxFileName::GetPathSeparator());
+ zipFile zf = zipOpen (out_filename.c_str (), APPEND_STATUS_CREATE);
+ if (zf == NULL)
+  {
+   return 1;
+  }
 
-   wxArrayString files;
+ bool _return = true;
 
-   wxDir::GetAllFiles(in_dirname,&files);//the dir contented all the files need to compress.
 
-   wxFFileOutputStream  fileout(out_filename);
+ for (size_t i = 0; i < paths.GetLinesCount (); i++)
+  {
+   FILE * file =fopen(paths.GetLine (i).c_str (), "r");
+   if (file)
+    {
+     fseek (file,0,SEEK_END);
+     long size = ftell (file);
+     fseek (file, 0, SEEK_SET);
 
-   wxZipOutputStream zipout (fileout);
-
-   wxFFileInputStream *in = NULL;   
-   wxZipEntry *entry=NULL;
-   wxFileName *zipname = NULL;
-
-   for (size_t i = 0;i != files.GetCount(); ++i)
-   {
-      if (in!=NULL)
+     char * buffer= (char*)malloc(size);
+     if (size == 0 || fread (buffer, size,1,file))
       {
-         delete in;
-         in = NULL;
-      }
-      if (zipname!=NULL)
-      {
-         delete zipname;
-         zipname = NULL;
-      }
+       zip_fileinfo zfi = {0};
+       String fileName = dname+paths.GetLine (i).substr(in_dirname.length (),paths.GetLine (i).length ()-in_dirname.length ());
 
-      in = new wxFFileInputStream(files[i]);
-      zipname = new wxFileName (files[i]);
-      if(zipname->MakeRelativeTo(in_dirname))
-      {
-         entry =  new wxZipEntry(wxT("picsimlab_workspace/")+zipname->GetFullPath());
-         zipout.PutNextEntry(entry);
-         zipout.Write(*(in));
+       if (0 == zipOpenNewFileInZip (zf, fileName.c_str (), &zfi, NULL, 0, NULL, 0, NULL, Z_DEFLATED, Z_DEFAULT_COMPRESSION))
+        {
+         if (zipWriteInFileInZip (zf, size == 0 ? "" : buffer, size))
+          _return = false;
+
+         if (zipCloseFileInZip (zf))
+          _return = false;
+
+         fclose (file);
+         free(buffer);
+         continue;
+        }
       }
-      else
-      {
-         return false;
-      }
-   }
-   zipout.CloseEntry();
-   zipout.Close();
-   fileout.Close();
-   if (in!=NULL)
-   {
-      delete in;
-      in = NULL;
-   }
-   if (zipname!=NULL)
-   {
-      delete zipname;
-      zipname = NULL;
-   }
-   */
-   return true;
+     fclose (file);
+    }
+   _return = false;
+  }
+
+ if (zipClose (zf, NULL))
+  return 3;
+
+ if (!_return)
+  return 4;
+ return 0;
+ 
 }
 
 bool lxRemoveFile(const char * fname)
@@ -527,6 +505,48 @@ lxCreateDir(const char * dirname)
    return 0;
 }
 
+CStringList
+lxListDirRec (const String & dirname)
+{
+ DIR *dp;
+ struct dirent *dent;
+ struct stat sb;
+ char fname[1024];
+
+ CStringList list;
+
+ list.Clear ();
+
+ dp = opendir (dirname);
+
+ if (dp)
+  {
+   while ((dent = readdir (dp)) != NULL)
+    {
+     snprintf (fname, 1024, "%s/%s", dirname.c_str(), dent->d_name);
+     stat (fname, &sb);
+
+     if (S_ISREG (sb.st_mode))
+      {
+       list.AddLine (fname);
+      }
+     else if (S_ISDIR (sb.st_mode))
+      {
+       if (!(!strcmp (dent->d_name, ".") || !strcmp (dent->d_name, "..")))
+        {
+          CStringList list2=lxListDirRec (fname);
+          for(unsigned int i=0;i<list2.GetLinesCount ();i++)
+           {
+            list.AddLine (list2.GetLine (i));
+           }
+        }
+      }
+    }
+   closedir (dp);
+  }
+ return list;
+
+}
 
 String 
 lxGetUserDataDir(String appname)

@@ -179,6 +179,7 @@ String lxGetUserDataDir(String appname);
 String lxGetTempDir(String appname);
 String lxGetExecutablePath(String appname);
 
+CStringList lxListDirRec(const String &dirname);
 bool lxZipDir(const String &in_dirname, const String &out_filename);
 bool lxUnzipDir(const String &in_filename, const String &out_dirname);
 

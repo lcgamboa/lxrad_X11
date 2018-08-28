@@ -49,6 +49,7 @@ CApplication::CApplication (void)
   ColorTable = NULL;
   Exit = false;
 
+  IM=NULL;
   ADisplay=NULL;
   HintControl=NULL;
   HintTime=time(NULL);
@@ -205,7 +206,10 @@ CApplication::ADestroyWindow (CWindow * AWindow)
 	  AWindowList = NULL;
 	  eprint("...Application Finished\n");
 	  if (IM)
+	  {
 	    XCloseIM (IM);
+	    IM=NULL;
+	  }
 #ifdef _DEBUG
 	  eprint("synchronize\n");
 	  XSynchronize (ADisplay, false);
@@ -328,7 +332,10 @@ CApplication::Load (void)
       eprint("No Windows!\n");
       eprint("...Application Finished\n");
       if (IM)
+      {
 	XCloseIM (IM);
+        IM=NULL;
+      }
 #ifdef _DEBUG
       eprint("synchronize\n");
       XSynchronize (ADisplay, false);
