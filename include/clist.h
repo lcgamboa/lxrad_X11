@@ -4,7 +4,7 @@
 
    ########################################################################
 
-   Copyright (c) : 2001  Luis Claudio Gambôa Lopes
+   Copyright (c) : 2001-2018  Luis Claudio Gamboa Lopes
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -74,11 +74,9 @@ public:
   void SetShowSelection (bool show);
   bool GetShowSelection (void);
   //eventos
-  void ScrollOnChangePosition (CScroll * scroll, bool status);
-  void ScrollOnButtonPress (CControl * control, uint button, uint x, uint y,
-			    uint state);
-  void ItemButtonPress (CControl * control, uint button, uint x, uint y,
-			uint state);
+  void ScrollOnChangePosition (CControl * scroll);
+  void ScrollOnButtonPress (CControl * control, const uint button, const uint x, const uint y,const uint state);
+  void ItemButtonPress (CControl * control, const uint button, const uint x, const uint y, const uint state);
   void button_press (XEvent event);
   void key_press (XEvent event);
   void focus_in (void);

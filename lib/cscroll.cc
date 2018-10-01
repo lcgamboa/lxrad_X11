@@ -257,18 +257,16 @@ CScroll::SetPosition (int position)
 	  Position = position;
 	  Draw ();
 	  if ((FOwner) && (EvOnChangePosition))
-	    (FOwner->*EvOnChangePosition) (this, true);
+	    (FOwner->*EvOnChangePosition) (this);
 	}
-      else if ((FOwner) && (EvOnChangePosition))
-	(FOwner->*EvOnChangePosition) (this, false);
-    };
-};
+    }
+}
 
 int
 CScroll::GetPosition (void)
 {
   return Position;
-};
+}
 
 void
 CScroll::SetRange (int range)

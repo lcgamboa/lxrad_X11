@@ -413,21 +413,19 @@ bool CList::GetShowSelection (void)
 //eventos
 
 void
-CList::ScrollOnButtonPress (CControl * control, uint button, uint x, uint y,
-			    uint state)
+CList::ScrollOnButtonPress (CControl * control,const uint button,const uint x,const uint y,const uint state)
 {
   Update ();
 };
 
 void
-CList::ScrollOnChangePosition (CScroll * scroll, bool status)
+CList::ScrollOnChangePosition (CControl * scroll)
 {
   Draw ();
 };
 
 void
-CList::ItemButtonPress (CControl * control, uint button, uint x, uint y,
-			uint state)
+CList::ItemButtonPress (CControl * control,const uint button,const uint x,const uint y,const uint state)
 {
   if (ShowSelection)
     {

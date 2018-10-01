@@ -4,7 +4,7 @@
 
    ########################################################################
 
-   Copyright (c) : 2001  Luis Claudio Gambôa Lopes
+   Copyright (c) : 2001-2018  Luis Claudio Gamboa Lopes
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -50,7 +50,7 @@ public:
     CFileDialog (void);
    ~CFileDialog (void);
   void Create(CControl* control);
-  bool Run (void);
+  void Run (void);
   //propriedades
   String GetFileName (void);
   void SetFileName (String filename);
@@ -61,15 +61,13 @@ public:
   void SetContext (CStringList context);
   void SetFilter(String filter);
   void SetType(int type);
+  int GetType(void);
   //eventos
-  void ButtonRelease1 (CControl * control, uint button, uint x, uint y,
-		       uint state);
-  void ButtonRelease2 (CControl * control, uint button, uint x, uint y,
-		       uint state);
-  void ButtonRelease3 (CControl * control, uint button, uint x, uint y,
-		       uint state);
-  void ButtonRelease4 (CControl * control, uint button, uint x, uint y,
-		       uint state);
+  void (CControl::*EvOnClose) (int retId);
+  void ButtonRelease1 (CControl * control, uint button, uint x, uint y, uint state);
+  void ButtonRelease2 (CControl * control, uint button, uint x, uint y, uint state);
+  void ButtonRelease3 (CControl * control, uint button, uint x, uint y, uint state);
+  void ButtonRelease4 (CControl * control, uint button, uint x, uint y, uint state);
   void ListOnFileSelected (CFileList * flist);
 };
 

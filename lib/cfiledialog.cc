@@ -4,7 +4,7 @@
 
    ########################################################################
 
-   Copyright (c) : 2001  Luis Claudio Gambôa Lopes
+   Copyright (c) : 2001-2018  Luis Claudio Gamboa Lopes
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -32,219 +32,223 @@
 
 // CFileDialog__________________________________________________________
 
-
 CFileDialog::CFileDialog (void)
 {
-  CanDestroyChilds = false;
-  CanFocus = false;
-  CanExecuteEvent = false;
-  SetClass ("CFileDialog");
+ CanDestroyChilds = false;
+ CanFocus = false;
+ CanExecuteEvent = false;
+ SetClass ("CFileDialog");
 
-  SetVisible (false,false);
-  SetCanExecuteEvent (false);
-  SetSaveUnder (true);
+ SetVisible (false, false);
+ SetCanExecuteEvent (false);
+ SetSaveUnder (true);
+ EvOnClose = NULL;
 
-  FileName = "untitled.txt";
-  SetX (320);
-  SetY (240);
-  SetWidth (200);
-  SetHeight (250);
-  SetName ("Dialog");
-  //button1
-  button1.SetText ("OK");
-  button1.SetX (33);
-  button1.SetY (222);
-  button1.SetFOwner (this);
-  button1.EvMouseButtonRelease =
-    EVMOUSEBUTTONRELEASE & CFileDialog::ButtonRelease1;
-  CreateChild (&button1);
-  //button2
-  button2.SetText ("Cancel");
-  button2.SetX (106);
-  button2.SetY (222);
-  button2.SetFOwner (this);
-  button2.EvMouseButtonRelease =
-    EVMOUSEBUTTONRELEASE & CFileDialog::ButtonRelease2;
-  CreateChild (&button2);
-  //button3
-  button3.SetText ("mkdir");
-  button3.SetX (33);
-  button3.SetY (192);
-  button3.SetFOwner (this);
-  button3.EvMouseButtonRelease =
-    EVMOUSEBUTTONRELEASE & CFileDialog::ButtonRelease3;
-  CreateChild (&button3);
-  //button4
-  button4.SetText ("rm");
-  button4.SetX (106);
-  button4.SetY (192);
-  button4.SetFOwner (this);
-  button4.EvMouseButtonRelease =
-    EVMOUSEBUTTONRELEASE & CFileDialog::ButtonRelease4;
-  CreateChild (&button4);
-  //edit1
-  edit1.SetText ("");
-  edit1.SetX (20);
-  edit1.SetY (160);
-  edit1.SetWidth (160);
-  CreateChild (&edit1);
-  //filelist1
-  filelist1.SetX (20);
-  filelist1.SetY (20);
-  filelist1.SetFOwner (this);
-  filelist1.EvFileListSelectFile = EVFILELISTSELECTFILE & CFileDialog::ListOnFileSelected;
-  CreateChild (&filelist1);
+ FileName = "untitled.txt";
+ SetX (320);
+ SetY (240);
+ SetWidth (200);
+ SetHeight (250);
+ SetName ("Dialog");
+ //button1
+ button1.SetText ("OK");
+ button1.SetX (33);
+ button1.SetY (222);
+ button1.SetFOwner (this);
+ button1.EvMouseButtonRelease =
+     EVMOUSEBUTTONRELEASE & CFileDialog::ButtonRelease1;
+ CreateChild (&button1);
+ //button2
+ button2.SetText ("Cancel");
+ button2.SetX (106);
+ button2.SetY (222);
+ button2.SetFOwner (this);
+ button2.EvMouseButtonRelease =
+     EVMOUSEBUTTONRELEASE & CFileDialog::ButtonRelease2;
+ CreateChild (&button2);
+ //button3
+ button3.SetText ("mkdir");
+ button3.SetX (33);
+ button3.SetY (192);
+ button3.SetFOwner (this);
+ button3.EvMouseButtonRelease =
+     EVMOUSEBUTTONRELEASE & CFileDialog::ButtonRelease3;
+ CreateChild (&button3);
+ //button4
+ button4.SetText ("rm");
+ button4.SetX (106);
+ button4.SetY (192);
+ button4.SetFOwner (this);
+ button4.EvMouseButtonRelease =
+     EVMOUSEBUTTONRELEASE & CFileDialog::ButtonRelease4;
+ CreateChild (&button4);
+ //edit1
+ edit1.SetText ("");
+ edit1.SetX (20);
+ edit1.SetY (160);
+ edit1.SetWidth (160);
+ CreateChild (&edit1);
+ //filelist1
+ filelist1.SetX (20);
+ filelist1.SetY (20);
+ filelist1.SetFOwner (this);
+ filelist1.EvFileListSelectFile = EVFILELISTSELECTFILE & CFileDialog::ListOnFileSelected;
+ CreateChild (&filelist1);
 };
 
-
-CFileDialog::~CFileDialog (void)
-{
-};
+CFileDialog::~CFileDialog (void) { };
 
 void
 CFileDialog::Create (CControl * control)
 {
-  if (control == this)
-    CanDestroyChilds = true;
-  
-  if(control->GetClass().compare(GetClass()) == 0)
-    CWindow::Create (control);
+ if (control == this)
+  CanDestroyChilds = true;
+
+ if (control->GetClass ().compare (GetClass ()) == 0)
+  CWindow::Create (control);
 };
 
 void
 CFileDialog::DestroyChilds (void)
 {
-  if (CanDestroyChilds)
-    CControl::DestroyChilds ();
+ if (CanDestroyChilds)
+  CControl::DestroyChilds ();
 };
 
 void
 CFileDialog::ButtonRelease1 (CControl * control, uint button, uint x, uint y,
-			     uint state)
+                             uint state)
 {
-  HideExclusive ();
-  Result = true;
+ HideExclusive ();
+ Result = true;
 };
 
 void
 CFileDialog::ButtonRelease2 (CControl * control, uint button, uint x, uint y,
-			     uint state)
+                             uint state)
 {
-  HideExclusive ();
-  Result = false;
+ HideExclusive ();
+ Result = false;
 };
 
 void
 CFileDialog::ButtonRelease3 (CControl * control, uint button, uint x, uint y,
-			     uint state)
+                             uint state)
 {
-  String texto = "untitled";
-  if (Input ("Dir Name:", texto))
-    if (mkdir (texto.c_str (), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH) != 0)
-      {
-	Message (strerror (errno));
-      };
-  filelist1.SetDir (filelist1.GetSelectedDir ());
+ String texto = "untitled";
+ if (Input ("Dir Name:", texto))
+  if (mkdir (texto.c_str (), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH) != 0)
+   {
+    Message (strerror (errno));
+   };
+ filelist1.SetDir (filelist1.GetSelectedDir ());
 };
 
 void
 CFileDialog::ButtonRelease4 (CControl * control, uint button, uint x, uint y,
-			     uint state)
+                             uint state)
 {
-  if (Dialog ("Remove " + edit1.GetText () + " ?"))
-    if (unlink (edit1.GetText ().c_str ()) != 0)
-      {
-	Message (strerror (errno));
-      };
-  filelist1.SetDir (filelist1.GetSelectedDir ());
+ if (Dialog ("Remove " + edit1.GetText () + " ?"))
+  if (unlink (edit1.GetText ().c_str ()) != 0)
+   {
+    Message (strerror (errno));
+   };
+ filelist1.SetDir (filelist1.GetSelectedDir ());
 };
 
 void
 CFileDialog::ListOnFileSelected (CFileList * flist)
 {
-  CFileDialog *dialog;
-  dialog = dynamic_cast < CFileDialog * >(flist->GetOwner ());
-  String selected = flist->GetSelectedItem ();
-  int pos = selected.find ("/");
-  if (pos < 0)
-    dialog->edit1.SetText (selected);
-  else
-    dialog->edit1.SetText (selected.substr (1, selected.size ()));
+ CFileDialog *dialog;
+ dialog = dynamic_cast < CFileDialog * >(flist->GetOwner ());
+ String selected = flist->GetSelectedItem ();
+ int pos = selected.find ("/");
+ if (pos < 0)
+  dialog->edit1.SetText (selected);
+ else
+  dialog->edit1.SetText (selected.substr (1, selected.size ()));
 };
 
 String
 CFileDialog::GetFileName (void)
 {
-  return GetDir()+"/"+FileName;
+ return GetDir () + "/" + FileName;
 };
 
 String
 CFileDialog::GetDir (void)
 {
-  return filelist1.GetSelectedDir ();
+ return filelist1.GetSelectedDir ();
 };
 
 void
 CFileDialog::SetFileName (String filename)
 {
-  FileName = filename;
+ FileName = filename;
 };
 
 void
 CFileDialog::SetDir (String dir)
 {
-  filelist1.SetDir (dir);
+ filelist1.SetDir (dir);
 };
 
-bool
+void
 CFileDialog::Run (void)
 {
-  SetTitle (GetName ());
-  edit1.SetText (GetFileName ());
-  if (!WWindow)
-    {
-      Application->ACreateWindow (this);
-    }
-  ShowExclusive ();
-  SetFileName (edit1.GetText ());
-  WDestroy ();
-  return Result;
+ SetTitle (GetName ());
+ edit1.SetText (GetFileName ());
+ if (!WWindow)
+  {
+   Application->ACreateWindow (this);
+  }
+ ShowExclusive ();
+ SetFileName (edit1.GetText ());
+ WDestroy ();
+
+ if ((FOwner) && (EvOnClose))
+  (FOwner->*EvOnClose) (Result);
 };
 
-
-CStringList 
+CStringList
 CFileDialog::GetContext (void)
 {
-  CControl::GetContext ();
-  return Context;
+ CControl::GetContext ();
+ return Context;
 };
 
 void
 CFileDialog::SetContext (CStringList context)
 {
-  Eraser ();
-  CControl::SetContext (context);
-  /*
-  for (uint i = 0; i < context.GetLinesCount (); i++)
-    {
-      String line = Context.GetLine (i);
-      String arg;
-      eqparse (line, arg);
-    };
+ Eraser ();
+ CControl::SetContext (context);
+ /*
+ for (uint i = 0; i < context.GetLinesCount (); i++)
+   {
+     String line = Context.GetLine (i);
+     String arg;
+     eqparse (line, arg);
+   };
   */
-  Draw ();
+ Draw ();
 };
-  
-void 
-CFileDialog::SetFilter(String filter)
+
+void
+CFileDialog::SetFilter (String filter)
 {
-  Filter=filter;
-  //TODO
+ Filter = filter;
+ //TODO
 }
 
 void
-CFileDialog::SetType(int type)
+CFileDialog::SetType (int type)
 {
-  Type=type;
-  //TODO
+ Type = type;
+ //TODO
+}
+
+int
+CFileDialog::GetType (void)
+{
+ return Type;
 }

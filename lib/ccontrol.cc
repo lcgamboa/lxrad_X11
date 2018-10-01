@@ -778,7 +778,7 @@ void
 CControl::SetColor (XColor c)
 {
   Color = c;
-  Update ();
+  Update();
 };
 
 void
@@ -792,7 +792,8 @@ CControl::SetColor (const String name)
     Color = ColorByName (name);
   else
     ColorSet = true;
-  Update ();
+ 
+  Update();
 };
 
 void
@@ -810,7 +811,7 @@ CControl::SetColor (uint r, uint g, uint b)
       ColorSet = true;
       ColorName = "";
     };
-  Update ();
+  Update();
 };
 
 lxColor CControl::GetColor (void)
@@ -1027,7 +1028,7 @@ void
 CControl::mouse_move (XEvent event)
 {
   if ((FOwner) && (EvMouseMove))
-    (FOwner->*EvMouseMove) (this, 0, event.xmotion.x, event.xmotion.y, event.xmotion.state);
+    (FOwner->*EvMouseMove) (this, 0, event.xmotion.x-RX, event.xmotion.y-RY, event.xmotion.state);
 };
 
 void

@@ -29,6 +29,7 @@
 CColorDialog::CColorDialog (void)
 {
   printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
+  EvOnClose=NULL;
 }
 
 CColorDialog::~CColorDialog (void)
@@ -42,12 +43,12 @@ CColorDialog::Create (CControl * control)
   printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
 }
 
-bool 
+void 
 CColorDialog::Run (void)
 {
 //FIXME	
   printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
-return 0;
+return;
 }
 
 String 

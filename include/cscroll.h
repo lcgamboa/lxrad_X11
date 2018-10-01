@@ -4,7 +4,7 @@
 
    ########################################################################
 
-   Copyright (c) : 2001  Luis Claudio Gambôa Lopes
+   Copyright (c) : 2001-2108  Luis Claudio Gamboa Lopes
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@
 #define  st_vertical 0x08
 #define  st_horizontal 0x04
 
-#define EVONCHANGEPOSITION   (void(CControl::*)(CScroll*,bool))
+#define EVONCHANGEPOSITION   (void(CControl::*)(CControl*))
 
 class CScroll:public CControl
 {
@@ -45,10 +45,10 @@ protected:
   bool Move;
   scrolltype Type;
   CToolButton *button1, *button2;
-  void ScrollButtonPress (CControl * control, uint button, uint x, uint y,
-			  uint state);
-  void ScrollButtonRelease (CControl * control, uint button, uint x, uint y,
-			    uint state);
+  void ScrollButtonPress (CControl * control, const uint button, const uint x, const uint y,
+			  const uint state);
+  void ScrollButtonRelease (CControl * control, const uint button, const uint x, const uint y,
+			    const uint state);
 public:
     CScroll (void);
    ~CScroll (void);
@@ -73,7 +73,7 @@ public:
   void button_press (XEvent event);
   void button_release (XEvent event);
   void mouse_move (XEvent event);
-  void (CControl::*EvOnChangePosition) (CScroll * scroll, bool status);
+  void (CControl::*EvOnChangePosition) (CControl * control);
 };
 
 #endif
