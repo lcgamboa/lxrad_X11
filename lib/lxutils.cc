@@ -331,6 +331,12 @@ String lxGetCwd(void)
     return "";
 }
 
+bool 
+lxLaunchDefaultBrowser(String url)
+{
+ String cmd= lxT("xdg-open ")+url+lxT("  &");
+ return system(cmd.c_str ());
+}
 
 //-------------------------------------------------------------------------
 bool

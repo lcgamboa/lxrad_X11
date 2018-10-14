@@ -174,6 +174,7 @@ void lxSetCursor(lxCursor cursor);
 bool lxFileExists(String fname);
 void lxExecute(String cmd,unsigned int flags=0);
 String lxGetCwd(void);
+bool  lxLaunchDefaultBrowser(String url);
 
 String lxGetUserDataDir(String appname);
 String lxGetTempDir(String appname);
