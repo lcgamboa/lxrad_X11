@@ -87,6 +87,13 @@ void Destroy();
 operator Imlib_Image() const;
 };
 
+class lxSize
+{
+private:
+public:
+  int x,y;
+};
+
 class lxBitmap
 {
 private:
@@ -96,6 +103,7 @@ public:
 lxBitmap(lxImage img, CWindow * win );
 Pixmap  GetPixmap(void);
 operator Pixmap() const;
+lxSize GetSize(void);
 };
 
 class lxSound
@@ -146,9 +154,11 @@ public:
   lxFont(int size,int family,int style,int weight);
 };
 
+
 #define lxFONTFAMILY_TELETYPE 0x01
 #define lxFONTSTYLE_NORMAL 0x01
 #define lxFONTWEIGHT_BOLD 0x01
+#define lxFONTWEIGHT_NORMAL 0x00
 
 
 #define lxCURSOR_CROSS 0x01

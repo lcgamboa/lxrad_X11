@@ -166,6 +166,13 @@ lxBitmap::GetPixmap(void)
   return CPixmap;
 }
 
+lxSize 
+lxBitmap::GetSize(void)
+{
+//FIXME	
+  printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
+  return {0,0};
+}
 
 //-------------------------------------------------------------------------
 
