@@ -346,7 +346,20 @@ CPaint::Rectangle (bool filled, int x, int y, int w, int h)
 void 
 CPaint::RotatedText (String str, int x, int y, int angle)
 {
-  printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
+  //FIXME font size 13
+  char sstr[2];
+  int dx=13*cos(angle*3.1416/180.0);
+  int dy=-13*sin(angle*3.1416/180.0);
+  
+  int size=str.size();
+
+  sstr[1]=0
+	  ;
+  for(int i=0; i< size; i++)
+  {
+     sstr[0]=((const char *)str.c_str())[size-i-1];
+     XDrawString (Disp, DrawIn, Agc, RX+x+dx*i, RY+y+ 13+dy*(i+1) ,sstr, 1);
+  }
 }
 
 void 

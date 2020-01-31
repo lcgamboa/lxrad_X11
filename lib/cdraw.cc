@@ -286,7 +286,8 @@ CDraw::SetPixmapFileName (String filename)
 		       1);
 
 #ifdef HAVE_LIBIMLIB2
-     image = imlib_load_image_immediately_without_cache ((char *) FileName.c_str ());
+     //image = imlib_load_image_immediately_without_cache ((char *) FileName.c_str ());
+     image = imlib_load_image_immediately ((char *) FileName.c_str ());
      if (image)
      { 
        /* set the image we loaded as the current context image to work on */
@@ -438,7 +439,8 @@ CDraw::SetImgFileName(String filename, float sx, float sy)
 		       1);
 
 #ifdef HAVE_LIBIMLIB2
-     image = imlib_load_image_immediately_without_cache ((char *) FileName.c_str ());
+     //image = imlib_load_image_immediately_without_cache ((char *) FileName.c_str ());
+     image = imlib_load_image_immediately((char *) FileName.c_str ());
      if (image)
      { 
        /* set the image we loaded as the current context image to work on */

@@ -26,9 +26,14 @@
 
 
 #include"../include/cthread.h"
+#include"../include/capplication.h"
+#include"../config.h"
 #include<unistd.h>
+
+#ifdef HAVE_LIBPTHREAD
 #include<pthread.h>
-    
+#endif
+
 CThread::CThread (void)
 {
   CanFocus = false;
@@ -59,20 +64,30 @@ CThread::Create (CControl * control)
 void 
 CThread::Destroy (void)
 {
+#ifdef HAVE_LIBPTHREAD
   tdestroy=1;
   while(runstate) 
   {
       usleep(100);
   }      
-  CControl::Destroy ();
   pthread_join (Thread, NULL);
+#else
+  Application->RemoveThread(this);
+  on_end();
+#endif
+  CControl::Destroy ();
 }
 
 void 
 CThread::Kill (void)
 {
+#ifdef HAVE_LIBPTHREAD
    pthread_cancel (Thread);
    pthread_join (Thread, NULL);
+#else
+   Application->RemoveThread(this);
+   on_end();
+#endif
 }
 
 bool 
@@ -111,6 +126,7 @@ CThread::SetContext (CStringList context)
   */  
 }
 
+#ifdef HAVE_LIBPTHREAD
 void *
 cthread1 (void *arg)
 {
@@ -123,6 +139,7 @@ cthread1 (void *arg)
 
   return NULL;
 };
+#endif
 
 int  
 CThread::Run (void)
@@ -133,9 +150,14 @@ CThread::Run (void)
        {
        //create the thread
          runstate=1;
+#ifdef HAVE_LIBPTHREAD
 	 tdestroy=0;
 	 pthread_create (&Thread, NULL, cthread1, (void *) this);
-         return 0;  
+#else
+	 tdestroy=1;
+	 Application->AddThread(this);
+#endif
+	 return 0;  
        }
        else
         return 1;

@@ -4,7 +4,7 @@
 
    ########################################################################
 
-   Copyright (c) : 2001  Luis Claudio Gambôa Lopes
+   Copyright (c) : 2001-2018  Luis Claudio Gamboa Lopes
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -28,6 +28,7 @@
 
 #include"ccontrol.h"
 #include"cwindow.h"
+#include <sys/time.h>
 
 
 #define ONTIME (void(CControl::*)(CControl*))
@@ -38,8 +39,10 @@ protected:
   uint Time;
   bool Run;
   pthread_t Th;
+  uint OverTime;
 public:
-    CTimer (void);
+  struct timeval  tv;
+   CTimer (void);
    ~CTimer (void);
   void Draw (void);
   void Create (CControl * control);
@@ -50,6 +53,8 @@ public:
   bool GetRunState ();
   void *thread (void *arg);
   //propiedades
+  void SetOverTime (uint overtime);
+  uint GetOverTime (void);
   void SetTime (uint time);
   uint GetTime (void);
   void on_time (void);

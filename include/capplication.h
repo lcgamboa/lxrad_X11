@@ -4,7 +4,7 @@
 
    ########################################################################
 
-   Copyright (c) : 2001  Luis Claudio Gambôa Lopes
+   Copyright (c) : 2001-2018  Luis Claudio Gamboa Lopes
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -29,6 +29,7 @@
 #include"clxrad.h"
 #include"cwindow.h"
 #include"ctimer.h"
+#include"cthread.h"
 #include"chint.h"
 #include<locale.h>
 
@@ -40,6 +41,10 @@ private:
   XEvent AEvent, LAEvent;
   CWindow **AWindowList;
   int AWindowCount;
+  CTimer **TimerList;
+  int TimerCount;
+  CThread **ThreadList;
+  int ThreadCount;
   timeval LastDrawTime;
   Display *ADisplay;
   Screen *AScreen;
@@ -71,6 +76,10 @@ public:
   void ADestroyWindow (CWindow * AWindow);
   bool ProcessEvents (CWindow * AWindow);
   bool ProcessEvents (void);
+  void AddTimer(CTimer *tm);	
+  void RemoveTimer(CTimer *tm);	
+  void AddThread(CThread *td);	
+  void RemoveThread(CThread *td);	
   void Draw (void);
   void Update (void);
   void Load (void);

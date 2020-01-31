@@ -108,7 +108,8 @@ lxImage::LoadFile(String fname)
 {
   Destroy();
 	
-  Image = imlib_load_image_immediately_without_cache ((char *) fname.c_str ());
+  //Image = imlib_load_image_immediately_without_cache ((char *) fname.c_str ());
+  Image = imlib_load_image_immediately ((char *) fname.c_str ());
   if(Image)
     return 0;
   else
@@ -169,9 +170,13 @@ lxBitmap::GetPixmap(void)
 lxSize 
 lxBitmap::GetSize(void)
 {
-//FIXME	
-  printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
-  return {0,0};
+   Window win;
+   int x=0,y=0;
+   unsigned int w=0,h=0,b,d;
+
+    XGetGeometry(Application->GetADisplay(), CPixmap, &win, &x, &y, &w, &h, &b, &d); 
+   
+   return {(int)w,(int)h};
 }
 
 //-------------------------------------------------------------------------
