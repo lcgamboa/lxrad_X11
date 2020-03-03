@@ -50,15 +50,15 @@ CThread::~CThread (void)
 {
 }
 
-void 
+int
 CThread::Create (CControl * control)
 {
   Win = control->GetWin ();
 
   CanExecuteEvent=false;
-  CControl::Create (control);
+  int ret=CControl::Create (control);
   CanExecuteEvent=true;
-
+  return ret;
 }
 
 void 

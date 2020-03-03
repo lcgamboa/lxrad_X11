@@ -48,12 +48,13 @@ CButton::~CButton (void)
 {
 };
 
-void
+int
 CButton::Create (CControl * control)
 {
-  CControl::Create (control);
+  int ret=CControl::Create (control);
   PressColor = ColorByName ("gray");
-};
+  return ret;
+}
 
 void
 CButton::Draw (void)

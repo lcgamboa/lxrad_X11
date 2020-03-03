@@ -266,14 +266,13 @@ CLabel::SwapVirtual (void)
   VHeight = h;
 };
 
-
-void
+int
 CLabel::Create (CControl * control)
 {
   if (!ColorSet)
     SetColor ("black");
-  CControl::Create (control);
-};
+  return CControl::Create (control);
+}
 
 
 

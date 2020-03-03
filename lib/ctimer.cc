@@ -56,11 +56,11 @@ CTimer::~CTimer (void)
 {
 };
 
-void
+int
 CTimer::Create (CControl * control)
 {
-  CControl::Create (control);
-};
+  return CControl::Create (control);
+}
 
 void
 CTimer::Destroy (void)

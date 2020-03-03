@@ -62,12 +62,12 @@ CDraw::~CDraw (void)
 {
 };
 
-void
+int
 CDraw::Create (CControl * control)
 {
   if (!ColorSet)
     SetColor ("white");
-  CControl::Create (control);
+  int ret =CControl::Create (control);
   Canvas.Create(this);
   Canvas.SetDoCalcRXY(false);
   Visible=false;	    
@@ -81,7 +81,9 @@ CDraw::Create (CControl * control)
     Canvas.Pen.SetColor (Color);
     Canvas.Rectangle ( 0, 0, Width, Height);
   };
- };
+ 
+  return ret;
+}
 
 void
 CDraw::Destroy (void)

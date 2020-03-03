@@ -48,16 +48,17 @@ CFileList::~CFileList (void)
     };
 };
 
-void
+int
 CFileList::Create (CControl * control)
 {
-  CList::Create (control);
+  int ret=CList::Create (control);
   char *temp = get_current_dir_name ();
   SetVisible (false, false);
   SetDir (temp);
   SetVisible (true, false);
   delete[]temp;
-};
+  return ret;
+}
 
 int
 file_filter (const struct dirent *de)

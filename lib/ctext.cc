@@ -111,12 +111,13 @@ CText::DrawCursor (void)
 };
 
 
-void
+int
 CText::Create (CControl * control)
 {
-  CControl::Create (control);
+  int ret=CControl::Create (control);
   Color = ColorByName ("white");
-};
+  return ret;
+}
 
 void
 CText::Clear (void)

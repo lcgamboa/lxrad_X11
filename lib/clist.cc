@@ -4,7 +4,7 @@
 
    ########################################################################
 
-   Copyright (c) : 2001  Luis Claudio Gambôa Lopes
+   Copyright (c) : 2001  Luis Claudio GambÃ´a Lopes
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -60,13 +60,13 @@ CList::~CList (void)
   ItemsCount = -1;
 };
 
-void
+int
 CList::Create (CControl * control)
 {
   if (!ColorSet)
     SetColor ("white");
-  CControl::Create (control);
-};
+  return CControl::Create (control);
+}
 
 void
 CList::Draw ()

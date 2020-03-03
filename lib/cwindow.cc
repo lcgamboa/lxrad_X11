@@ -27,6 +27,7 @@
 
 #include"../include/cwindow.h"
 #include"../include/capplication.h"
+#include"../include/newcontrolbycname.h"
 
 #include<pthread.h>
 //extern pthread_mutex_t Display_Lock;
@@ -896,11 +897,87 @@ CWindow::on_leave (void)
 
 
 bool 
-CWindow::LoadXMLContextAndCreateChilds(String fname)
+CWindow::LoadXMLContextAndCreateChilds(String filename, CControl* ctrl)
 {
-//FIXME
-  printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
-return 0;
+  FILE* file2;
+  CStringList list;
+  String line;
+
+  file2 = fopen (filename.c_str(),"r");
+  rewind(file2);
+  
+
+  if (file2)
+    {
+
+      if(ctrl == NULL)//for owner window
+      {
+        if(fgetline (file2, line))
+        {
+          ctrl = this;
+          ctrl->SetName(line.substr (1, line.size () - 2));//Get Window name
+          rewind(file2);
+        }
+      }
+
+      list.Clear ();
+      while (fgetline (file2, line))
+        {
+          if (line.compare (lxT ("<") + ctrl->GetName () + lxT (">")) == 0)
+            {
+              fgetline (file2, line);
+              do
+                {
+                  list.AddLine (line);
+                  fgetline (file2, line);
+                }
+              while (line.c_str()[0] == ' ');
+              ctrl->SetContext (list);
+
+              while (line.compare (lxT ("</") + ctrl->GetName () + lxT (">")) != 0)
+                {
+                  String controlclass, ctype, name, cname;
+
+                  cname = line.substr (1, line.size () - 2);
+                  fgetline (file2, line);
+                  xml_in (line, name, ctype, controlclass);
+
+                  CControl *ch = newcontrolbycname (controlclass);
+                  ch->SetName (cname);
+                  ch->SetFOwner (ctrl);
+                 
+		  /* 
+		  if (ch->GetClass ().compare (lxT ("CItemMenu")) == 0)
+                    {
+                      ch->SetVisible (false, false);
+                    };
+                  */
+                  ctrl->CreateChild (ch);
+
+                  if (ch != NULL)
+                    LoadXMLContextAndCreateChilds (filename, ch);
+                  else
+                    printf ("Child Not Found! %s \n", (char*) name.char_str ());
+
+                  do
+                    {
+                      fgetline (file2, line);
+                    }
+                  while ((line.compare (lxT ("</") + cname + lxT (">")) != 0));
+                  fgetline (file2, line);
+                }
+
+            }
+
+        }
+
+      fclose(file2);
+      return 1;
+    }
+  else
+    printf ("File (%s) not found!\n",(char *)filename.char_str());
+
+  return 0;
 }
 
 bool 

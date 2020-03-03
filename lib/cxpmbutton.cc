@@ -51,12 +51,13 @@ CXpmButton::~CXpmButton (void)
 {
 };
 
-void
+int
 CXpmButton::Create (CControl * control)
 {
-  CButton::Create (control);
+  int ret=CButton::Create (control);
   Xpm->SetColor (Color);
-};
+  return ret;
+}
 
 void
 CXpmButton::Draw (void)

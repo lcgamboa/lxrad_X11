@@ -4,7 +4,7 @@
 
    ########################################################################
 
-   Copyright (c) : 2001  Luis Claudio Gambôa Lopes
+   Copyright (c) : 2001  Luis Claudio GambÃ´a Lopes
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -73,7 +73,7 @@ public:
   CWindow *GetWin (void);
   void SetWin (CWindow * win);
   virtual void Event (XEvent event);
-  virtual void Create (CControl * control);
+  virtual int  Create (CControl * control);
   virtual void Destroy (void);
   virtual void Eraser (void);
   virtual void Draw (void);

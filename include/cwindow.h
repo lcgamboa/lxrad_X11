@@ -93,7 +93,7 @@ public:
   XIC GetIC (void);
   void SetPixmapBuffer(bool pbuffer);
   bool GetPixmapBuffer(void);
-  bool LoadXMLContextAndCreateChilds(String fname);
+  bool LoadXMLContextAndCreateChilds(String filename, CControl* ctrl = NULL);
   bool GetCanExitExclusive(void);
 //propiedades
   Window GetWWindow (void);

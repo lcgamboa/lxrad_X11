@@ -49,7 +49,7 @@ public:
    ~CList (void);
   void Draw (void);
   void Update (void);
-  void Create (CControl * control);
+  int Create (CControl * control);
   CStringList GetContext (void);
   void SetContext (CStringList context);
   //propiedades

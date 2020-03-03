@@ -4,7 +4,7 @@
 
    ########################################################################
 
-   Copyright (c) : 2001  Luis Claudio Gambôa Lopes
+   Copyright (c) : 2001  Luis Claudio GambÃ´a Lopes
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -52,12 +52,13 @@ CToolButton::~CToolButton (void)
 {
 };
 
-void
+int
 CToolButton::Create (CControl * control)
 {
-  CButton::Create (control);
+  int ret=CButton::Create (control);
   Xpm->SetColor (GetColor ());
-};
+  return ret;
+}
 
 void
 CToolButton::Draw (void)

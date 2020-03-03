@@ -39,10 +39,10 @@ CStatusbar::~CStatusbar (void)
 {
 }
 
-void 
+int 
 CStatusbar::Create (CControl * control)
 {
-  CControl::Create (control);
+  return CControl::Create (control);
 }
 
 CStringList 

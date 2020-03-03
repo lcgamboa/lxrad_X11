@@ -98,15 +98,17 @@ CFileDialog::CFileDialog (void)
 
 CFileDialog::~CFileDialog (void) { };
 
-void
+int
 CFileDialog::Create (CControl * control)
 {
  if (control == this)
   CanDestroyChilds = true;
 
  if (control->GetClass ().compare (GetClass ()) == 0)
-  CWindow::Create (control);
-};
+  return CWindow::Create (control);
+ 
+ return 1;
+}
 
 void
 CFileDialog::DestroyChilds (void)

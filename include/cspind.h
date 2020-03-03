@@ -60,7 +60,7 @@ public:
   void Draw (void);
   void SetWidth(unsigned width);
   void SetHeight(unsigned height );
-  void Create (CControl * control);
+  int  Create (CControl * control);
   CStringList GetContext (void);
   void SetContext (CStringList context);
   //void Event (wxEvent & event);

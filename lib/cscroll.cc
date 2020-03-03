@@ -157,13 +157,14 @@ CScroll::~CScroll (void)
 {
 };
 
-void
+int 
 CScroll::Create (CControl * control)
 {
-  CControl::Create (control);
+  int ret= CControl::Create (control);
   if (!ColorSet)
     Color = ColorByName ("gray");
-};
+  return ret;
+}
 
 void
 CScroll::Draw (void)

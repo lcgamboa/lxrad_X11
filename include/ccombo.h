@@ -4,7 +4,7 @@
 
    ########################################################################
 
-   Copyright (c) : 2001  Luis Claudio Gambôa Lopes
+   Copyright (c) : 2001  Luis Claudio GambÃ´a Lopes
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -44,7 +44,7 @@ public:
     CCombo (void);
    ~CCombo (void);
   void Draw (void);
-  void Create (CControl * control);
+  int  Create (CControl * control);
   void SetWidth(unsigned width);
   void SetHeight(unsigned height );
   void SetItems (String litens);

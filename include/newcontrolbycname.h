@@ -4,7 +4,7 @@
 
    ########################################################################
 
-   Copyright (c) : 2001-2018  Luis Claudio Gamboa Lopes
+   Copyright (c) : 2001-2017  Luis Claudio Gamboa Lopes
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -23,48 +23,10 @@
    For e-mail suggestions :  lcgamboa@yahoo.com
    ######################################################################## */
 
-/**
- * \file chtml.h
- * \author Luis Claudio Gamboa Lopes
- * \date 06-25-2010
- */
 
-#ifndef CHTML
-#define CHTML
+#ifndef NEWCONTROLBYCNAME
+#define NEWCONTROLBYCNAME
 
-#include"ctext.h"
-#include"cwindow.h"
-
-/** \brief Grid Control.
- *
- * Generic Grid Control Class.
- */
-
-class CHtml:public CText
-{
-protected:
-  String Text;
-  String Url;
-  String File;
-  int CEvent (int event);
-public:
-  CHtml (void);
-   ~CHtml (void);
-  int Create (CControl * control);
-  CStringList GetContext (void);
-  void SetContext (CStringList context);
-  //void Event (wxEvent & event);
-  //propiedades
-  void SetLoadText (String t);
-  String GetLoadText (void);
-  void SetLoadUrl (String url);
-  String GetLoadUrl (void);
-  void SetLoadFile (String url);
-  String GetLoadFile (void);
-  void HistoryBack(void);
-  void HistoryForward(void);
-  //events
-  void (CControl::*EvOnLinkClicked) (CControl * control);
-};
-
+CControl * newcontrolbycname (String controltype);
 #endif
+

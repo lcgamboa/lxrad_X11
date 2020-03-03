@@ -4,7 +4,7 @@
 
    ########################################################################
 
-   Copyright (c) : 2001  Luis Claudio Gambôa Lopes
+   Copyright (c) : 2001  Luis Claudio Gamboa Lopes
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -50,11 +50,11 @@ CComboDialog::CComboDialog (void)
   CreateChild (&list1);
 };
 
-void
+int
 CComboDialog::Create (CControl * control)
 {
-  CWindow::Create (control);
-};
+  return CWindow::Create (control);
+}
 
 void
 CComboDialog::SetWidth (unsigned width)

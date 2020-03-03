@@ -49,7 +49,7 @@ protected:
 //  GtkObject *Adj;
 public:
     CGauge (void);
-  void Create (CControl * control);
+  int Create (CControl * control);
   void Draw (void);
   CStringList GetContext (void);
   void SetContext (CStringList context);

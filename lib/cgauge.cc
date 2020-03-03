@@ -37,10 +37,10 @@ CGauge::CGauge (void)
   SetHeight (20);
 }
 
-void 
+int
 CGauge::Create (CControl * control)
 {
-  CControl::Create (control);
+  return CControl::Create (control);
 }
 
 void

@@ -47,7 +47,7 @@ protected:
 public:
     CThread (void);
    ~CThread (void);
-  void Create (CControl * control);
+  int Create (CControl * control);
   void Destroy (void);
   void Kill (void);
   bool TestDestroy (void);
