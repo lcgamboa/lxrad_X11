@@ -4,7 +4,7 @@
 
    ########################################################################
 
-   Copyright (c) : 2001  Luis Claudio Gambôa Lopes
+   Copyright (c) : 2001  Luis Claudio GambÃ´a Lopes
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -37,6 +37,7 @@
 #include"cinput.h"
 #include"cdialog.h"
 #include"cfiledialog.h"
+#include"cdirdialog.h"
 #include"cdraw.h"
 #include"ccheckbox.h"
 #include"ctoolbutton.h"

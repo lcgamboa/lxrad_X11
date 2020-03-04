@@ -11,6 +11,7 @@ CPWindow1::CPWindow1(void)
   SetHint(lxT(""));
   SetEnable(1);
   SetVisible(1);
+  SetColor(lxT("#000001"));
   SetPopupMenu(NULL);
   SetTitle(lxT("Editor"));
   SetOverrideRedirect(0);
@@ -27,6 +28,7 @@ CPWindow1::CPWindow1(void)
   toolbutton1.SetHint(lxT(""));
   toolbutton1.SetEnable(1);
   toolbutton1.SetVisible(1);
+  toolbutton1.SetColor(lxT("#000001"));
   toolbutton1.SetPopupMenu(NULL);
   toolbutton1.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton1_EvMouseButtonPress;
   toolbutton1.SetImgFileName(lxT(""));
@@ -43,6 +45,7 @@ CPWindow1::CPWindow1(void)
   toolbutton2.SetHint(lxT(""));
   toolbutton2.SetEnable(1);
   toolbutton2.SetVisible(1);
+  toolbutton2.SetColor(lxT("#000001"));
   toolbutton2.SetPopupMenu(NULL);
   toolbutton2.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton2_EvMouseButtonPress;
   toolbutton2.SetImgFileName(lxT(""));
@@ -59,6 +62,7 @@ CPWindow1::CPWindow1(void)
   toolbutton3.SetHint(lxT(""));
   toolbutton3.SetEnable(1);
   toolbutton3.SetVisible(1);
+  toolbutton3.SetColor(lxT("#000001"));
   toolbutton3.SetPopupMenu(NULL);
   toolbutton3.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton3_EvMouseButtonPress;
   toolbutton3.SetImgFileName(lxT(""));
@@ -75,6 +79,7 @@ CPWindow1::CPWindow1(void)
   toolbutton4.SetHint(lxT(""));
   toolbutton4.SetEnable(1);
   toolbutton4.SetVisible(1);
+  toolbutton4.SetColor(lxT("#000001"));
   toolbutton4.SetPopupMenu(NULL);
   toolbutton4.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton4_EvMouseButtonPress;
   toolbutton4.SetImgFileName(lxT(""));
@@ -91,6 +96,7 @@ CPWindow1::CPWindow1(void)
   toolbutton5.SetHint(lxT(""));
   toolbutton5.SetEnable(1);
   toolbutton5.SetVisible(1);
+  toolbutton5.SetColor(lxT("#000001"));
   toolbutton5.SetPopupMenu(NULL);
   toolbutton5.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton5_EvMouseButtonPress;
   toolbutton5.SetImgFileName(lxT(""));
@@ -107,6 +113,7 @@ CPWindow1::CPWindow1(void)
   toolbutton6.SetHint(lxT(""));
   toolbutton6.SetEnable(1);
   toolbutton6.SetVisible(1);
+  toolbutton6.SetColor(lxT("#000001"));
   toolbutton6.SetPopupMenu(NULL);
   toolbutton6.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton6_EvMouseButtonPress;
   toolbutton6.SetImgFileName(lxT(""));
@@ -123,6 +130,7 @@ CPWindow1::CPWindow1(void)
   toolbutton7.SetHint(lxT(""));
   toolbutton7.SetEnable(1);
   toolbutton7.SetVisible(1);
+  toolbutton7.SetColor(lxT("#000001"));
   toolbutton7.SetPopupMenu(NULL);
   toolbutton7.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton7_EvMouseButtonPress;
   toolbutton7.SetImgFileName(lxT(""));
@@ -139,6 +147,7 @@ CPWindow1::CPWindow1(void)
   toolbutton8.SetHint(lxT(""));
   toolbutton8.SetEnable(1);
   toolbutton8.SetVisible(1);
+  toolbutton8.SetColor(lxT("#000001"));
   toolbutton8.SetPopupMenu(NULL);
   toolbutton8.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton8_EvMouseButtonPress;
   toolbutton8.SetImgFileName(lxT(""));
@@ -155,6 +164,7 @@ CPWindow1::CPWindow1(void)
   toolbutton9.SetHint(lxT(""));
   toolbutton9.SetEnable(1);
   toolbutton9.SetVisible(1);
+  toolbutton9.SetColor(lxT("#000001"));
   toolbutton9.SetPopupMenu(NULL);
   toolbutton9.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton9_EvMouseButtonPress;
   toolbutton9.SetImgFileName(lxT(""));
@@ -171,6 +181,7 @@ CPWindow1::CPWindow1(void)
   toolbutton10.SetHint(lxT(""));
   toolbutton10.SetEnable(1);
   toolbutton10.SetVisible(1);
+  toolbutton10.SetColor(lxT("#000001"));
   toolbutton10.SetPopupMenu(NULL);
   toolbutton10.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton10_EvMouseButtonPress;
   toolbutton10.SetImgFileName(lxT(""));
@@ -187,6 +198,7 @@ CPWindow1::CPWindow1(void)
   toolbutton11.SetHint(lxT(""));
   toolbutton11.SetEnable(1);
   toolbutton11.SetVisible(1);
+  toolbutton11.SetColor(lxT("#000001"));
   toolbutton11.SetPopupMenu(NULL);
   toolbutton11.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton11_EvMouseButtonPress;
   toolbutton11.SetImgFileName(lxT(""));
@@ -203,6 +215,7 @@ CPWindow1::CPWindow1(void)
   toolbutton12.SetHint(lxT(""));
   toolbutton12.SetEnable(1);
   toolbutton12.SetVisible(1);
+  toolbutton12.SetColor(lxT("#000001"));
   toolbutton12.SetPopupMenu(NULL);
   toolbutton12.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton12_EvMouseButtonPress;
   toolbutton12.SetImgFileName(lxT(""));
@@ -219,6 +232,7 @@ CPWindow1::CPWindow1(void)
   toolbutton13.SetHint(lxT(""));
   toolbutton13.SetEnable(1);
   toolbutton13.SetVisible(1);
+  toolbutton13.SetColor(lxT("#000001"));
   toolbutton13.SetPopupMenu(NULL);
   toolbutton13.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton13_EvMouseButtonPress;
   toolbutton13.SetImgFileName(lxT(""));
@@ -235,6 +249,7 @@ CPWindow1::CPWindow1(void)
   toolbutton14.SetHint(lxT(""));
   toolbutton14.SetEnable(1);
   toolbutton14.SetVisible(1);
+  toolbutton14.SetColor(lxT("#000001"));
   toolbutton14.SetPopupMenu(NULL);
   toolbutton14.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton14_EvMouseButtonPress;
   toolbutton14.SetImgFileName(lxT(""));
@@ -251,6 +266,7 @@ CPWindow1::CPWindow1(void)
   toolbutton15.SetHint(lxT(""));
   toolbutton15.SetEnable(1);
   toolbutton15.SetVisible(1);
+  toolbutton15.SetColor(lxT("#000001"));
   toolbutton15.SetPopupMenu(NULL);
   toolbutton15.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton15_EvMouseButtonPress;
   toolbutton15.SetImgFileName(lxT(""));
@@ -267,6 +283,7 @@ CPWindow1::CPWindow1(void)
   toolbutton16.SetHint(lxT(""));
   toolbutton16.SetEnable(1);
   toolbutton16.SetVisible(1);
+  toolbutton16.SetColor(lxT("#000001"));
   toolbutton16.SetPopupMenu(NULL);
   toolbutton16.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton16_EvMouseButtonPress;
   toolbutton16.SetImgFileName(lxT(""));
@@ -283,6 +300,7 @@ CPWindow1::CPWindow1(void)
   toolbutton17.SetHint(lxT(""));
   toolbutton17.SetEnable(1);
   toolbutton17.SetVisible(1);
+  toolbutton17.SetColor(lxT("#000001"));
   toolbutton17.SetPopupMenu(NULL);
   toolbutton17.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton17_EvMouseButtonPress;
   toolbutton17.SetImgFileName(lxT(""));
@@ -299,6 +317,7 @@ CPWindow1::CPWindow1(void)
   toolbutton18.SetHint(lxT(""));
   toolbutton18.SetEnable(1);
   toolbutton18.SetVisible(1);
+  toolbutton18.SetColor(lxT("#000001"));
   toolbutton18.SetPopupMenu(NULL);
   toolbutton18.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton18_EvMouseButtonPress;
   toolbutton18.SetImgFileName(lxT(""));
@@ -315,6 +334,7 @@ CPWindow1::CPWindow1(void)
   toolbutton19.SetHint(lxT(""));
   toolbutton19.SetEnable(1);
   toolbutton19.SetVisible(1);
+  toolbutton19.SetColor(lxT("#000001"));
   toolbutton19.SetPopupMenu(NULL);
   toolbutton19.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton19_EvMouseButtonPress;
   toolbutton19.SetImgFileName(lxT(""));
@@ -331,6 +351,7 @@ CPWindow1::CPWindow1(void)
   toolbutton20.SetHint(lxT(""));
   toolbutton20.SetEnable(1);
   toolbutton20.SetVisible(1);
+  toolbutton20.SetColor(lxT("#000001"));
   toolbutton20.SetPopupMenu(NULL);
   toolbutton20.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton20_EvMouseButtonPress;
   toolbutton20.SetImgFileName(lxT(""));
@@ -347,6 +368,7 @@ CPWindow1::CPWindow1(void)
   toolbutton21.SetHint(lxT(""));
   toolbutton21.SetEnable(1);
   toolbutton21.SetVisible(1);
+  toolbutton21.SetColor(lxT("#000001"));
   toolbutton21.SetPopupMenu(NULL);
   toolbutton21.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton21_EvMouseButtonPress;
   toolbutton21.SetImgFileName(lxT(""));
@@ -363,6 +385,7 @@ CPWindow1::CPWindow1(void)
   toolbutton22.SetHint(lxT(""));
   toolbutton22.SetEnable(1);
   toolbutton22.SetVisible(1);
+  toolbutton22.SetColor(lxT("#000001"));
   toolbutton22.SetPopupMenu(NULL);
   toolbutton22.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton22_EvMouseButtonPress;
   toolbutton22.SetImgFileName(lxT(""));
@@ -379,6 +402,7 @@ CPWindow1::CPWindow1(void)
   toolbutton23.SetHint(lxT(""));
   toolbutton23.SetEnable(1);
   toolbutton23.SetVisible(1);
+  toolbutton23.SetColor(lxT("#000001"));
   toolbutton23.SetPopupMenu(NULL);
   toolbutton23.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton23_EvMouseButtonPress;
   toolbutton23.SetImgFileName(lxT(""));
@@ -395,6 +419,7 @@ CPWindow1::CPWindow1(void)
   toolbutton24.SetHint(lxT(""));
   toolbutton24.SetEnable(1);
   toolbutton24.SetVisible(1);
+  toolbutton24.SetColor(lxT("#000001"));
   toolbutton24.SetPopupMenu(NULL);
   toolbutton24.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton24_EvMouseButtonPress;
   toolbutton24.SetImgFileName(lxT(""));
@@ -411,6 +436,7 @@ CPWindow1::CPWindow1(void)
   toolbutton25.SetHint(lxT(""));
   toolbutton25.SetEnable(1);
   toolbutton25.SetVisible(1);
+  toolbutton25.SetColor(lxT("#000001"));
   toolbutton25.SetPopupMenu(NULL);
   toolbutton25.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton25_EvMouseButtonPress;
   toolbutton25.SetImgFileName(lxT(""));
@@ -427,6 +453,7 @@ CPWindow1::CPWindow1(void)
   toolbutton26.SetHint(lxT(""));
   toolbutton26.SetEnable(1);
   toolbutton26.SetVisible(1);
+  toolbutton26.SetColor(lxT("#000001"));
   toolbutton26.SetPopupMenu(NULL);
   toolbutton26.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton26_EvMouseButtonPress;
   toolbutton26.SetImgFileName(lxT(""));
@@ -443,6 +470,7 @@ CPWindow1::CPWindow1(void)
   toolbutton27.SetHint(lxT(""));
   toolbutton27.SetEnable(1);
   toolbutton27.SetVisible(1);
+  toolbutton27.SetColor(lxT("#000001"));
   toolbutton27.SetPopupMenu(NULL);
   toolbutton27.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton27_EvMouseButtonPress;
   toolbutton27.SetImgFileName(lxT(""));
@@ -459,6 +487,7 @@ CPWindow1::CPWindow1(void)
   toolbutton28.SetHint(lxT(""));
   toolbutton28.SetEnable(1);
   toolbutton28.SetVisible(1);
+  toolbutton28.SetColor(lxT("#000001"));
   toolbutton28.SetPopupMenu(NULL);
   toolbutton28.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton28_EvMouseButtonPress;
   toolbutton28.SetImgFileName(lxT(""));
@@ -475,6 +504,7 @@ CPWindow1::CPWindow1(void)
   toolbutton29.SetHint(lxT(""));
   toolbutton29.SetEnable(1);
   toolbutton29.SetVisible(1);
+  toolbutton29.SetColor(lxT("#000001"));
   toolbutton29.SetPopupMenu(NULL);
   toolbutton29.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton29_EvMouseButtonPress;
   toolbutton29.SetImgFileName(lxT(""));
@@ -491,6 +521,7 @@ CPWindow1::CPWindow1(void)
   toolbutton30.SetHint(lxT(""));
   toolbutton30.SetEnable(1);
   toolbutton30.SetVisible(1);
+  toolbutton30.SetColor(lxT("#000001"));
   toolbutton30.SetPopupMenu(NULL);
   toolbutton30.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton30_EvMouseButtonPress;
   toolbutton30.SetImgFileName(lxT(""));
@@ -507,6 +538,7 @@ CPWindow1::CPWindow1(void)
   toolbutton31.SetHint(lxT(""));
   toolbutton31.SetEnable(1);
   toolbutton31.SetVisible(1);
+  toolbutton31.SetColor(lxT("#000001"));
   toolbutton31.SetPopupMenu(NULL);
   toolbutton31.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton31_EvMouseButtonPress;
   toolbutton31.SetImgFileName(lxT(""));
@@ -523,6 +555,7 @@ CPWindow1::CPWindow1(void)
   toolbutton32.SetHint(lxT(""));
   toolbutton32.SetEnable(1);
   toolbutton32.SetVisible(1);
+  toolbutton32.SetColor(lxT("#000001"));
   toolbutton32.SetPopupMenu(NULL);
   toolbutton32.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton32_EvMouseButtonPress;
   toolbutton32.SetImgFileName(lxT(""));
@@ -539,6 +572,7 @@ CPWindow1::CPWindow1(void)
   toolbutton33.SetHint(lxT(""));
   toolbutton33.SetEnable(1);
   toolbutton33.SetVisible(1);
+  toolbutton33.SetColor(lxT("#000001"));
   toolbutton33.SetPopupMenu(NULL);
   toolbutton33.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton33_EvMouseButtonPress;
   toolbutton33.SetImgFileName(lxT(""));
@@ -555,6 +589,7 @@ CPWindow1::CPWindow1(void)
   toolbutton34.SetHint(lxT(""));
   toolbutton34.SetEnable(1);
   toolbutton34.SetVisible(1);
+  toolbutton34.SetColor(lxT("#000001"));
   toolbutton34.SetPopupMenu(NULL);
   toolbutton34.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton34_EvMouseButtonPress;
   toolbutton34.SetImgFileName(lxT(""));
@@ -571,6 +606,7 @@ CPWindow1::CPWindow1(void)
   toolbutton35.SetHint(lxT(""));
   toolbutton35.SetEnable(1);
   toolbutton35.SetVisible(1);
+  toolbutton35.SetColor(lxT("#000001"));
   toolbutton35.SetPopupMenu(NULL);
   toolbutton35.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton35_EvMouseButtonPress;
   toolbutton35.SetImgFileName(lxT(""));
@@ -587,6 +623,7 @@ CPWindow1::CPWindow1(void)
   toolbutton36.SetHint(lxT(""));
   toolbutton36.SetEnable(1);
   toolbutton36.SetVisible(1);
+  toolbutton36.SetColor(lxT("#000001"));
   toolbutton36.SetPopupMenu(NULL);
   toolbutton36.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton36_EvMouseButtonPress;
   toolbutton36.SetImgFileName(lxT(""));
@@ -603,6 +640,7 @@ CPWindow1::CPWindow1(void)
   toolbutton37.SetHint(lxT(""));
   toolbutton37.SetEnable(1);
   toolbutton37.SetVisible(1);
+  toolbutton37.SetColor(lxT("#000001"));
   toolbutton37.SetPopupMenu(NULL);
   toolbutton37.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton37_EvMouseButtonPress;
   toolbutton37.SetImgFileName(lxT(""));
@@ -619,6 +657,7 @@ CPWindow1::CPWindow1(void)
   toolbutton38.SetHint(lxT(""));
   toolbutton38.SetEnable(1);
   toolbutton38.SetVisible(1);
+  toolbutton38.SetColor(lxT("#000001"));
   toolbutton38.SetPopupMenu(NULL);
   toolbutton38.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton38_EvMouseButtonPress;
   toolbutton38.SetImgFileName(lxT(""));
@@ -635,6 +674,7 @@ CPWindow1::CPWindow1(void)
   toolbutton39.SetHint(lxT(""));
   toolbutton39.SetEnable(1);
   toolbutton39.SetVisible(1);
+  toolbutton39.SetColor(lxT("#000001"));
   toolbutton39.SetPopupMenu(NULL);
   toolbutton39.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton39_EvMouseButtonPress;
   toolbutton39.SetImgFileName(lxT(""));
@@ -651,6 +691,7 @@ CPWindow1::CPWindow1(void)
   toolbutton40.SetHint(lxT(""));
   toolbutton40.SetEnable(1);
   toolbutton40.SetVisible(1);
+  toolbutton40.SetColor(lxT("#000001"));
   toolbutton40.SetPopupMenu(NULL);
   toolbutton40.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton40_EvMouseButtonPress;
   toolbutton40.SetImgFileName(lxT(""));
@@ -667,6 +708,7 @@ CPWindow1::CPWindow1(void)
   toolbutton41.SetHint(lxT(""));
   toolbutton41.SetEnable(1);
   toolbutton41.SetVisible(1);
+  toolbutton41.SetColor(lxT("#000001"));
   toolbutton41.SetPopupMenu(NULL);
   toolbutton41.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton41_EvMouseButtonPress;
   toolbutton41.SetImgFileName(lxT(""));
@@ -683,6 +725,7 @@ CPWindow1::CPWindow1(void)
   toolbutton42.SetHint(lxT(""));
   toolbutton42.SetEnable(1);
   toolbutton42.SetVisible(1);
+  toolbutton42.SetColor(lxT("#000001"));
   toolbutton42.SetPopupMenu(NULL);
   toolbutton42.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton42_EvMouseButtonPress;
   toolbutton42.SetImgFileName(lxT(""));
@@ -699,6 +742,7 @@ CPWindow1::CPWindow1(void)
   toolbutton43.SetHint(lxT(""));
   toolbutton43.SetEnable(1);
   toolbutton43.SetVisible(1);
+  toolbutton43.SetColor(lxT("#000001"));
   toolbutton43.SetPopupMenu(NULL);
   toolbutton43.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton43_EvMouseButtonPress;
   toolbutton43.SetImgFileName(lxT(""));
@@ -715,6 +759,7 @@ CPWindow1::CPWindow1(void)
   toolbutton44.SetHint(lxT(""));
   toolbutton44.SetEnable(1);
   toolbutton44.SetVisible(1);
+  toolbutton44.SetColor(lxT("#000001"));
   toolbutton44.SetPopupMenu(NULL);
   toolbutton44.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton44_EvMouseButtonPress;
   toolbutton44.SetImgFileName(lxT(""));
@@ -731,6 +776,7 @@ CPWindow1::CPWindow1(void)
   toolbutton45.SetHint(lxT(""));
   toolbutton45.SetEnable(1);
   toolbutton45.SetVisible(1);
+  toolbutton45.SetColor(lxT("#000001"));
   toolbutton45.SetPopupMenu(NULL);
   toolbutton45.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton45_EvMouseButtonPress;
   toolbutton45.SetImgFileName(lxT(""));
@@ -747,6 +793,7 @@ CPWindow1::CPWindow1(void)
   toolbutton46.SetHint(lxT(""));
   toolbutton46.SetEnable(1);
   toolbutton46.SetVisible(1);
+  toolbutton46.SetColor(lxT("#000001"));
   toolbutton46.SetPopupMenu(NULL);
   toolbutton46.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton46_EvMouseButtonPress;
   toolbutton46.SetImgFileName(lxT(""));
@@ -763,6 +810,7 @@ CPWindow1::CPWindow1(void)
   toolbutton47.SetHint(lxT(""));
   toolbutton47.SetEnable(1);
   toolbutton47.SetVisible(1);
+  toolbutton47.SetColor(lxT("#000001"));
   toolbutton47.SetPopupMenu(NULL);
   toolbutton47.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton47_EvMouseButtonPress;
   toolbutton47.SetImgFileName(lxT(""));
@@ -779,6 +827,7 @@ CPWindow1::CPWindow1(void)
   toolbutton48.SetHint(lxT(""));
   toolbutton48.SetEnable(1);
   toolbutton48.SetVisible(1);
+  toolbutton48.SetColor(lxT("#000001"));
   toolbutton48.SetPopupMenu(NULL);
   toolbutton48.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton48_EvMouseButtonPress;
   toolbutton48.SetImgFileName(lxT(""));
@@ -795,6 +844,7 @@ CPWindow1::CPWindow1(void)
   toolbutton49.SetHint(lxT(""));
   toolbutton49.SetEnable(1);
   toolbutton49.SetVisible(1);
+  toolbutton49.SetColor(lxT("#000001"));
   toolbutton49.SetPopupMenu(NULL);
   toolbutton49.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton49_EvMouseButtonPress;
   toolbutton49.SetImgFileName(lxT(""));
@@ -811,6 +861,7 @@ CPWindow1::CPWindow1(void)
   toolbutton50.SetHint(lxT(""));
   toolbutton50.SetEnable(1);
   toolbutton50.SetVisible(1);
+  toolbutton50.SetColor(lxT("#000001"));
   toolbutton50.SetPopupMenu(NULL);
   toolbutton50.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton50_EvMouseButtonPress;
   toolbutton50.SetImgFileName(lxT(""));
@@ -827,6 +878,7 @@ CPWindow1::CPWindow1(void)
   toolbutton51.SetHint(lxT(""));
   toolbutton51.SetEnable(1);
   toolbutton51.SetVisible(1);
+  toolbutton51.SetColor(lxT("#000001"));
   toolbutton51.SetPopupMenu(NULL);
   toolbutton51.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton51_EvMouseButtonPress;
   toolbutton51.SetImgFileName(lxT(""));
@@ -843,6 +895,7 @@ CPWindow1::CPWindow1(void)
   toolbutton52.SetHint(lxT(""));
   toolbutton52.SetEnable(1);
   toolbutton52.SetVisible(1);
+  toolbutton52.SetColor(lxT("#000001"));
   toolbutton52.SetPopupMenu(NULL);
   toolbutton52.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton52_EvMouseButtonPress;
   toolbutton52.SetImgFileName(lxT(""));
@@ -859,6 +912,7 @@ CPWindow1::CPWindow1(void)
   toolbutton53.SetHint(lxT(""));
   toolbutton53.SetEnable(1);
   toolbutton53.SetVisible(1);
+  toolbutton53.SetColor(lxT("#000001"));
   toolbutton53.SetPopupMenu(NULL);
   toolbutton53.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton53_EvMouseButtonPress;
   toolbutton53.SetImgFileName(lxT(""));
@@ -875,6 +929,7 @@ CPWindow1::CPWindow1(void)
   toolbutton54.SetHint(lxT(""));
   toolbutton54.SetEnable(1);
   toolbutton54.SetVisible(1);
+  toolbutton54.SetColor(lxT("#000001"));
   toolbutton54.SetPopupMenu(NULL);
   toolbutton54.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton54_EvMouseButtonPress;
   toolbutton54.SetImgFileName(lxT(""));
@@ -891,6 +946,7 @@ CPWindow1::CPWindow1(void)
   toolbutton55.SetHint(lxT(""));
   toolbutton55.SetEnable(1);
   toolbutton55.SetVisible(1);
+  toolbutton55.SetColor(lxT("#000001"));
   toolbutton55.SetPopupMenu(NULL);
   toolbutton55.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton55_EvMouseButtonPress;
   toolbutton55.SetImgFileName(lxT(""));
@@ -907,6 +963,7 @@ CPWindow1::CPWindow1(void)
   toolbutton56.SetHint(lxT(""));
   toolbutton56.SetEnable(1);
   toolbutton56.SetVisible(1);
+  toolbutton56.SetColor(lxT("#000001"));
   toolbutton56.SetPopupMenu(NULL);
   toolbutton56.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton56_EvMouseButtonPress;
   toolbutton56.SetImgFileName(lxT(""));
@@ -923,6 +980,7 @@ CPWindow1::CPWindow1(void)
   toolbutton57.SetHint(lxT(""));
   toolbutton57.SetEnable(1);
   toolbutton57.SetVisible(1);
+  toolbutton57.SetColor(lxT("#000001"));
   toolbutton57.SetPopupMenu(NULL);
   toolbutton57.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton57_EvMouseButtonPress;
   toolbutton57.SetImgFileName(lxT(""));
@@ -939,6 +997,7 @@ CPWindow1::CPWindow1(void)
   toolbutton58.SetHint(lxT(""));
   toolbutton58.SetEnable(1);
   toolbutton58.SetVisible(1);
+  toolbutton58.SetColor(lxT("#000001"));
   toolbutton58.SetPopupMenu(NULL);
   toolbutton58.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton58_EvMouseButtonPress;
   toolbutton58.SetImgFileName(lxT(""));
@@ -955,6 +1014,7 @@ CPWindow1::CPWindow1(void)
   toolbutton59.SetHint(lxT(""));
   toolbutton59.SetEnable(1);
   toolbutton59.SetVisible(1);
+  toolbutton59.SetColor(lxT("#000001"));
   toolbutton59.SetPopupMenu(NULL);
   toolbutton59.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton59_EvMouseButtonPress;
   toolbutton59.SetImgFileName(lxT(""));
@@ -971,6 +1031,7 @@ CPWindow1::CPWindow1(void)
   toolbutton60.SetHint(lxT(""));
   toolbutton60.SetEnable(1);
   toolbutton60.SetVisible(1);
+  toolbutton60.SetColor(lxT("#000001"));
   toolbutton60.SetPopupMenu(NULL);
   toolbutton60.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton60_EvMouseButtonPress;
   toolbutton60.SetImgFileName(lxT(""));
@@ -987,6 +1048,7 @@ CPWindow1::CPWindow1(void)
   toolbutton61.SetHint(lxT(""));
   toolbutton61.SetEnable(1);
   toolbutton61.SetVisible(1);
+  toolbutton61.SetColor(lxT("#000001"));
   toolbutton61.SetPopupMenu(NULL);
   toolbutton61.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton61_EvMouseButtonPress;
   toolbutton61.SetImgFileName(lxT(""));
@@ -1003,6 +1065,7 @@ CPWindow1::CPWindow1(void)
   toolbutton62.SetHint(lxT(""));
   toolbutton62.SetEnable(1);
   toolbutton62.SetVisible(1);
+  toolbutton62.SetColor(lxT("#000001"));
   toolbutton62.SetPopupMenu(NULL);
   toolbutton62.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton62_EvMouseButtonPress;
   toolbutton62.SetImgFileName(lxT(""));
@@ -1019,6 +1082,7 @@ CPWindow1::CPWindow1(void)
   toolbutton63.SetHint(lxT(""));
   toolbutton63.SetEnable(1);
   toolbutton63.SetVisible(1);
+  toolbutton63.SetColor(lxT("#000001"));
   toolbutton63.SetPopupMenu(NULL);
   toolbutton63.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton63_EvMouseButtonPress;
   toolbutton63.SetImgFileName(lxT(""));
@@ -1035,6 +1099,7 @@ CPWindow1::CPWindow1(void)
   toolbutton64.SetHint(lxT(""));
   toolbutton64.SetEnable(1);
   toolbutton64.SetVisible(1);
+  toolbutton64.SetColor(lxT("#000001"));
   toolbutton64.SetPopupMenu(NULL);
   toolbutton64.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton64_EvMouseButtonPress;
   toolbutton64.SetImgFileName(lxT(""));
@@ -1051,6 +1116,7 @@ CPWindow1::CPWindow1(void)
   toolbutton65.SetHint(lxT(""));
   toolbutton65.SetEnable(1);
   toolbutton65.SetVisible(1);
+  toolbutton65.SetColor(lxT("#000001"));
   toolbutton65.SetPopupMenu(NULL);
   toolbutton65.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton65_EvMouseButtonPress;
   toolbutton65.SetImgFileName(lxT(""));
@@ -1067,6 +1133,7 @@ CPWindow1::CPWindow1(void)
   toolbutton66.SetHint(lxT(""));
   toolbutton66.SetEnable(1);
   toolbutton66.SetVisible(1);
+  toolbutton66.SetColor(lxT("#000001"));
   toolbutton66.SetPopupMenu(NULL);
   toolbutton66.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton66_EvMouseButtonPress;
   toolbutton66.SetImgFileName(lxT(""));
@@ -1083,6 +1150,7 @@ CPWindow1::CPWindow1(void)
   toolbutton67.SetHint(lxT(""));
   toolbutton67.SetEnable(1);
   toolbutton67.SetVisible(1);
+  toolbutton67.SetColor(lxT("#000001"));
   toolbutton67.SetPopupMenu(NULL);
   toolbutton67.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton67_EvMouseButtonPress;
   toolbutton67.SetImgFileName(lxT(""));
@@ -1099,6 +1167,7 @@ CPWindow1::CPWindow1(void)
   toolbutton68.SetHint(lxT(""));
   toolbutton68.SetEnable(1);
   toolbutton68.SetVisible(1);
+  toolbutton68.SetColor(lxT("#000001"));
   toolbutton68.SetPopupMenu(NULL);
   toolbutton68.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton68_EvMouseButtonPress;
   toolbutton68.SetImgFileName(lxT(""));
@@ -1115,6 +1184,7 @@ CPWindow1::CPWindow1(void)
   toolbutton69.SetHint(lxT(""));
   toolbutton69.SetEnable(1);
   toolbutton69.SetVisible(1);
+  toolbutton69.SetColor(lxT("#000001"));
   toolbutton69.SetPopupMenu(NULL);
   toolbutton69.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton69_EvMouseButtonPress;
   toolbutton69.SetImgFileName(lxT(""));
@@ -1131,6 +1201,7 @@ CPWindow1::CPWindow1(void)
   toolbutton70.SetHint(lxT(""));
   toolbutton70.SetEnable(1);
   toolbutton70.SetVisible(1);
+  toolbutton70.SetColor(lxT("#000001"));
   toolbutton70.SetPopupMenu(NULL);
   toolbutton70.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton70_EvMouseButtonPress;
   toolbutton70.SetImgFileName(lxT(""));
@@ -1147,6 +1218,7 @@ CPWindow1::CPWindow1(void)
   toolbutton71.SetHint(lxT(""));
   toolbutton71.SetEnable(1);
   toolbutton71.SetVisible(1);
+  toolbutton71.SetColor(lxT("#000001"));
   toolbutton71.SetPopupMenu(NULL);
   toolbutton71.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton71_EvMouseButtonPress;
   toolbutton71.SetImgFileName(lxT(""));
@@ -1163,6 +1235,7 @@ CPWindow1::CPWindow1(void)
   toolbutton72.SetHint(lxT(""));
   toolbutton72.SetEnable(1);
   toolbutton72.SetVisible(1);
+  toolbutton72.SetColor(lxT("#000001"));
   toolbutton72.SetPopupMenu(NULL);
   toolbutton72.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton72_EvMouseButtonPress;
   toolbutton72.SetImgFileName(lxT(""));
@@ -1179,6 +1252,7 @@ CPWindow1::CPWindow1(void)
   toolbutton73.SetHint(lxT(""));
   toolbutton73.SetEnable(1);
   toolbutton73.SetVisible(1);
+  toolbutton73.SetColor(lxT("#000001"));
   toolbutton73.SetPopupMenu(NULL);
   toolbutton73.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton73_EvMouseButtonPress;
   toolbutton73.SetImgFileName(lxT(""));
@@ -1195,6 +1269,7 @@ CPWindow1::CPWindow1(void)
   toolbutton74.SetHint(lxT(""));
   toolbutton74.SetEnable(1);
   toolbutton74.SetVisible(1);
+  toolbutton74.SetColor(lxT("#000001"));
   toolbutton74.SetPopupMenu(NULL);
   toolbutton74.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton74_EvMouseButtonPress;
   toolbutton74.SetImgFileName(lxT(""));
@@ -1211,6 +1286,7 @@ CPWindow1::CPWindow1(void)
   toolbutton75.SetHint(lxT(""));
   toolbutton75.SetEnable(1);
   toolbutton75.SetVisible(1);
+  toolbutton75.SetColor(lxT("#000001"));
   toolbutton75.SetPopupMenu(NULL);
   toolbutton75.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton75_EvMouseButtonPress;
   toolbutton75.SetImgFileName(lxT(""));
@@ -1227,6 +1303,7 @@ CPWindow1::CPWindow1(void)
   toolbutton76.SetHint(lxT(""));
   toolbutton76.SetEnable(1);
   toolbutton76.SetVisible(1);
+  toolbutton76.SetColor(lxT("#000001"));
   toolbutton76.SetPopupMenu(NULL);
   toolbutton76.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton76_EvMouseButtonPress;
   toolbutton76.SetImgFileName(lxT(""));
@@ -1243,6 +1320,7 @@ CPWindow1::CPWindow1(void)
   toolbutton77.SetHint(lxT(""));
   toolbutton77.SetEnable(1);
   toolbutton77.SetVisible(1);
+  toolbutton77.SetColor(lxT("#000001"));
   toolbutton77.SetPopupMenu(NULL);
   toolbutton77.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton77_EvMouseButtonPress;
   toolbutton77.SetImgFileName(lxT(""));
@@ -1259,6 +1337,7 @@ CPWindow1::CPWindow1(void)
   toolbutton78.SetHint(lxT(""));
   toolbutton78.SetEnable(1);
   toolbutton78.SetVisible(1);
+  toolbutton78.SetColor(lxT("#000001"));
   toolbutton78.SetPopupMenu(NULL);
   toolbutton78.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton78_EvMouseButtonPress;
   toolbutton78.SetImgFileName(lxT(""));
@@ -1275,6 +1354,7 @@ CPWindow1::CPWindow1(void)
   toolbutton79.SetHint(lxT(""));
   toolbutton79.SetEnable(1);
   toolbutton79.SetVisible(1);
+  toolbutton79.SetColor(lxT("#000001"));
   toolbutton79.SetPopupMenu(NULL);
   toolbutton79.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton79_EvMouseButtonPress;
   toolbutton79.SetImgFileName(lxT(""));
@@ -1291,6 +1371,7 @@ CPWindow1::CPWindow1(void)
   toolbutton80.SetHint(lxT(""));
   toolbutton80.SetEnable(1);
   toolbutton80.SetVisible(1);
+  toolbutton80.SetColor(lxT("#000001"));
   toolbutton80.SetPopupMenu(NULL);
   toolbutton80.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton80_EvMouseButtonPress;
   toolbutton80.SetImgFileName(lxT(""));
@@ -1307,6 +1388,7 @@ CPWindow1::CPWindow1(void)
   toolbutton81.SetHint(lxT(""));
   toolbutton81.SetEnable(1);
   toolbutton81.SetVisible(1);
+  toolbutton81.SetColor(lxT("#000001"));
   toolbutton81.SetPopupMenu(NULL);
   toolbutton81.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton81_EvMouseButtonPress;
   toolbutton81.SetImgFileName(lxT(""));
@@ -1323,6 +1405,7 @@ CPWindow1::CPWindow1(void)
   toolbutton82.SetHint(lxT(""));
   toolbutton82.SetEnable(1);
   toolbutton82.SetVisible(1);
+  toolbutton82.SetColor(lxT("#000001"));
   toolbutton82.SetPopupMenu(NULL);
   toolbutton82.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton82_EvMouseButtonPress;
   toolbutton82.SetImgFileName(lxT(""));
@@ -1339,6 +1422,7 @@ CPWindow1::CPWindow1(void)
   toolbutton83.SetHint(lxT(""));
   toolbutton83.SetEnable(1);
   toolbutton83.SetVisible(1);
+  toolbutton83.SetColor(lxT("#000001"));
   toolbutton83.SetPopupMenu(NULL);
   toolbutton83.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton83_EvMouseButtonPress;
   toolbutton83.SetImgFileName(lxT(""));
@@ -1355,6 +1439,7 @@ CPWindow1::CPWindow1(void)
   toolbutton84.SetHint(lxT(""));
   toolbutton84.SetEnable(1);
   toolbutton84.SetVisible(1);
+  toolbutton84.SetColor(lxT("#000001"));
   toolbutton84.SetPopupMenu(NULL);
   toolbutton84.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton84_EvMouseButtonPress;
   toolbutton84.SetImgFileName(lxT(""));
@@ -1371,6 +1456,7 @@ CPWindow1::CPWindow1(void)
   toolbutton85.SetHint(lxT(""));
   toolbutton85.SetEnable(1);
   toolbutton85.SetVisible(1);
+  toolbutton85.SetColor(lxT("#000001"));
   toolbutton85.SetPopupMenu(NULL);
   toolbutton85.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton85_EvMouseButtonPress;
   toolbutton85.SetImgFileName(lxT(""));
@@ -1387,6 +1473,7 @@ CPWindow1::CPWindow1(void)
   toolbutton86.SetHint(lxT(""));
   toolbutton86.SetEnable(1);
   toolbutton86.SetVisible(1);
+  toolbutton86.SetColor(lxT("#000001"));
   toolbutton86.SetPopupMenu(NULL);
   toolbutton86.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton86_EvMouseButtonPress;
   toolbutton86.SetImgFileName(lxT(""));
@@ -1403,6 +1490,7 @@ CPWindow1::CPWindow1(void)
   toolbutton87.SetHint(lxT(""));
   toolbutton87.SetEnable(1);
   toolbutton87.SetVisible(1);
+  toolbutton87.SetColor(lxT("#000001"));
   toolbutton87.SetPopupMenu(NULL);
   toolbutton87.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton87_EvMouseButtonPress;
   toolbutton87.SetImgFileName(lxT(""));
@@ -1419,6 +1507,7 @@ CPWindow1::CPWindow1(void)
   toolbutton88.SetHint(lxT(""));
   toolbutton88.SetEnable(1);
   toolbutton88.SetVisible(1);
+  toolbutton88.SetColor(lxT("#000001"));
   toolbutton88.SetPopupMenu(NULL);
   toolbutton88.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton88_EvMouseButtonPress;
   toolbutton88.SetImgFileName(lxT(""));
@@ -1435,6 +1524,7 @@ CPWindow1::CPWindow1(void)
   toolbutton89.SetHint(lxT(""));
   toolbutton89.SetEnable(1);
   toolbutton89.SetVisible(1);
+  toolbutton89.SetColor(lxT("#000001"));
   toolbutton89.SetPopupMenu(NULL);
   toolbutton89.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton89_EvMouseButtonPress;
   toolbutton89.SetImgFileName(lxT(""));
@@ -1451,6 +1541,7 @@ CPWindow1::CPWindow1(void)
   toolbutton90.SetHint(lxT(""));
   toolbutton90.SetEnable(1);
   toolbutton90.SetVisible(1);
+  toolbutton90.SetColor(lxT("#000001"));
   toolbutton90.SetPopupMenu(NULL);
   toolbutton90.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton90_EvMouseButtonPress;
   toolbutton90.SetImgFileName(lxT(""));
@@ -1467,6 +1558,7 @@ CPWindow1::CPWindow1(void)
   toolbutton91.SetHint(lxT(""));
   toolbutton91.SetEnable(1);
   toolbutton91.SetVisible(1);
+  toolbutton91.SetColor(lxT("#000001"));
   toolbutton91.SetPopupMenu(NULL);
   toolbutton91.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton91_EvMouseButtonPress;
   toolbutton91.SetImgFileName(lxT(""));
@@ -1483,6 +1575,7 @@ CPWindow1::CPWindow1(void)
   toolbutton92.SetHint(lxT(""));
   toolbutton92.SetEnable(1);
   toolbutton92.SetVisible(1);
+  toolbutton92.SetColor(lxT("#000001"));
   toolbutton92.SetPopupMenu(NULL);
   toolbutton92.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton92_EvMouseButtonPress;
   toolbutton92.SetImgFileName(lxT(""));
@@ -1499,6 +1592,7 @@ CPWindow1::CPWindow1(void)
   toolbutton93.SetHint(lxT(""));
   toolbutton93.SetEnable(1);
   toolbutton93.SetVisible(1);
+  toolbutton93.SetColor(lxT("#000001"));
   toolbutton93.SetPopupMenu(NULL);
   toolbutton93.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton93_EvMouseButtonPress;
   toolbutton93.SetImgFileName(lxT(""));
@@ -1515,6 +1609,7 @@ CPWindow1::CPWindow1(void)
   toolbutton94.SetHint(lxT(""));
   toolbutton94.SetEnable(1);
   toolbutton94.SetVisible(1);
+  toolbutton94.SetColor(lxT("#000001"));
   toolbutton94.SetPopupMenu(NULL);
   toolbutton94.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton94_EvMouseButtonPress;
   toolbutton94.SetImgFileName(lxT(""));
@@ -1531,6 +1626,7 @@ CPWindow1::CPWindow1(void)
   toolbutton95.SetHint(lxT(""));
   toolbutton95.SetEnable(1);
   toolbutton95.SetVisible(1);
+  toolbutton95.SetColor(lxT("#000001"));
   toolbutton95.SetPopupMenu(NULL);
   toolbutton95.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton95_EvMouseButtonPress;
   toolbutton95.SetImgFileName(lxT(""));
@@ -1547,6 +1643,7 @@ CPWindow1::CPWindow1(void)
   toolbutton96.SetHint(lxT(""));
   toolbutton96.SetEnable(1);
   toolbutton96.SetVisible(1);
+  toolbutton96.SetColor(lxT("#000001"));
   toolbutton96.SetPopupMenu(NULL);
   toolbutton96.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton96_EvMouseButtonPress;
   toolbutton96.SetImgFileName(lxT(""));
@@ -1563,6 +1660,7 @@ CPWindow1::CPWindow1(void)
   toolbutton97.SetHint(lxT(""));
   toolbutton97.SetEnable(1);
   toolbutton97.SetVisible(1);
+  toolbutton97.SetColor(lxT("#000001"));
   toolbutton97.SetPopupMenu(NULL);
   toolbutton97.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton97_EvMouseButtonPress;
   toolbutton97.SetImgFileName(lxT(""));
@@ -1579,6 +1677,7 @@ CPWindow1::CPWindow1(void)
   toolbutton98.SetHint(lxT(""));
   toolbutton98.SetEnable(1);
   toolbutton98.SetVisible(1);
+  toolbutton98.SetColor(lxT("#000001"));
   toolbutton98.SetPopupMenu(NULL);
   toolbutton98.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton98_EvMouseButtonPress;
   toolbutton98.SetImgFileName(lxT(""));
@@ -1595,6 +1694,7 @@ CPWindow1::CPWindow1(void)
   toolbutton99.SetHint(lxT(""));
   toolbutton99.SetEnable(1);
   toolbutton99.SetVisible(1);
+  toolbutton99.SetColor(lxT("#000001"));
   toolbutton99.SetPopupMenu(NULL);
   toolbutton99.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton99_EvMouseButtonPress;
   toolbutton99.SetImgFileName(lxT(""));
@@ -1611,6 +1711,7 @@ CPWindow1::CPWindow1(void)
   toolbutton100.SetHint(lxT(""));
   toolbutton100.SetEnable(1);
   toolbutton100.SetVisible(1);
+  toolbutton100.SetColor(lxT("#000001"));
   toolbutton100.SetPopupMenu(NULL);
   toolbutton100.EvMouseButtonPress=EVMOUSEBUTTONPRESS & CPWindow1::toolbutton100_EvMouseButtonPress;
   toolbutton100.SetImgFileName(lxT(""));
@@ -1630,6 +1731,7 @@ CPWindow1::CPWindow1(void)
   filedialog1.SetFileName(lxT("untitled.txt"));
   filedialog1.SetFilter(lxT("All Files (*.*)|*.*"));
   filedialog1.SetType(129);
+  filedialog1.EvOnClose=EVONCLOSE & CPWindow1::filedialog1_EvOnClose;
   CreateChild(&filedialog1);
   //filedialog2
   filedialog2.SetFOwner(this);
@@ -1639,6 +1741,7 @@ CPWindow1::CPWindow1(void)
   filedialog2.SetFileName(lxT("untitled.txt"));
   filedialog2.SetFilter(lxT("All Files (*.*)|*.*"));
   filedialog2.SetType(130);
+  filedialog2.EvOnClose=EVONCLOSE & CPWindow1::filedialog2_EvOnClose;
   CreateChild(&filedialog2);
   //menu1_Arquivo
   menu1_Arquivo.SetFOwner(this);
@@ -1654,6 +1757,7 @@ CPWindow1::CPWindow1(void)
   menu1_Arquivo_Abrir.SetName(lxT("menu1_Arquivo_Abrir"));
   menu1_Arquivo_Abrir.SetTag(0);
   menu1_Arquivo_Abrir.SetText(lxT("Abrir"));
+  menu1_Arquivo_Abrir.SetEnable(1);
   menu1_Arquivo_Abrir.SetSubMenu(NULL);
   menu1_Arquivo_Abrir.EvMenuActive=EVMENUACTIVE & CPWindow1::menu1_Arquivo_Abrir_EvMenuActive;
   menu1_Arquivo.CreateChild(&menu1_Arquivo_Abrir);
@@ -1663,6 +1767,7 @@ CPWindow1::CPWindow1(void)
   menu1_Arquivo_Salvar.SetName(lxT("menu1_Arquivo_Salvar"));
   menu1_Arquivo_Salvar.SetTag(0);
   menu1_Arquivo_Salvar.SetText(lxT("Salvar"));
+  menu1_Arquivo_Salvar.SetEnable(1);
   menu1_Arquivo_Salvar.SetSubMenu(NULL);
   menu1_Arquivo_Salvar.EvMenuActive=EVMENUACTIVE & CPWindow1::menu1_Arquivo_Salvar_EvMenuActive;
   menu1_Arquivo.CreateChild(&menu1_Arquivo_Salvar);
@@ -1672,6 +1777,7 @@ CPWindow1::CPWindow1(void)
   menu1_Arquivo_Sair.SetName(lxT("menu1_Arquivo_Sair"));
   menu1_Arquivo_Sair.SetTag(0);
   menu1_Arquivo_Sair.SetText(lxT("Sair"));
+  menu1_Arquivo_Sair.SetEnable(1);
   menu1_Arquivo_Sair.SetSubMenu(NULL);
   menu1_Arquivo_Sair.EvMenuActive=EVMENUACTIVE & CPWindow1::menu1_Arquivo_Sair_EvMenuActive;
   menu1_Arquivo.CreateChild(&menu1_Arquivo_Sair);
@@ -1697,6 +1803,7 @@ CPWindow1::CPWindow1(void)
   menu1_Editar_Limpar.SetName(lxT("menu1_Editar_Limpar"));
   menu1_Editar_Limpar.SetTag(0);
   menu1_Editar_Limpar.SetText(lxT("Limpar"));
+  menu1_Editar_Limpar.SetEnable(1);
   menu1_Editar_Limpar.SetSubMenu(NULL);
   menu1_Editar_Limpar.EvMenuActive=EVMENUACTIVE & CPWindow1::menu1_Editar_Limpar_EvMenuActive;
   menu1_Editar.CreateChild(&menu1_Editar_Limpar);
@@ -1706,6 +1813,7 @@ CPWindow1::CPWindow1(void)
   menu1_Ajuda_Sobre.SetName(lxT("menu1_Ajuda_Sobre"));
   menu1_Ajuda_Sobre.SetTag(0);
   menu1_Ajuda_Sobre.SetText(lxT("Sobre"));
+  menu1_Ajuda_Sobre.SetEnable(1);
   menu1_Ajuda_Sobre.SetSubMenu(NULL);
   menu1_Ajuda_Sobre.EvMenuActive=EVMENUACTIVE & CPWindow1::menu1_Ajuda_Sobre_EvMenuActive;
   menu1_Ajuda.CreateChild(&menu1_Ajuda_Sobre);

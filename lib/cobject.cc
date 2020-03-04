@@ -4,7 +4,7 @@
 
    ########################################################################
 
-   Copyright (c) : 2001  Luis Claudio Gambôa Lopes
+   Copyright (c) : 2001  Luis Claudio Gamboa Lopes
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -29,10 +29,11 @@
 
 CObject::CObject (void)
 {
-  Name = "";
-  SetClass ("CObject");
+  SetName (lxT("cobject"));
+  SetClass (lxT("CObject"));
   Evcount = 0;
   Tag = 0;
+  Aux = 0;	
   for (int a = 0; a < EVMAX; a++)
     Ev[a] = false;
 };
@@ -47,7 +48,8 @@ CObject::SetName (const String name)
   Name = name;
 };
 
-String CObject::GetName (void)
+String
+CObject::GetName (void)
 {
   return Name;
 };
@@ -58,7 +60,8 @@ CObject::SetClass (const String classn)
   Class = classn;
 };
 
-String CObject::GetClass (void)
+String
+CObject::GetClass (void)
 {
   return Class;
 };
@@ -69,39 +72,55 @@ CObject::SetTag (uint tag)
   Tag = tag;
 };
 
-uint CObject::GetTag (void)
+uint
+CObject::GetTag (void)
 {
   return Tag;
 };
 
+void
+CObject::SetAux (int aux)
+{
+  Aux = aux;
+};
 
-CStringList CObject::GetContext (void)
+int
+CObject::GetAux (void)
+{
+  return Aux;
+};
+
+
+
+CStringList
+CObject::GetContext (void)
 {
   Context.Clear ();
-  Context.AddLine ("Name=" + GetName () + ";String");
-  Context.AddLine ("Tag=" + itoa(GetTag ()) + ";int");
+  Context.AddLine (xml_out (lxT("Class"), lxT("String"), GetClass ()));
+  Context.AddLine (xml_out (lxT("Name"), lxT("String"), GetName ()));
+  Context.AddLine (xml_out (lxT("Tag"), lxT("int"), itoa (GetTag ())));
   return Context;
 };
 
 void
 CObject::SetContext (CStringList context)
 {
+  String name, type, value;
   Context.Clear ();
   for (uint i = 0; i < context.GetLinesCount (); i++)
     {
+      
       Context.AddLine (context.GetLine (i));
-      //set propierties<      
-      String line = Context.GetLine (i);
-      String arg;
-      eqparse (line, arg);
-      if (line.compare ("Name") == 0)
-	SetName (arg);
-      if (line.compare ("Tag") == 0)
-	SetTag (atoi(arg));
+      xml_in (Context.GetLine (i), name, type, value);
+      if (name.compare (lxT("Name")) == 0)
+	SetName (value);
+      if (name.compare (lxT("Tag")) == 0)
+	SetTag (atoi (value));
     };
 };
 
-bool CObject::GetEv (bool reset)
+bool
+CObject::GetEv (bool reset)
 {
   if (reset)
     Evcount = 0;
