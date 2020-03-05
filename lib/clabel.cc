@@ -99,7 +99,7 @@ CLabel::CLabel (void)
   TextPosition = 0;
   TextPointer = 0;
   TextMaxDisplay = 0;
-  Align = ca_center;
+  Align = CA_CENTER;
   SetClass ("CLabel");
 };
 
@@ -159,9 +159,9 @@ CLabel::Update (void)
 };
 
 void
-CLabel::Eraser (void)
+CLabel::Erase (void)
 {
-  CControl::Eraser ();
+  CControl::Erase ();
 /*
   if ((Win == NULL)||(Win->GetPixmap() == 0))
     return;
@@ -191,7 +191,7 @@ CLabel::CalcVirtual (void)
   //align
   switch (Align)
     {
-    case ca_right:
+    case CA_RIGHT:
       while (TextWidth2 >= Width)
 	{
 	  VText = strndel (VText, 1);
@@ -199,7 +199,7 @@ CLabel::CalcVirtual (void)
 	};
       xo = Width - TextWidth2 - 5;
       break;
-    case ca_center:
+    case CA_CENTER:
       while (TextWidth2 >= Width)
 	{
 	  if(mux)
@@ -216,7 +216,7 @@ CLabel::CalcVirtual (void)
 	};
       xo = (((Width - TextWidth2)) / 2);
       break;
-    case ca_left:
+    case CA_LEFT:
       while (TextWidth2 >= Width)
 	{
 	  VText = strndel (VText, VText.size ());
@@ -301,7 +301,7 @@ CLabel::SetContext (CStringList context)
 void
 CLabel::SetText (String text)
 {
-  Eraser ();
+  Erase ();
   Text = text;
   Draw ();
 };

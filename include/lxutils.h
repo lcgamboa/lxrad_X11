@@ -64,14 +64,19 @@ class lxTextFile
 {
   private:	
   FILE * f;
+  String fn;
   public:
   lxTextFile();
   int Open(String fname);
+  int Create(String fname);
   bool IsOpened(void);
   void Close(void);
   void GoToLine(int l);
   FILE * GetFd(void);
   operator FILE*() const;
+  void Clear(void);
+  void Write(void){};
+  void AddLine(String line);
 };
 
 
@@ -100,7 +105,8 @@ private:
 Pixmap CPixmap;
 public:
 ~lxBitmap();
-lxBitmap(lxImage img, CWindow * win );
+lxBitmap (lxImage img, CWindow * win );
+lxBitmap (int width, int height); 
 Pixmap  GetPixmap(void);
 operator Pixmap() const;
 lxSize GetSize(void);
@@ -178,17 +184,24 @@ public:
 
 #define lxC2S_HTML_SYNTAX 0x01
 
+#define lxEXEC_ASYNC 0x01
+#define lxEXEC_SYNC  0x02      
+
+#define lxMOUSE_BTN_RIGHT 0x01
+#define lxMOUSE_BTN_LEFT  0x02      
+
 
 void lxMilliSleep(unsigned int time);
 void lxSetCursor(lxCursor cursor); 
 bool lxFileExists(String fname);
-void lxExecute(String cmd,unsigned int flags=0);
+void lxExecute(String cmd,unsigned int flags=0, void * arg = NULL);
 String lxGetCwd(void);
-bool  lxLaunchDefaultBrowser(String url);
+int lxSetWorkingDirectory(String dir);
+bool lxLaunchDefaultBrowser(String url);
 
-String lxGetUserDataDir(String appname);
-String lxGetTempDir(String appname);
-String lxGetExecutablePath(String appname);
+String lxGetUserDataDir(String appname="");
+String lxGetTempDir(String appname="");
+String lxGetExecutablePath(String appname="");
 
 CStringList lxListDirRec(const String &dirname);
 bool lxZipDir(const String &in_dirname, const String &out_filename);
@@ -197,6 +210,7 @@ bool lxUnzipDir(const String &in_filename, const String &out_dirname);
 bool lxRemoveFile(const char* fname);
 bool lxRemoveDir(const char* dirname);
 bool lxCreateDir(const char * dirname);
+bool lxRenameFile(String oldfname, String newfname);
 
 
 #endif	/* LXUTILS_H */

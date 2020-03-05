@@ -56,6 +56,7 @@ public:
   //events
   void key_press (XEvent event);
   void button_press (XEvent event);
+  void (CControl::*EvOnCheckBox) (CControl * control);
 };
 
 #endif

@@ -76,8 +76,8 @@ CControl::CControl (void)
   PointerIn = NULL;
   PointerOut = NULL;
   EvOnDraw = NULL;
-  CFocusIn = NULL;
-  CFocusOut = NULL;
+  EvOnFocusIn = NULL;
+  EvOnFocusOut = NULL;
 
   CFont = NULL;
   ColorName = "";
@@ -159,7 +159,7 @@ CControl::Destroy (void)
 {
 //  eprint("Destroy "+GetClass()+"\n");
   DestroyChilds ();
-  Eraser ();
+  Erase ();
   if (Win != NULL)
     {
       if (CFont)
@@ -224,7 +224,7 @@ CControl::Update (void)
 };
 
 void
-CControl::Eraser (void)
+CControl::Erase (void)
 {
   if ((Paint == NULL) || (!Visible)) return;
 
@@ -472,7 +472,7 @@ CControl::DestroyChild (CControl * control)
       };
   if (childn != -1)
     {
-      Child[childn]->Eraser ();
+      Child[childn]->Erase ();
       Child[childn]->Destroy ();
       if (Child[childn]->GetDynamic ())
 	delete Child[childn];
@@ -591,6 +591,98 @@ CControl::SetContext (CStringList context)
     };
 };
 
+void
+CControl::WriteXMLContext (String filename, bool first)
+{
+  CStringList list;
+  list = GetContext ();
+  list.InsertLine (lxT("<") + Name + lxT(">"), 0);
+  if (first)
+    list.SaveToFile (filename);
+  else
+    list.AppendToFile (filename);
+
+  for (int i = 0; i <= ChildCount; i++)
+    {
+      Child[i]->WriteXMLContext (filename, false);
+      /*    
+         list=Child[i]->GetContext();
+         list.InsertLine("<"+Child[i]->GetName()+">",0);
+         list.AddLine("<\\"+Child[i]->GetName()+">");
+         list.AppendToFile(filename);    
+       */
+    };
+  list.Clear ();
+  list.AddLine (lxT("</") + Name + lxT(">"));
+  list.AppendToFile (filename);
+};
+
+void
+CControl::LoadXMLContext (String filename)
+{
+  lxTextFile fin;
+  CStringList list;
+  String line, name;
+
+  fin.Open(filename);
+  fin.GoToLine(0);
+  
+  //printf("<XML_%ls>\n",Name.c_str());
+ 
+  if (fin.IsOpened())
+    {
+      list.Clear ();
+      while (fgetline (fin, line))
+	{
+#ifdef _DEBUG_
+#ifdef __UNICODE__
+          printf("%ls == %ls ???\n",(const wchar_t*)line.c_str(),(const wchar_t*) (lxT("<") + Name + lxT(">")).c_str());
+#else
+          printf("%s == %s ???\n",(const char*)line.c_str(), (const char *)(lxT("<") + Name + lxT(">")).c_str());
+#endif
+#endif
+
+	  if (line.compare (lxT("<") + Name + lxT(">")) == 0)
+	    {
+	      fgetline (fin, line);
+	      do
+		{
+		  list.AddLine (line);
+		  fgetline (fin, line);
+		}
+	      while (line[0] == ' ');
+	      SetContext (list);
+
+	      while (line.compare (lxT("</") + Name + lxT(">")) != 0)
+		{
+		  name = line.substr (1, line.size () - 2);
+		  CControl *ch = GetChildByName (name);
+		  if (ch != NULL)
+		    ch->LoadXMLContext (filename);
+		  else
+		    printf ("Child Not Found! %s \n", (char *)name.char_str ());
+		  do
+		    {
+		      fgetline (fin, line);
+		    }
+		  while ((line.compare (lxT("</") + name + lxT(">")) != 0));
+		  fgetline (fin, line);
+		};
+
+	    };
+
+	};
+
+      fin.Close();
+      //printf("<\\XML_%s>\n",Name.c_str());
+    }
+  else
+    printf ("File not found!\n");
+
+
+};
+
+
 XRectangle
 CControl::GetRectangle (void)
 {
@@ -697,7 +789,7 @@ CControl::CalcRXY(void)
 void
 CControl::SetX (int x)
 {
-  Eraser ();
+  Erase ();
   X = x;
   Update ();
 };
@@ -711,7 +803,7 @@ CControl::GetX (void)
 void
 CControl::SetY (int y)
 {
-  Eraser ();
+  Erase ();
   Y = y;
   Update ();
 };
@@ -737,7 +829,7 @@ CControl::GetRY (void)
 void
 CControl::SetWidth (uint w)
 {
-  Eraser ();
+  Erase ();
   Width = w;
   GChanges=true;
   Draw ();
@@ -752,7 +844,7 @@ CControl::GetWidth (void)
 void
 CControl::SetHeight (uint h)
 {
-  Eraser ();
+  Erase ();
   Height = h;
   GChanges=true;
   Draw ();
@@ -899,7 +991,7 @@ CControl::SetVisible (bool visible, bool update)
     else
       {
 	CanExecuteEventOld = CanExecuteEvent;
-	Eraser ();
+	Erase ();
 	Visible = visible;
       }
   else
@@ -1131,16 +1223,16 @@ void
 CControl::focus_in (void)
 {
   Update ();
-  if ((FOwner) && (CFocusIn))
-    (FOwner->*CFocusIn) (this);
+  if ((FOwner) && (EvOnFocusIn))
+    (FOwner->*EvOnFocusIn) (this);
 };
 
 void
 CControl::focus_out (void)
 {
   Update ();
-  if ((FOwner) && (CFocusOut))
-    (FOwner->*CFocusOut) (this);
+  if ((FOwner) && (EvOnFocusOut))
+    (FOwner->*EvOnFocusOut) (this);
 };
 
 void

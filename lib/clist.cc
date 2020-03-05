@@ -161,7 +161,7 @@ CList::GetContext (void)
 void
 CList::SetContext (CStringList context)
 {
-  Eraser ();
+  Erase ();
   CControl::SetContext (context);
   for (uint i = 0; i < context.GetLinesCount (); i++)
     {
@@ -209,7 +209,7 @@ CList::AddStringItem (String text)
 {
   CLabel *item = new CLabel;
   item->SetText (text);
-  item->SetAlign (ca_left);
+  item->SetAlign (CA_LEFT);
   item->SetCanExecuteEvent (true);
   item->SetX (5);
   item->SetY (5);

@@ -94,7 +94,7 @@ CStringList CCbox::GetContext (void)
 void
 CCbox::SetContext (CStringList context)
 {
-  Eraser ();
+  Erase ();
   CControl::SetContext (context);
   for (uint i = 0; i < context.GetLinesCount (); i++)
     {

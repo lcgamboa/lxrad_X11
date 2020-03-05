@@ -233,7 +233,7 @@ CScroll::GetContext (void)
 void
 CScroll::SetContext (CStringList context)
 {
-  Eraser ();
+  Erase ();
   CControl::SetContext (context);
   for (uint i = 0; i < context.GetLinesCount (); i++)
     {
@@ -317,13 +317,13 @@ CScroll::SetType (scrolltype type)
       SetRange (Range);
       if (Type == st_vertical)
 	{
-	  button1->SetPixmapData ((char **)uarrow);
-	  button2->SetPixmapData ((char **)darrow);
+	  button1->SetPixmapData (uarrow);
+	  button2->SetPixmapData (darrow);
 	}
       else
 	{
-	  button1->SetPixmapData ((char **)larrow);
-	  button2->SetPixmapData ((char **)rarrow);
+	  button1->SetPixmapData (larrow);
+	  button2->SetPixmapData (rarrow);
 	};
       Draw ();
     }

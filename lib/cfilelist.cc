@@ -236,7 +236,7 @@ CFileList::GetContext (void)
 void
 CFileList::SetContext (CStringList context)
 {
-  Eraser ();
+  Erase ();
   CControl::SetContext (context);
   for (uint i = 0; i < context.GetLinesCount (); i++)
     {
@@ -262,7 +262,7 @@ CFileList::AddStringItem (String text)
   CLabel *item;
   item = new CLabel;
   item->SetText (text);
-  item->SetAlign (ca_left);
+  item->SetAlign (CA_LEFT);
   item->SetCanExecuteEvent (true);
   item->SetX (5);
   item->SetY (5);

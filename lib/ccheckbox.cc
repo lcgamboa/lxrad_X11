@@ -28,152 +28,161 @@
 
 // CCheckBox___________________________________________________________
 
-CCheckBox::CCheckBox (void)
+CCheckBox::CCheckBox(void)
 {
-  Text = new CLabel;
-  Text->SetText ("checkbox");
-  Text->SetFont (FontName);
-  Text->SetX (10);
-  Text->SetY (0);
-  CBox = new CCbox;
-  CBox->SetX (0);
-  CBox->SetY (5);
-  SetX (10);
-  SetY (10);
-  SetWidth (70);
-  SetHeight (20);
-  SetAlign (ca_left);
-  SetCheck (false);
-  SetClass ("CCheckBox");
-  CreateChild (Text);
-  CreateChild (CBox);
+ Text = new CLabel;
+ Text->SetText ("checkbox");
+ Text->SetFont (FontName);
+ Text->SetX (10);
+ Text->SetY (0);
+ CBox = new CCbox;
+ CBox->SetX (0);
+ CBox->SetY (5);
+ SetX (10);
+ SetY (10);
+ SetWidth (70);
+ SetHeight (20);
+ SetAlign (CA_LEFT);
+ SetCheck (false);
+ SetClass ("CCheckBox");
+ CreateChild (Text);
+ CreateChild (CBox);
 };
 
-CCheckBox::~CCheckBox (void)
-{
-};
+CCheckBox::~CCheckBox(void) { };
 
 int
-CCheckBox::Create (CControl * control)
+CCheckBox::Create(CControl * control)
 {
-  return CControl::Create (control);
+ return CControl::Create (control);
 }
 
 void
-CCheckBox::Draw (void)
+CCheckBox::Draw(void)
 {
-  if ((!Visible)||(Paint == NULL)) return;
-  Paint->InitDraw (this);
-  Paint->Pen.SetColor (Color);
-  Paint->Rectangle ( 0, 0, Width, Height);
-  CControl::Draw ();
+ if ((!Visible) || (Paint == NULL)) return;
+ Paint->InitDraw (this);
+ Paint->Pen.SetColor (Color);
+ Paint->Rectangle (0, 0, Width, Height);
+ CControl::Draw ();
 };
 
-CStringList CCheckBox::GetContext (void)
+CStringList
+CCheckBox::GetContext(void)
 {
-  CControl::GetContext ();
-  Context.AddLine ("Text=" + GetText () + ";String");
-  Context.AddLine ("Check=" + itoa (GetCheck ()) + ";bool");
-  return Context;
+ CControl::GetContext ();
+ Context.AddLine ("Text=" + GetText () + ";String");
+ Context.AddLine ("Check=" + itoa (GetCheck ()) + ";bool");
+ return Context;
 };
 
 void
-CCheckBox::SetContext (CStringList context)
+CCheckBox::SetContext(CStringList context)
 {
-  Eraser ();
-  CControl::SetContext (context);
-  for (uint i = 0; i < context.GetLinesCount (); i++)
-    {
-      String line = Context.GetLine (i);
-      String arg;
-      eqparse (line, arg);
-      if (line.compare ("Text") == 0)
-	SetText (arg);
-      if (line.compare ("Check") == 0)
-	SetCheck (atoi (arg));
-    };
-  Draw ();
+ Erase ();
+ CControl::SetContext (context);
+ for (uint i = 0; i < context.GetLinesCount (); i++)
+  {
+   String line = Context.GetLine (i);
+   String arg;
+   eqparse (line, arg);
+   if (line.compare ("Text") == 0)
+    SetText (arg);
+   if (line.compare ("Check") == 0)
+    SetCheck (atoi (arg));
+  };
+ Draw ();
 };
 
 //propiedades
 
 void
-CCheckBox::SetCheck (bool check)
+CCheckBox::SetCheck(bool check)
 {
-  CBox->SetCheck (check);
-  Draw ();
+ CBox->SetCheck (check);
+ Draw ();
 };
 
 bool
-CCheckBox::GetCheck (void)
+CCheckBox::GetCheck(void)
 {
-  return CBox->GetCheck ();
+ return CBox->GetCheck ();
 };
 
 void
-CCheckBox::SetText (String t)
+CCheckBox::SetText(String t)
 {
-  Text->SetText (t);
-  Draw ();
+ Text->SetText (t);
+ Draw ();
 };
 
-String CCheckBox::GetText (void)
+String
+CCheckBox::GetText(void)
 {
-  return Text->GetText ();
-};
-
-void
-CCheckBox::SetWidth (uint width)
-{
-  Text->SetWidth (width - 10);
-  CControl::SetWidth (width);
+ return Text->GetText ();
 };
 
 void
-CCheckBox::SetHeight (uint height)
+CCheckBox::SetWidth(uint width)
 {
-  Text->SetHeight (height);
-  CControl::SetHeight (height);
+ Text->SetWidth (width - 10);
+ CControl::SetWidth (width);
 };
 
 void
-CCheckBox::SetAlign (CAlign align)
+CCheckBox::SetHeight(uint height)
 {
-  Text->SetAlign (align);
+ Text->SetHeight (height);
+ CControl::SetHeight (height);
 };
 
-CAlign CCheckBox::GetAlign (void)
+void
+CCheckBox::SetAlign(CAlign align)
 {
-  return Text->GetAlign ();
+ Text->SetAlign (align);
+};
+
+CAlign
+CCheckBox::GetAlign(void)
+{
+ return Text->GetAlign ();
 };
 
 //events
-void
-CCheckBox::button_press (XEvent event)
-{
-  Update ();
-  CControl::button_press (event);
-};
 
 void
-CCheckBox::key_press (XEvent event)
+CCheckBox::button_press(XEvent event)
 {
-  KeySym key;
-  char text[10];
-  Status status;
+ Update ();
+ CControl::button_press (event);
 
-  XXLookupString (NULL, &event.xkey, text, 10, &key, &status);
-  if (key == XK_space)
+ if ((FOwner) && (EvOnCheckBox))
+  (FOwner->*EvOnCheckBox) (this);
+}
+
+void
+CCheckBox::key_press(XEvent event)
+{
+ KeySym key;
+ char text[10];
+ Status status;
+
+ XXLookupString (NULL, &event.xkey, text, 10, &key, &status);
+ if (key == XK_space)
+  {
+   if (CBox->GetCheck ())
+    CBox->SetCheck (false);
+   else
     {
-      if (CBox->GetCheck ())
-	CBox->SetCheck (false);
-      else
-	CBox->SetCheck (true);
-      CControl::key_press (event);
+     CBox->SetCheck (true);
+     if ((FOwner) && (EvOnCheckBox))
+      (FOwner->*EvOnCheckBox) (this);
     }
-  else
-    CControl::key_press (event);
+   CControl::key_press (event);
+  }
+ else
+  CControl::key_press (event);
 
-  Update ();
-  CControl::button_press (event);
+ Update ();
+ CControl::button_press (event);
 };

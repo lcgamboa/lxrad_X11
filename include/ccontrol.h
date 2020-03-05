@@ -75,7 +75,7 @@ public:
   virtual void Event (XEvent event);
   virtual int  Create (CControl * control);
   virtual void Destroy (void);
-  virtual void Eraser (void);
+  virtual void Erase (void);
   virtual void Draw (void);
   virtual void Update (void);
   CStringList GetContext (void);
@@ -129,6 +129,9 @@ public:
   virtual void CreateChild (CControl * control);
   virtual void DestroyChild (CControl * control);
   virtual void DestroyChilds (void);
+  virtual void WriteXMLContext (String filename, bool first = true);
+  virtual void LoadXMLContext (String filename);
+  
 //operators
   void *operator new (size_t sz);
   void *operator new[] (size_t sz);
@@ -158,7 +161,7 @@ public:
   void (CControl::*PointerIn) (CControl * control);
   void (CControl::*PointerOut) (CControl * control);
   void (CControl::*EvOnDraw) (CControl * control);
-  void (CControl::*CFocusIn) (CControl * control);
-  void (CControl::*CFocusOut) (CControl * control);
+  void (CControl::*EvOnFocusIn) (CControl * control);
+  void (CControl::*EvOnFocusOut) (CControl * control);
 };
 #endif

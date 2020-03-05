@@ -92,7 +92,7 @@ CStringList CToolButton::GetContext (void)
 void
 CToolButton::SetContext (CStringList context)
 {
-  Eraser ();
+  Erase ();
   CControl::SetContext (context);
   for (uint i = 0; i < context.GetLinesCount (); i++)
     {
@@ -113,16 +113,16 @@ CToolButton::SetContext (CStringList context)
 //propiedades
 
 void
-CToolButton::SetPixmapData (char **data)
+CToolButton::SetPixmapData (const char **data)
 {
-  Xpm->SetPixmapData (data);
+  Xpm->SetPixmapData ((char **)data);
   Draw ();
 }
 
 void
-CToolButton::SetImgData (char **data)
+CToolButton::SetImgData (const char **data)
 {
-  Xpm->SetPixmapData (data);
+  Xpm->SetPixmapData ((char **)data);
   Draw ();
 }
 

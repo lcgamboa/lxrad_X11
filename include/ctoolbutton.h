@@ -41,9 +41,9 @@ public:
   CStringList GetContext (void);
   void SetContext (CStringList context);
   //propiedades
-  void SetPixmapData (char** data);
+  void SetPixmapData (const char** data);
   void SetPixmapFileName (String filename);
-  void SetImgData(char** data);
+  void SetImgData(const char** data);
   void SetImgFileName(String filename);
   String GetPixmapFileName (void);
   void SetWidth (uint width);

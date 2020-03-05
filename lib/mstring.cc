@@ -942,7 +942,24 @@ bool CStringList::SaveToFile (String fname)
     eprint( "File not create!\n");
   return false;
   
-};
+}
+
+bool CStringList::AppendToFile (String fname)
+{
+  	
+  FILE* file;
+  file=fopen(fname.c_str (),"a");
+  if (file)
+    {
+      for (int c = 0; c <= LinesCount; c++)
+	fprintf(file,"%s\n",GetLine (c).c_str());
+    fclose(file);
+    }
+  else
+    eprint( "File not appended create!\n");
+  return false;
+  
+}
 
 CStringList & CStringList::operator = (const CStringList & list)
 {

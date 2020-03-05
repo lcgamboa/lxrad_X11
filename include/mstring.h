@@ -97,6 +97,7 @@ public:
   void DelLine (uint linen);
   bool LoadFromFile (String fname);
   bool SaveToFile (String fname);
+  bool AppendToFile (String fname);
     CStringList & operator = (const CStringList & list);
   //propiedades
   String GetLine (uint linen) const;

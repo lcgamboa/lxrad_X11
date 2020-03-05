@@ -174,11 +174,11 @@ CDirDialog::ListOnFileSelected (CFileList * flist)
 String
 CDirDialog::GetFileName (void)
 {
- return GetDir () + "/" + FileName;
+ return GetDirName () + "/" + FileName;
 };
 
 String
-CDirDialog::GetDir (void)
+CDirDialog::GetDirName (void)
 {
  return filelist1.GetSelectedDir ();
 };
@@ -222,7 +222,7 @@ CDirDialog::GetContext (void)
 void
 CDirDialog::SetContext (CStringList context)
 {
- Eraser ();
+ Erase ();
  CControl::SetContext (context);
  /*
  for (uint i = 0; i < context.GetLinesCount (); i++)

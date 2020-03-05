@@ -79,11 +79,11 @@ CSpind::CSpind (void)
   edit1.SetFOwner (this);
   edit1.EvKeyboardPress = EVKEYBOARDPRESS & CSpind::EditKeyPress;
 
-  tbutton1.SetPixmapData ((char **)uarrow);
+  tbutton1.SetPixmapData (uarrow);
   tbutton1.SetFOwner (this);
   tbutton1.EvMouseButtonPress = EVMOUSEBUTTONPRESS & CSpind::TButtonPress1;
   
-  tbutton2.SetPixmapData ((char **)darrow);
+  tbutton2.SetPixmapData (darrow);
   tbutton2.SetFOwner (this);
   tbutton2.EvMouseButtonPress = EVMOUSEBUTTONPRESS & CSpind::TButtonPress2;
 

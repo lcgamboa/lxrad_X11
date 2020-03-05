@@ -69,13 +69,11 @@ newcontrolbycname (String controltype)
   if (controltype.compare (lxT("CFileDialog")) == 0)
     {
       ncontrol = new CFileDialog;
-    };
- /* 
+    }; 
   if (controltype.compare (lxT("CDirDialog")) == 0)
     {
       ncontrol = new CDirDialog;
     };
- */   
   if (controltype.compare (lxT("CItemMenu")) == 0)
     {
       ncontrol = new CItemMenu;

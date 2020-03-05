@@ -49,7 +49,7 @@ public:
    ~CLabel (void);
   void Draw (void);
   void Update (void);
-  void Eraser (void);
+  void Erase (void);
   int Create (CControl * control);
   CStringList GetContext (void);
   void SetContext (CStringList context);

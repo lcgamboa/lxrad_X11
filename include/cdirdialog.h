@@ -54,7 +54,7 @@ public:
   //propriedades
   String GetFileName (void);
   void SetFileName (String filename);
-  String GetDir (void);
+  String GetDirName (void);
   void SetDir (String dir);
   void DestroyChilds (void);
   CStringList GetContext (void);

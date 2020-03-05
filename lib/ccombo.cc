@@ -62,7 +62,7 @@ CCombo::CCombo (void)
   edit1.SetFOwner (this);
   edit1.EvKeyboardPress = EVKEYBOARDPRESS & CCombo::EditKeyPress;
 
-  tbutton1.SetPixmapData ((char **)darrow);
+  tbutton1.SetPixmapData (darrow);
   tbutton1.SetFOwner (this);
   tbutton1.EvMouseButtonPress = EVMOUSEBUTTONPRESS & CCombo::TButtonPress;
 
@@ -194,7 +194,7 @@ CCombo::GetContext (void)
 void
 CCombo::SetContext (CStringList context)
 {
-  Eraser ();
+  Erase ();
   CControl::SetContext (context);
   for (uint i = 0; i < context.GetLinesCount (); i++)
     {

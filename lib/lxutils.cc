@@ -43,6 +43,18 @@ lxTextFile::lxTextFile()
 int 
 lxTextFile::Open(String fname)
 {
+  fn=fname;
+  f=fopen(fname.c_str(),"rw");
+  if(f)
+   return 1;
+  else
+   return 0;		  
+}
+
+int 
+lxTextFile::Create(String fname)
+{
+  fn=fname;
   f=fopen(fname.c_str(),"rw");
   if(f)
    return 1;
@@ -82,6 +94,21 @@ lxTextFile::GetFd(void)
 lxTextFile::operator FILE*() const 
 { 
 	return f; 
+}
+
+void 
+lxTextFile::Clear(void)
+{
+ if(f) fclose(f);
+ f=fopen(fn.c_str(),"w");
+ if(f) fclose(f);
+ f=fopen(fn.c_str(),"rw");
+}
+
+void 
+lxTextFile::AddLine(String line)
+{
+ fprintf(f,"%s\n",line.c_str ());
 }
 
 //-------------------------------------------------------------------------
@@ -154,6 +181,11 @@ lxBitmap::lxBitmap(lxImage img, CWindow *win)
    //imlib_context_set_mask(CMask);
    imlib_render_image_on_drawable(0,0);
 
+}
+
+lxBitmap::lxBitmap (int width, int height)
+{
+ CPixmap=XCreatePixmap (Application->GetADisplay (), *Application->GetADefaultRootWindow (), width, height, *(Application->GetADepth()));
 }
 
 lxBitmap::operator Pixmap() const 
@@ -328,19 +360,27 @@ bool lxFileExists(String fname)
     return false;
 }
 
-void lxExecute(String cmd,unsigned int flags)
+void lxExecute(String cmd,unsigned int flags, void * arg)
 {
-  cmd+=lxT(" &");	
+ if(flags != lxEXEC_SYNC)
+    cmd+=lxT(" &");	
   system(cmd.c_str());
 }
 
-String lxGetCwd(void)
+String 
+lxGetCwd(void)
 {
    char cwd[1024];
    if (getcwd(cwd, sizeof(cwd)) != NULL)
      return cwd;
    else
     return "";
+}
+
+int 
+lxSetWorkingDirectory(String dir)
+{
+  return chdir(dir.c_str ());
 }
 
 bool 
@@ -466,6 +506,12 @@ String dname= basename(in_dirname.substr(0,in_dirname.length ()-1));
 bool lxRemoveFile(const char * fname)
 {
     return remove(fname);
+}
+
+bool 
+lxRenameFile(String oldfname, String newfname)
+{
+ return rename(oldfname.c_str(),newfname.c_str());
 }
 
 bool lxRemoveDir(const char* dirname)
