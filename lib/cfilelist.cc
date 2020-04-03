@@ -56,7 +56,7 @@ CFileList::Create (CControl * control)
   SetVisible (false, false);
   SetDir (temp);
   SetVisible (true, false);
-  delete[]temp;
+  free(temp);
   return ret;
 }
 

@@ -54,3 +54,5 @@
 #include"ccolordialog.h"
 #include"cstatusbar.h"
 #include"cthread.h"
+#include"lxaudio.h"
+#include"lxutils.h"

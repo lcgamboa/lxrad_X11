@@ -154,9 +154,10 @@ fgetline (FILE* file, String & str)
   {
   fgets (line,5000,file);
  
-  
-  if(line != NULL)
+  if(line[0] != 0)
+  {
     line[strlen(line)-1]='\0';
+  }
   else
     line[0]='\0';
 
@@ -182,7 +183,7 @@ fgetline (FILE* file, String & str)
 String::String (void)
 {
   Str = NULL;
-};
+}
 
 String::String (const String & str)
 {
@@ -195,7 +196,7 @@ String::String (const String & str)
     }
   else
     Str = NULL;
-};
+}
 
 String::String (const char &str)
 {
@@ -207,7 +208,7 @@ String::String (const char &str)
     }
   else
     Str = NULL;
-};
+}
 
 String::String (const char *str)
 {
@@ -218,7 +219,7 @@ String::String (const char *str)
     }
   else
     Str = NULL;
-};
+}
 
 
 String::String (const char *str, int size)
@@ -231,7 +232,7 @@ String::String (const char *str, int size)
     }
   else
     Str = NULL;
-};
+}
 
 
 String::~String (void)
@@ -241,7 +242,7 @@ String::~String (void)
       delete[]Str;
       Str = NULL;
     };
-};
+}
 
 const char *
 String::c_str (void) const
@@ -637,10 +638,9 @@ String & String::operator += (const String & str)
 
   if (Str != NULL)
     {
-      delete
-	Str;
+      delete[] Str;
       Str = NULL;
-    };
+    }
 
   if (str.Str != NULL)
     {
@@ -682,9 +682,8 @@ String & String::operator += (const char *str)
     Str;
   if (Str != NULL)
     {
-      delete
-	Str;
-    };
+      delete[] Str;
+    }
 
   if (str != NULL)
     {
@@ -722,8 +721,7 @@ String & String::operator += (const char &str)
 
   if (Str != NULL)
     {
-      delete
-	Str;
+      delete[] Str;
       Str = new char[temp.size () + 2];
       strcpy (Str, temp.c_str ());
       strcat (Str, str2);

@@ -311,13 +311,13 @@ CWindow2::getalign (CAlign align)
   String a;
   switch (align)
     {
-    case ca_right:
+    case CA_RIGHT:
       a = "ca_right";
       break;
-    case ca_center:
+    case CA_CENTER:
       a = "ca_center";
       break;
-    case ca_left:
+    case CA_LEFT:
       a = "ca_left";
       break;
     };
@@ -1035,7 +1035,7 @@ CWindow2::ListPropierties (CControl * control)
 	  control2->SetX (85);
 	  control2->SetY (3 + 22 * c);
 	  control2->SetFOwner (&Window3);
-	  control2->CFocusOut = EVCFOCUSOUT & CWindow3::editfocusout;
+	  control2->EvOnFocusOut = EVONFOCUSOUT & CWindow3::editfocusout;
 	  control2->SetText (arg);
 	  Window3.CreateChild (control2);
 	  
@@ -1051,7 +1051,7 @@ CWindow2::ListPropierties (CControl * control)
 	  control3->SetTag(c+1);
 	  control3->SetFOwner (&Window3);
 	  control3->EvMouseButtonRelease= EVMOUSEBUTTONRELEASE & CWindow3::FileMouseButtonRelease;
-	  control3->CFocusOut = EVCFOCUSOUT & CWindow3::editfocusout;
+	  control3->EvOnFocusOut = EVONFOCUSOUT & CWindow3::editfocusout;
 	  Window3.CreateChild (control3);
 	  };
 	  if(ctype.compare("StringList") ==0)
@@ -1068,7 +1068,7 @@ CWindow2::ListPropierties (CControl * control)
 	  control3->SetTag(c+1);
 	  control3->SetFOwner (&Window3);
 	  control3->EvMouseButtonRelease= EVMOUSEBUTTONRELEASE & CWindow7::StringListMouseButtonRelease;
-	  control3->CFocusOut = EVCFOCUSOUT & CWindow3::editfocusout;
+	  control3->EvOnFocusOut = EVONFOCUSOUT & CWindow3::editfocusout;
 	  Window3.CreateChild (control3);
 	  };
 	  if(ctype.compare("MenuItens") ==0)
@@ -1085,7 +1085,7 @@ CWindow2::ListPropierties (CControl * control)
 	  control3->SetTag(c+1);
 	  control3->SetFOwner (&Window3);
 	  control3->EvMouseButtonRelease= EVMOUSEBUTTONRELEASE & CWindow8::MenuItensMouseButtonRelease;
-	  control3->CFocusOut = EVCFOCUSOUT & CWindow3::editfocusout;
+	  control3->EvOnFocusOut = EVONFOCUSOUT & CWindow3::editfocusout;
 	  Window3.CreateChild (control3);
 	  };
 	  if(ctype.compare("SubMenu") ==0)
@@ -1102,7 +1102,7 @@ CWindow2::ListPropierties (CControl * control)
 	  control3->SetTag(c+1);
 	  control3->SetFOwner (&Window3);
 	  control3->EvMouseButtonRelease= EVMOUSEBUTTONRELEASE & CWindow9::SubMenuMouseButtonRelease;
-	  control3->CFocusOut = EVCFOCUSOUT & CWindow3::editfocusout;
+	  control3->EvOnFocusOut = EVONFOCUSOUT & CWindow3::editfocusout;
 	  Window3.CreateChild (control3);
 	  };
 	  if(ctype.compare("PoupMenu") ==0)
@@ -1119,7 +1119,7 @@ CWindow2::ListPropierties (CControl * control)
 	  control3->SetTag(c+1);
 	  control3->SetFOwner (&Window3);
 	  control3->EvMouseButtonRelease= EVMOUSEBUTTONRELEASE & CWindow9::SubMenuMouseButtonRelease;
-	  control3->CFocusOut = EVCFOCUSOUT & CWindow3::editfocusout;
+	  control3->EvOnFocusOut = EVONFOCUSOUT & CWindow3::editfocusout;
 	  Window3.CreateChild (control3);
 	  };
 

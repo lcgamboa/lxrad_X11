@@ -15,7 +15,7 @@ CWindow3::editfocusout (CControl * control)
   CLabel *st;
   if (Window2.GetControlOnFocus () == NULL)
     return;
-  Window2.GetControlOnFocus ()->Eraser ();
+  Window2.GetControlOnFocus ()->Erase ();
   /*
      for (int c = 0; c < ((Window3.GetChildCount () + 1) / 2); c++)
      {

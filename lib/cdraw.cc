@@ -123,7 +123,7 @@ CDraw::SetWidth (uint width)
     }
   };
   CControl::SetWidth(width);
-};
+}
 
 void 
 CDraw::SetHeight (uint height)
@@ -150,9 +150,9 @@ CDraw::SetHeight (uint height)
       XUnlockDisplay(disp);
       //pthread_mutex_unlock (&Display_Lock);
     }
-  };
+  }
   CControl::SetHeight(height);
-};
+}
       
 void
 CDraw::Draw ()
@@ -167,9 +167,9 @@ CDraw::Draw ()
     {	  
       XFreePixmap (Win->GetADisplay (), CPixmap);
       CPixmap=0;
-    };
+    }
     BColor=Color;
-  };
+  }
   
   if (CPixmap == 0)
     {
@@ -184,8 +184,8 @@ CDraw::Draw ()
         Canvas.SetDrawIn(CPixmap);
         Canvas.Pen.SetColor (Color);
 	Canvas.Rectangle ( 0, 0, Width, Height);
-      };
-    };
+      }
+    }
   
   if (CPixmap != 0)
     {
@@ -196,16 +196,16 @@ CDraw::Draw ()
         gcvalues.clip_y_origin = GetRY ();
         gcvalues.clip_mask = CMask;
         XChangeGC (Win->GetADisplay (), Paint->Agc, GCClipXOrigin | GCClipYOrigin | GCClipMask, &gcvalues);
-      };
+      }
       Paint->Rectangle(0, 0, Width, Height);
       Paint->PutPixmap(0,0,Width,Height,CPixmap);
       XSetClipMask (Win->GetADisplay (), Paint->Agc, None);
-    };
+    }
   
   Paint->LowerFrame ( 0, 0, Width, Height, Border);
   CControl::Draw ();
 
-};
+}
 
 bool
 CDraw::GetTransparent (void)
@@ -217,14 +217,14 @@ void
 CDraw::SetTransparent (bool transparent)
 {
   Transparent = transparent;
-};
+}
 
 CStringList CDraw::GetContext (void)
 {
   CControl::GetContext ();
   Context.AddLine ("PixmapFileName=" + GetPixmapFileName () + ";File");
   return Context;
-};
+}
 
 void
 CDraw::SetContext (CStringList context)
@@ -245,13 +245,13 @@ CDraw::SetContext (CStringList context)
       };
     };
   Draw ();
-};
+}
 
 String
 CDraw::GetPixmapFileName (void)
 {
   return FileName;
-};
+}
 
 
 bool
@@ -325,8 +325,8 @@ CDraw::SetPixmapFileName (String filename)
           Canvas.SetDrawIn(0);
 
 	  return false;
-	};
-    };
+	}
+    }
   return false;
 }
 
@@ -375,10 +375,10 @@ CDraw::SetPixmapData (char **data)
 	  Message ("Warning: Load pixmap data failed");
 	  Data = NULL;
 	  return false;
-	};
-    };
+	}
+    }
   return false;
-};
+}
 
 void
 CDraw::WritePixmapToFile (String filename)
@@ -398,7 +398,7 @@ CDraw::WritePixmapToFile (String filename)
   else
     Imlib_save_image(AID, im, (char *) filename.c_str (), &info);
 #endif
-};
+}
 
 
 bool 
@@ -478,14 +478,28 @@ CDraw::SetImgFileName(String filename, float sx, float sy)
           Canvas.SetDrawIn(0);
 
 	  return false;
-	};
-    };
+	}
+    }
   return false;
 }
 
 void 
 CDraw::WriteImgToFile (String filename)
 {
-//FIXME
-  printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
+  Window root;
+  int rx,ry;
+  unsigned int rw,rh,rb,rd;
+  
+  XGetGeometry(Win->GetADisplay(), CPixmap,&root,&rx,&ry,&rw,&rh,&rb,&rd);
+
+#ifdef HAVE_LIBIMLIB2
+	Imlib_Image img;
+	img = imlib_create_image(rw, rh);
+
+        imlib_context_set_image(img);
+        imlib_context_set_drawable(CPixmap);
+        imlib_copy_drawable_to_image(0, 0, 0, rw, rh, 0, 0, 1);
+        imlib_save_image (filename.c_str() ); 
+        imlib_free_image ();
+#endif
 }

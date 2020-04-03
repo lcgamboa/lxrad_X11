@@ -32,12 +32,12 @@ LIBSHOBJECTS := capplication.lo cbutton.lo cedit.lo cdraw.lo cdialog.lo cfiledia
 	ccontrol.lo citemmenu.lo cmenu.lo cpmenu.lo clabel.lo ctext.lo cwindow.lo cmessage.lo cinput.lo cbox.lo \
 	ccheckbox.lo ctoolbutton.lo cxpmbutton.lo ctimer.lo clist.lo cscroll.lo cfilelist.lo ccombodialog.lo ccombo.lo \
 	medit.lo chint.lo chtml.lo ctogglebutton.lo cgauge.lo cstatusbar.lo cspind.lo ccolordialog.lo cthread.lo \
-	mstring.lo lxutils.lo cdirdialog.lo newcontrolbycname.lo
+	mstring.lo lxutils.lo cdirdialog.lo newcontrolbycname.lo lxaudio.lo
 LIBSTOBJECTS := capplication.ao cbutton.ao cedit.ao cdraw.ao cdialog.ao cfiledialog.ao cpen.ao cpaint.ao cobject.ao \
 	ccontrol.ao citemmenu.ao cmenu.ao cpmenu.ao clabel.ao ctext.ao cwindow.ao cmessage.ao cinput.ao cbox.ao \
 	ccheckbox.ao ctoolbutton.ao cxpmbutton.ao ctimer.ao clist.ao cscroll.ao cfilelist.ao ccombodialog.ao ccombo.ao \
 	medit.ao chint.ao chtml.ao ctogglebutton.ao cgauge.ao cstatusbar.ao cspind.ao ccolordialog.ao cthread.ao \
-	mstring.ao lxutils.ao cdirdialog.ao newcontrolbycname.ao
+	mstring.ao lxutils.ao cdirdialog.ao newcontrolbycname.ao lxaudio.ao
 
 #LIBHEADERFILES := ../include/class.h ../include/controls.h 
 

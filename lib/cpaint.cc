@@ -23,6 +23,7 @@
    For e-mail suggestions :  lcgamboa@yahoo.com
    ######################################################################## */
 
+#include"../config.h"
 #include"../include/cpaint.h"
 #include"../include/cwindow.h"
 #include"../include/capplication.h"
@@ -368,9 +369,28 @@ CPaint::PutBitmap (lxBitmap* bitmap,int x,int y)
   Window root;
   int rx,ry;
   unsigned int rw,rh,rb,rd;
-  XGetGeometry(Disp, *bitmap,&root,&rx,&ry,&rw,&rh,&rb,&rd);
   
-  XCopyArea (Disp, *bitmap, DrawIn,  Agc, 0, 0, rw, rh ,RX+x, RY+y);
+  XGetGeometry(Disp, *bitmap,&root,&rx,&ry,&rw,&rh,&rb,&rd);
+ 
+  if(Win->GetWWindow())
+  {
+#ifdef HAVE_LIBIMLIB2
+	Imlib_Image img;
+	img = imlib_create_image(rw, rh);
+
+        imlib_context_set_image(img);
+        imlib_context_set_drawable(*bitmap);
+        imlib_copy_drawable_to_image(0, 0, 0, rw, rh, 0, 0, 1);
+
+
+        imlib_context_set_drawable(DrawIn);
+        //imlib_context_set_mask(CMask);
+        imlib_render_image_on_drawable_at_size((RX+x)*Scalex,(RY+y)*Scaley,rw*Scalex,rh*Scaley);
+        imlib_free_image();
+#else     
+  XCopyArea (Disp, *bitmap, DrawIn,  Agc, 0, 0, rw, rh ,(RX+x), (RY+y));
+#endif
+  }
 }
 
 void 

@@ -63,6 +63,7 @@ public:
   void SetText(String text);
   String GetText(void);
   void SetReadOnly (bool r);
+  bool GetReadOnly (void);
   //eventos
   void EditKeyPress (CControl * control, const uint key, const uint hk, uint mask);
   void TButtonPress (CControl * control, uint button, uint x, uint y,uint state);
