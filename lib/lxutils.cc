@@ -390,6 +390,13 @@ lxLaunchDefaultBrowser(String url)
  return system(cmd.c_str ());
 }
 
+bool 
+lxLaunchDefaultApplication(String cmd)
+{
+ String cmd_= lxT("xdg-open ")+cmd+lxT("  &");
+ return system(cmd_.c_str ());
+}
+
 //-------------------------------------------------------------------------
 bool
 lxUnzipDir (const String &in_filename, const String &out_dirname) {

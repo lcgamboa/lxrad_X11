@@ -74,7 +74,7 @@ public:
   void PutBitmap (lxBitmap* bitmap,int x,int y);
   void SetBitmap(lxBitmap * bitmap,double xs, double ys);
   void SetFont (lxFont font);
-
+  void TextOnRect (String text,lxRect rect,CAlign align);
   void SetLineWidth(int w);
   void Init(void);
   void Init(float sx, float sy);

@@ -263,7 +263,15 @@ CPaint::Text (String text,  int x1, int y1)
   //FIXME font size 13	
   XDrawString (Disp, DrawIn, Agc, RX+x1, RY+y1+ 13 ,
 	       text.c_str (), text.size ());
-};
+}
+  
+void 
+CPaint::TextOnRect (String text,lxRect rect,CAlign align)
+{
+  //FIXME font size 13	
+  XDrawString (Disp, DrawIn, Agc, RX+rect.x, RY+rect.y+ 13 ,
+	       text.c_str (), text.size ());
+}
 
 
 void
@@ -271,13 +279,13 @@ CPaint::ImgText ( int x1, int y1, String text)
 {
   XDrawImageString (Disp, DrawIn, Agc, RX+x1, RY+y1,
 	       text.c_str (), text.size ());
-};
+}
   
 void 
 CPaint::PutPixmap (int x,int y, int w, int h,Pixmap pixmap)
 {
    XCopyArea (Disp, pixmap, DrawIn ,Agc, 0, 0, w, h, RX+x, RY+y);
-};
+}
   
 void 
 CPaint::SetLineWidth(int w)
