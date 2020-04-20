@@ -95,8 +95,12 @@ operator Imlib_Image() const;
 class lxSize
 {
 private:
+  unsigned int w,h;
 public:
-  int x,y;
+  unsigned int GetWidth(void){return w;};
+  unsigned int GetHeight(void){return h;};
+  void SetWidth(unsigned int w_){w=w_;}
+  void SetHeight(unsigned int h_){h=h_;};
 };
 
 class lxBitmap
@@ -110,6 +114,8 @@ lxBitmap (int width, int height);
 Pixmap  GetPixmap(void);
 operator Pixmap() const;
 lxSize GetSize(void);
+unsigned int GetWidth(void);
+unsigned int GetHeight(void);
 };
 
 class lxSound
@@ -166,6 +172,7 @@ public:
 };
 
 
+#define lxFONTFAMILY_DEFAULT  0x00
 #define lxFONTFAMILY_TELETYPE 0x01
 #define lxFONTSTYLE_NORMAL 0x01
 #define lxFONTWEIGHT_BOLD 0x01
@@ -175,6 +182,15 @@ public:
 #define lxCURSOR_CROSS 0x01
 #define lxCURSOR_ARROW 0x02
 #define lxCURSOR_SIZENWSE 0x04
+#define lxCURSOR_SIZING  0x08
+#define lxCURSOR_SIZENS  0x10
+#define lxCURSOR_SIZEWE  0x20
+
+#define lxALIGN_LEFT   0x00
+#define lxALIGN_RIGHT  0x01
+#define lxALIGN_CENTER 0x02
+#define lxALIGN_CENTER_VERTICAL 0x04
+
 
 #define lxFD_OPEN 	0x1
 #define lxFD_SAVE 	0x2
@@ -194,6 +210,13 @@ public:
 
 #define lxMOUSE_BTN_RIGHT 0x01
 #define lxMOUSE_BTN_LEFT  0x02      
+
+#define LXK_SHIFT XK_Shift_L  
+#define LXK_RIGHT XK_Right
+#define LXK_LEFT  XK_Left
+#define LXK_DOWN  XK_Down
+#define LXK_UP    XK_Up
+#define LXK_CONTROL  XK_Control_L
 
 
 void lxMilliSleep(unsigned int time);
@@ -217,6 +240,5 @@ bool lxRemoveFile(const char* fname);
 bool lxRemoveDir(const char* dirname);
 bool lxCreateDir(const char * dirname);
 bool lxRenameFile(String oldfname, String newfname);
-
 
 #endif	/* LXUTILS_H */

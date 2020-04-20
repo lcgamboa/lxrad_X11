@@ -1,7 +1,7 @@
 Begin3
 Title:          LXRAD
 Version:        0.8
-Entered-date:   25mar2020
+Entered-date:   20abr2020
 Description:    LXRAD means Linux X11 Rapid Application Development, LXRAD is written in c++ and uses own
                 component Library (liblxrad), there are components such as button, editbox, menu and others.
 		The LXRAD is a collection of RAD tools for creating x11 interface base

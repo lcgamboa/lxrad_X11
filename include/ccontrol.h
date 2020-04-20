@@ -4,7 +4,7 @@
 
    ########################################################################
 
-   Copyright (c) : 2001  Luis Claudio Gambôa Lopes
+   Copyright (c) : 2001-2020  Luis Claudio Gamboa Lopes
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -66,8 +66,10 @@ protected:
   CWindow *Win;
   CPaint  *Paint;
   String  Hint;
+  bool CanVisible;		///<Can be Visible ?
 public:
-    CControl (void);
+  bool GetCanVisible (void);
+  CControl (void);
    ~CControl (void);
   bool OwnerEvent (int x, int y);
   CWindow *GetWin (void);

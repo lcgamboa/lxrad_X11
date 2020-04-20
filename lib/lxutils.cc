@@ -203,12 +203,35 @@ lxSize
 lxBitmap::GetSize(void)
 {
    Window win;
+   lxSize size;
    int x=0,y=0;
    unsigned int w=0,h=0,b,d;
+   XGetGeometry(Application->GetADisplay(), CPixmap, &win, &x, &y, &w, &h, &b, &d); 
+   size.SetWidth(w);
+   size.SetHeight(h);
+   return size;
+}
 
-    XGetGeometry(Application->GetADisplay(), CPixmap, &win, &x, &y, &w, &h, &b, &d); 
-   
-   return {(int)w,(int)h};
+unsigned int 
+lxBitmap::GetWidth(void)
+{
+   Window win;
+   int x=0,y=0;
+   unsigned int w=0,h=0,b,d;
+   XGetGeometry(Application->GetADisplay(), CPixmap, &win, &x, &y, &w, &h, &b, &d); 
+
+   return w;
+}
+
+unsigned int 
+lxBitmap::GetHeight(void)
+{
+   Window win;
+   int x=0,y=0;
+   unsigned int w=0,h=0,b,d;
+   XGetGeometry(Application->GetADisplay(), CPixmap, &win, &x, &y, &w, &h, &b, &d); 
+
+   return h;
 }
 
 //-------------------------------------------------------------------------

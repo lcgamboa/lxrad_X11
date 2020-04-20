@@ -27,6 +27,7 @@
 
 CStatusbar::CStatusbar (void)
 {
+  CanVisible = false;
   CanFocus = false;
   SetClass ("CStatusbar");
   SetX (0);

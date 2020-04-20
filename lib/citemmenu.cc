@@ -38,7 +38,8 @@ CItemMenu::CItemMenu (void)
   SetClass ("CItemMenu");
   SubMenu = NULL;
   EvMenuActive= NULL;
-};
+  CanVisible = false;
+}
 
 
 void

@@ -44,6 +44,7 @@ CPMenu::CPMenu (void)
   SetOverrideRedirect (true);
   SetSaveUnder (true);
   SetCanExecuteEvent (false);
+  CanVisible = false;
 }
 
 int

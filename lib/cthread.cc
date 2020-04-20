@@ -37,7 +37,7 @@
 CThread::CThread (void)
 {
   CanFocus = false;
-  //CanVisible = false;
+  CanVisible = false;
   SetClass (lxT("CThread"));
   runstate=false;
   tdestroy=false;

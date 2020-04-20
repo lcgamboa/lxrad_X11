@@ -50,11 +50,12 @@ CTimer::CTimer (void)
   Run = false;
   EvOnTime = NULL;
   SetVisible (false);
-};
+  CanVisible = false;
+}
 
 CTimer::~CTimer (void)
 {
-};
+}
 
 int
 CTimer::Create (CControl * control)

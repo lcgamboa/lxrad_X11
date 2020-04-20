@@ -37,7 +37,8 @@ CMenu::CMenu (void)
   SetY (0);
   SetHeight (25);
   SetWidth (800);
-};
+  CanVisible = false;
+}
 
 void
 CMenu::Draw (void)
@@ -50,7 +51,7 @@ CMenu::Draw (void)
   Paint->RaiserFrame ( 0, 0, Owner->GetWidth (), Height);
   NextItemX = 5;
   CControl::Draw ();
-};
+}
 
 void
 CMenu::Update (void)
