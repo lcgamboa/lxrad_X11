@@ -391,7 +391,6 @@ CApplication::ProcessEvents (void)
 
      trun =0;
    }
- //usleep (50);
 
 
      while(1){
@@ -401,7 +400,7 @@ CApplication::ProcessEvents (void)
      ec=XEventsQueued(ADisplay,QueuedAfterFlush );
      if(ec ==  0 )
      {
-	//usleep(50000);
+	usleep(1000); //idle 
 	//ec=XEventsQueued(ADisplay,QueuedAfterFlush );
 	if((HintControl)&&(time(NULL)-HintTime > 1))
 	{
@@ -449,7 +448,7 @@ CApplication::ProcessEvents (void)
 		return 1;
 	      break;
 	    };
-     };
+     }
   return 0;
 }
 
