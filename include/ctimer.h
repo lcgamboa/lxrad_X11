@@ -38,7 +38,6 @@ class CTimer:public CControl
 protected:
   uint Time;
   bool Run;
-  pthread_t Th;
   uint OverTime;
 public:
   struct timeval  tv;
@@ -51,7 +50,6 @@ public:
   void SetContext (CStringList context);
   void SetRunState (bool run);
   bool GetRunState ();
-  void *thread (void *arg);
   //propiedades
   void SetOverTime (uint overtime);
   uint GetOverTime (void);
