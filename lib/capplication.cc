@@ -29,10 +29,6 @@
 #include<time.h>
 #include<unistd.h>
 
-#ifdef HAVE_LIBPTHREAD
-#include<pthread.h>
-//pthread_mutex_t Display_Lock;
-#endif
 
 #ifdef HAVE_LIBIMLIB2
 #include<Imlib2.h>
@@ -60,8 +56,6 @@ CApplication::CApplication (void)
  HintTime = time(NULL);
  HintX = 0;
  HintY = 0;
-  //pthread_mutex_init (&Display_Lock,NULL);
-  //pthread_mutex_lock (&Display_Lock);
 }
 
 CApplication::~CApplication (void)
@@ -70,7 +64,6 @@ CApplication::~CApplication (void)
   if (ColorTable)
     delete[]ColorTable;
   ColorTable = NULL;
-  //pthread_mutex_destroy (&Display_Lock);  
 };
 
 void
@@ -329,7 +322,6 @@ CApplication::Load (void)
   if (Exit)return;
   
   XUnlockDisplay(ADisplay);
-  //pthread_mutex_unlock (&Display_Lock);
 
  if (AWindowCount == -1)
     {

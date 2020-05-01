@@ -30,8 +30,6 @@
 
 #include"xevents.cc"
 
-#include<pthread.h>
-//extern pthread_mutex_t Display_Lock;
 
 #ifdef HAVE_LIBIMLIB2
 #include<Imlib2.h>
@@ -104,7 +102,6 @@ CDraw::SetWidth (uint width)
     Display *disp=Application->GetADisplay();
     if(disp)
     {
-      //pthread_mutex_lock (&Display_Lock);
       XLockDisplay(disp);
       
       int en=XPending(disp);
@@ -119,7 +116,6 @@ CDraw::SetWidth (uint width)
       CPixmap =XCreatePixmap (Win->GetADisplay (), Win->GetWWindow (), width, Height, *(Win->GetADepth()));
       Canvas.SetDrawIn(CPixmap);
       XUnlockDisplay(disp);
-      //pthread_mutex_unlock (&Display_Lock);
     }
   };
   CControl::SetWidth(width);
@@ -133,7 +129,6 @@ CDraw::SetHeight (uint height)
     Display *disp=Application->GetADisplay();
     if(disp)
     {
-      //pthread_mutex_lock (&Display_Lock);
       XLockDisplay(disp);
 
       int en=XPending(disp);
@@ -148,7 +143,6 @@ CDraw::SetHeight (uint height)
       CPixmap =XCreatePixmap (Win->GetADisplay (), Win->GetWWindow (), Width, height, *(Win->GetADepth()));
       Canvas.SetDrawIn(CPixmap);
       XUnlockDisplay(disp);
-      //pthread_mutex_unlock (&Display_Lock);
     }
   }
   CControl::SetHeight(height);

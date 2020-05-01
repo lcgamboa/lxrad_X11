@@ -29,8 +29,6 @@
 #include"../include/capplication.h"
 #include"../include/newcontrolbycname.h"
 
-#include<pthread.h>
-//extern pthread_mutex_t Display_Lock;
 
 void
 XFreeTextProperty (XTextProperty & textp)
@@ -558,7 +556,6 @@ CWindow::WEvents (XEvent WEvent)
         int se=0;
 	if(Width != (uint)LEvent.xconfigure.width)se=1;
         if(Height != (uint)LEvent.xconfigure.height)se=1;
-	//pthread_mutex_lock (&Display_Lock);
         XLockDisplay(disp);
         X = LEvent.xconfigure.x;
         Y = LEvent.xconfigure.y;
@@ -572,7 +569,6 @@ CWindow::WEvents (XEvent WEvent)
 	  Draw();
 	}
         XUnlockDisplay(disp);
-        //pthread_mutex_unlock (&Display_Lock);
       }
   }
 
