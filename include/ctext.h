@@ -45,15 +45,15 @@ public:
   void DrawLine (void);
   int Create (CControl * control);
   void Clear ();
-  void AddLine (char *line);
-  void AddLine (String line);
-  void InsertLine (char *line);
+  void AddLine (const char *line);
+  void AddLine (const String line);
+  void InsertLine (const char *line);
   void DelLine (void);
-  void LoadFromFile (char *fname);
-  void SaveToFile (char *fname);
-  void SaveToFile (String fname);
+  void LoadFromFile (const char *fname);
+  void SaveToFile (const char *fname);
+  void SaveToFile (const String fname);
   //propiedades
-  void SetText (String t);
+  void SetText (const String t);
   String GetText (void);
   void SetCursorPos (uint cursorpos);
   //void SetReadOnly(bool r);

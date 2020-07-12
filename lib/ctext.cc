@@ -4,7 +4,7 @@
 
    ########################################################################
 
-   Copyright (c) : 2001-2018 Luis Claudio Gamboa Lopes
+   Copyright (c) : 2001-2020 Luis Claudio Gamboa Lopes
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -127,21 +127,21 @@ CText::Clear (void)
 };
 
 void
-CText::AddLine (char *line)
+CText::AddLine (const char *line)
 {
   Lines.AddLine (line);
   Draw ();
 }
 
 void
-CText::AddLine (String line)
+CText::AddLine (const String line)
 {
   Lines.AddLine (line.c_str());
   Draw ();
 }
 
 void
-CText::InsertLine (char *line)
+CText::InsertLine (const char *line)
 {
   Lines.InsertLine (line, CursorLin);
   Draw ();
@@ -155,20 +155,20 @@ CText::DelLine (void)
 };
 
 void
-CText::LoadFromFile (char *fname)
+CText::LoadFromFile (const char *fname)
 {
   Lines.LoadFromFile (fname);
   Draw ();
 };
 
 void
-CText::SaveToFile (char *fname)
+CText::SaveToFile (const char *fname)
 {
   Lines.SaveToFile (fname);
 };
 
 void
-CText::SaveToFile (String fname)
+CText::SaveToFile (const String fname)
 {
   Lines.SaveToFile (fname.c_str());
 };
@@ -183,7 +183,7 @@ CText::GetCountLines (void)
 
 
 void
-CText::SetText (String t)
+CText::SetText (const String t)
 {
 //  if(Lines.GetLine(GetCursorLin()) != NULL) Lines.DelLine(CursorLin);
   Lines.SetLine (t, CursorLin);
