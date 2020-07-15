@@ -51,6 +51,7 @@
 #include"cgauge.h"
 #include"ctogglebutton.h"
 #include"cspind.h"
+#include"cspin.h"
 #include"ccolordialog.h"
 #include"cstatusbar.h"
 #include"cthread.h"
