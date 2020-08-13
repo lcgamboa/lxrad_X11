@@ -60,7 +60,7 @@ using namespace std;
 
 #include"lxutils.h"
 
-#define Initialize int pmain(void); CApplication application; CApplication *Application=&application;\
+#define Initialize int pmain(void); static CApplication application; CApplication *Application=&application;\
 	int main(int argc,char **argv){\
 	application.Aargc=argc;application.Aargv=argv; pmain();}\
         int pmain(void)

@@ -383,11 +383,11 @@ bool lxFileExists(String fname)
     return false;
 }
 
-void lxExecute(String cmd,unsigned int flags, void * arg)
+int lxExecute(String cmd,unsigned int flags, void * arg)
 {
  if(flags != lxEXEC_SYNC)
     cmd+=lxT(" &");	
-  system(cmd.c_str());
+  return system(cmd.c_str())+1;
 }
 
 String 

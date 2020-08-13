@@ -222,7 +222,7 @@ public:
 void lxMilliSleep(unsigned int time);
 void lxSetCursor(lxCursor cursor); 
 bool lxFileExists(String fname);
-void lxExecute(String cmd,unsigned int flags=0, void * arg = NULL);
+int lxExecute(String cmd,unsigned int flags=0, void * arg = NULL);
 String lxGetCwd(void);
 int lxSetWorkingDirectory(String dir);
 bool lxLaunchDefaultBrowser(String url);

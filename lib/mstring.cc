@@ -241,7 +241,7 @@ String::~String (void)
     {
       delete[]Str;
       Str = NULL;
-    };
+    }
 }
 
 const char *
