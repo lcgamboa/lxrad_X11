@@ -42,5 +42,6 @@ public:
 };
 
 void Message (String str);
+void Message_sz (String str, int Width, int Height);
 
 #endif
