@@ -378,13 +378,13 @@ String::find (const String & str) const
 	return -1;		//strlen (Str) + 1;
     }
   else
-    return 0;
+    return -1;
 }
 
 int
 String::Contains (const String & str) const
 {
-  return (find(str) > 0);	
+  return (find(str) >= 0);	
 }
 
 char *
