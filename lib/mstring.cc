@@ -384,7 +384,7 @@ String::find (const String & str) const
 int
 String::Contains (const String & str) const
 {
-  return find(str);	
+  return (find(str) > 0);	
 }
 
 char *
