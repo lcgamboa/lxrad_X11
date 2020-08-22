@@ -132,7 +132,7 @@ CEdit::DrawCursor (void)
   Cursor->SetVisible (true);
 };
 
-CStringList CEdit::GetContext (void)
+lxStringList CEdit::GetContext (void)
 {
   CControl::GetContext ();
   Context.AddLine ("Text=" + GetText () + ";String");
@@ -140,14 +140,14 @@ CStringList CEdit::GetContext (void)
 };
 
 void
-CEdit::SetContext (CStringList context)
+CEdit::SetContext (lxStringList context)
 {
   Erase ();
   CControl::SetContext (context);
   for (uint i = 0; i < context.GetLinesCount (); i++)
     {
-      String line = Context.GetLine (i);
-      String arg;
+      lxString line = Context.GetLine (i);
+      lxString arg;
       eqparse (line, arg);
       if (line.compare ("Text") == 0)
 	SetText (arg);
@@ -159,7 +159,7 @@ CEdit::SetContext (CStringList context)
 //propriedades
 
 void
-CEdit::SetText (String t)
+CEdit::SetText (lxString t)
 {
   Text->SetText (t);
   if (t.size () == 0)
@@ -167,7 +167,7 @@ CEdit::SetText (String t)
   Draw ();
 };
 
-String CEdit::GetText (void)
+lxString CEdit::GetText (void)
 {
   return Text->GetText ();
 };
@@ -286,7 +286,7 @@ void
 CEdit::button_press (XEvent event)
 {
   int n;
-  String buffer;
+  lxString buffer;
   switch (event.xbutton.button)
     {
     case 1:

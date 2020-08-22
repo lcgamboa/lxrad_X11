@@ -258,7 +258,7 @@ CPaint::RaiserFrame (int x, int y, int w, int h, uint wb)
 };
 
 void
-CPaint::Text (String text,  int x1, int y1)
+CPaint::Text (lxString text,  int x1, int y1)
 {
   //FIXME font size 13	
   XDrawString (Disp, DrawIn, Agc, RX+x1, RY+y1+ 13 ,
@@ -266,7 +266,7 @@ CPaint::Text (String text,  int x1, int y1)
 }
   
 void 
-CPaint::TextOnRect (String text,lxRect rect,CAlign align)
+CPaint::TextOnRect (lxString text,lxRect rect,CAlign align)
 {
   //FIXME font size 13	
   XDrawString (Disp, DrawIn, Agc, RX+rect.x, RY+rect.y+ 13 ,
@@ -275,7 +275,7 @@ CPaint::TextOnRect (String text,lxRect rect,CAlign align)
 
 
 void
-CPaint::ImgText ( int x1, int y1, String text)
+CPaint::ImgText ( int x1, int y1, lxString text)
 {
   XDrawImageString (Disp, DrawIn, Agc, RX+x1, RY+y1,
 	       text.c_str (), text.size ());
@@ -322,7 +322,7 @@ CPaint::SetFgColor(unsigned char r,unsigned char g, unsigned char b)
 }
 
 void 
-CPaint::SetFgColor(String cname)
+CPaint::SetFgColor(lxString cname)
 {
    Pen.SetColor (ColorByName(cname));
 }
@@ -336,7 +336,7 @@ CPaint::SetBgColor(unsigned char r,unsigned char g, unsigned char b)
 
 	
 void 
-CPaint::SetBgColor(String cname)
+CPaint::SetBgColor(lxString cname)
 {
    Pen.SetBGColor (ColorByName(cname));
 }
@@ -353,7 +353,7 @@ CPaint::Rectangle (bool filled, int x, int y, int w, int h)
 
 //FIXME
 void 
-CPaint::RotatedText (String str, int x, int y, int angle)
+CPaint::RotatedText (lxString str, int x, int y, int angle)
 {
   //FIXME font size 13
   char sstr[2];

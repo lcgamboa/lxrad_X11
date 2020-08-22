@@ -73,7 +73,7 @@ CDialog::ButtonRelease1 (CControl * control, uint button, uint x, uint y,
 };
 
 bool
-Dialog (String label)
+Dialog (lxString label)
 {
   bool ret;
   CDialog *winput;

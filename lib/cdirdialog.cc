@@ -138,7 +138,7 @@ void
 CDirDialog::ButtonRelease3 (CControl * control, uint button, uint x, uint y,
                              uint state)
 {
- String texto = "untitled";
+ lxString texto = "untitled";
  if (Input ("Dir Name:", texto))
   if (mkdir (texto.c_str (), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH) != 0)
    {
@@ -164,7 +164,7 @@ CDirDialog::ListOnFileSelected (CFileList * flist)
 {
  CDirDialog *dialog;
  dialog = dynamic_cast < CDirDialog * >(flist->GetOwner ());
- String selected = flist->GetSelectedItem ();
+ lxString selected = flist->GetSelectedItem ();
  int pos = selected.find ("/");
  if (pos < 0)
   dialog->edit1.SetText (selected);
@@ -172,26 +172,26 @@ CDirDialog::ListOnFileSelected (CFileList * flist)
   dialog->edit1.SetText (selected.substr (1, selected.size ()));
 };
 
-String
+lxString
 CDirDialog::GetFileName (void)
 {
  return GetDirName () + "/" + FileName;
 };
 
-String
+lxString
 CDirDialog::GetDirName (void)
 {
  return filelist1.GetSelectedDir ();
 };
 
 void
-CDirDialog::SetFileName (String filename)
+CDirDialog::SetFileName (lxString filename)
 {
  FileName = filename;
 };
 
 void
-CDirDialog::SetDir (String dir)
+CDirDialog::SetDir (lxString dir)
 {
  filelist1.SetDir (dir);
 };
@@ -213,7 +213,7 @@ CDirDialog::Run (void)
   (FOwner->*EvOnClose) (Result);
 };
 
-CStringList
+lxStringList
 CDirDialog::GetContext (void)
 {
  CControl::GetContext ();
@@ -221,15 +221,15 @@ CDirDialog::GetContext (void)
 };
 
 void
-CDirDialog::SetContext (CStringList context)
+CDirDialog::SetContext (lxStringList context)
 {
  Erase ();
  CControl::SetContext (context);
  /*
  for (uint i = 0; i < context.GetLinesCount (); i++)
    {
-     String line = Context.GetLine (i);
-     String arg;
+     lxString line = Context.GetLine (i);
+     lxString arg;
      eqparse (line, arg);
    };
   */
@@ -237,7 +237,7 @@ CDirDialog::SetContext (CStringList context)
 };
 
 void
-CDirDialog::SetFilter (String filter)
+CDirDialog::SetFilter (lxString filter)
 {
  Filter = filter;
  //TODO

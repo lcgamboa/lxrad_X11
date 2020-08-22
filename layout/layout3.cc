@@ -19,7 +19,7 @@ CWindow3::editfocusout (CControl * control)
   /*
      for (int c = 0; c < ((Window3.GetChildCount () + 1) / 2); c++)
      {
-     st = (CString *) (Window3.GetChildByName ("cstring" + itoa (c + 1)));
+     st = (ClxString *) (Window3.GetChildByName ("clxString" + itoa (c + 1)));
      ed = (CEdit *) (Window3.GetChildByName ("cedit" + itoa (c + 1)));
      List.AddLine (st->GetText () + "=" + ed->GetText ());
      };

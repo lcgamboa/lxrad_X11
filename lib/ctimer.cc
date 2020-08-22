@@ -70,7 +70,7 @@ CTimer::Draw (void)
 {
 }
 
-CStringList CTimer::GetContext (void)
+lxStringList CTimer::GetContext (void)
 {
   CControl::GetContext ();
   Context.AddLine ("Time=" + itoa (GetTime ()) + ";int");
@@ -80,14 +80,14 @@ CStringList CTimer::GetContext (void)
 }
 
 void
-CTimer::SetContext (CStringList context)
+CTimer::SetContext (lxStringList context)
 {
   Erase ();
   CControl::SetContext (context);
   for (uint i = 0; i < context.GetLinesCount (); i++)
     {
-      String line = Context.GetLine (i);
-      String arg;
+      lxString line = Context.GetLine (i);
+      lxString arg;
       eqparse (line, arg);
       if (line.compare ("Time") == 0)
 	SetTime (atoi (arg));

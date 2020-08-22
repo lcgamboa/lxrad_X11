@@ -32,8 +32,8 @@
 class CLabel:public CControl
 {
 protected:
-  String Text;
-  String VText;
+  lxString Text;
+  lxString VText;
   CAlign Align;
   uint TextPosition;
   uint TextPointer;
@@ -51,11 +51,11 @@ public:
   void Update (void);
   void Erase (void);
   int Create (CControl * control);
-  CStringList GetContext (void);
-  void SetContext (CStringList context);
+  lxStringList GetContext (void);
+  void SetContext (lxStringList context);
 //propierties  
-  void SetText (String text);
-  String GetText (void);
+  void SetText (lxString text);
+  lxString GetText (void);
   void SetAlign (CAlign align);
   CAlign GetAlign (void);
   uint GetTextWidth (void);

@@ -496,7 +496,7 @@ CApplication::SetTag (int x)
  Tag = x;
 };
 
-String
+lxString
 CApplication::GetTitle (void)
 {
  return Title;
@@ -595,7 +595,7 @@ CApplication::SetHintControl (CControl* hcontrol, int x, int y)
 };
 
 void
-CApplication::AddToColorTable (String colorname, XColor color,
+CApplication::AddToColorTable (lxString colorname, XColor color,
 			       XColor displaycolor)
 {
   PixelsCount++;
@@ -613,7 +613,7 @@ CApplication::AddToColorTable (String colorname, XColor color,
   ColorTable = TempTable;
 };
 
-bool CApplication::XSearchInColorTable (String name, XColor * color)
+bool CApplication::XSearchInColorTable (lxString name, XColor * color)
 {
   for (int c = 0; c <= PixelsCount; c++)
     if (ColorTable[c].name.compare (name) == 0)

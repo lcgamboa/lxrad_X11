@@ -82,7 +82,7 @@ CToolButton::Draw (void)
   CControl::Draw ();
 };
 
-CStringList CToolButton::GetContext (void)
+lxStringList CToolButton::GetContext (void)
 {
   CControl::GetContext ();
   Context.AddLine ("PixmapFileName=" + GetPixmapFileName () + ";File");
@@ -90,14 +90,14 @@ CStringList CToolButton::GetContext (void)
 };
 
 void
-CToolButton::SetContext (CStringList context)
+CToolButton::SetContext (lxStringList context)
 {
   Erase ();
   CControl::SetContext (context);
   for (uint i = 0; i < context.GetLinesCount (); i++)
     {
-      String line = Context.GetLine (i);
-      String arg;
+      lxString line = Context.GetLine (i);
+      lxString arg;
       eqparse (line, arg);
       if (line.compare ("PixmapFileName") == 0)
       {
@@ -127,20 +127,20 @@ CToolButton::SetImgData (const char **data)
 }
 
 void
-CToolButton::SetPixmapFileName (String filename)
+CToolButton::SetPixmapFileName (lxString filename)
 {
   Xpm->SetPixmapFileName (filename);
   Draw ();
 }
 
 void
-CToolButton::SetImgFileName (String filename)
+CToolButton::SetImgFileName (lxString filename)
 {
   Xpm->SetPixmapFileName (filename);
   Draw ();
 }
 
-String
+lxString
 CToolButton::GetPixmapFileName (void)
 {
   return Xpm->GetPixmapFileName ();

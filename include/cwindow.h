@@ -45,7 +45,7 @@ protected:
   uint *ABlackColor;
   Pixmap WPixmap;
   uint PWidth,PHeight;
-  String Title;
+  lxString Title;
   Atom *AWMProtocols;
   Atom *AWMDeleteWindow;
   Atom *AWMTakeFocus;
@@ -87,13 +87,13 @@ public:
   void Update (void);
   void Update (Region Reg);
   virtual bool WEvents (XEvent WEvent);
-  CStringList GetContext (void);
-  void SetContext (CStringList context);
+  lxStringList GetContext (void);
+  void SetContext (lxStringList context);
   void SetFocus (void);
   XIC GetIC (void);
   void SetPixmapBuffer(bool pbuffer);
   bool GetPixmapBuffer(void);
-  bool LoadXMLContextAndCreateChilds(String filename, CControl* ctrl = NULL);
+  bool LoadXMLContextAndCreateChilds(lxString filename, CControl* ctrl = NULL);
   bool GetCanExitExclusive(void);
 //propiedades
   Window GetWWindow (void);
@@ -112,8 +112,8 @@ public:
   uint GetXMouse (void);
   void SetYMouse (uint y);
   uint GetYMouse (void);
-  void SetTitle (const String & title);
-  String GetTitle (void);
+  void SetTitle (const lxString & title);
+  lxString GetTitle (void);
   CControl *GetControlOnFocus (void);
   void SetControlOnFocus (CControl * controlonfocus);
   CControl *GetLastControl (void);

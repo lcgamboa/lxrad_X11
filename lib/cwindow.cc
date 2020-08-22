@@ -579,7 +579,7 @@ CWindow::WEvents (XEvent WEvent)
 };
 
 
-CStringList CWindow::GetContext (void)
+lxStringList CWindow::GetContext (void)
 {
   CControl::GetContext ();
   Context.AddLine ("Title=" + GetTitle () + ";String");
@@ -594,14 +594,14 @@ CStringList CWindow::GetContext (void)
 };
 
 void
-CWindow::SetContext (CStringList context)
+CWindow::SetContext (lxStringList context)
 {
   Erase ();
   CControl::SetContext (context);
   for (uint i = 0; i < context.GetLinesCount (); i++)
     {
-      String line = Context.GetLine (i);
-      String arg;
+      lxString line = Context.GetLine (i);
+      lxString arg;
       eqparse (line, arg);
       if (line.compare ("Title") == 0)
 	SetTitle (arg);
@@ -742,7 +742,7 @@ CWindow::GetYMouse (void)
 };
 
 void
-CWindow::SetTitle (const String & title)
+CWindow::SetTitle (const lxString & title)
 {
   Title = title;
   XFreeTextProperty (WTextProperty);
@@ -759,7 +759,7 @@ CWindow::SetTitle (const String & title)
     };
 };
 
-String CWindow::GetTitle (void)
+lxString CWindow::GetTitle (void)
 {
   return Title;
 };
@@ -893,11 +893,11 @@ CWindow::on_leave (void)
 
 
 bool 
-CWindow::LoadXMLContextAndCreateChilds(String filename, CControl* ctrl)
+CWindow::LoadXMLContextAndCreateChilds(lxString filename, CControl* ctrl)
 {
   FILE* file2;
-  CStringList list;
-  String line;
+  lxStringList list;
+  lxString line;
 
   file2 = fopen (filename.c_str(),"r");
   rewind(file2);
@@ -932,7 +932,7 @@ CWindow::LoadXMLContextAndCreateChilds(String filename, CControl* ctrl)
 
               while (line.compare (lxT ("</") + ctrl->GetName () + lxT (">")) != 0)
                 {
-                  String controlclass, ctype, name, cname;
+                  lxString controlclass, ctype, name, cname;
 
                   cname = line.substr (1, line.size () - 2);
                   fgetline (file2, line);

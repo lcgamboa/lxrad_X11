@@ -61,17 +61,17 @@ CGauge::Draw (void)
       
 };
 
-CStringList 
+lxStringList 
 CGauge::GetContext (void)
 {
 //FIXME
- CStringList sl;
+ lxStringList sl;
   printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
  return sl;
 }
 
 void 
-CGauge::SetContext (CStringList context)
+CGauge::SetContext (lxStringList context)
 {
   printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
 }

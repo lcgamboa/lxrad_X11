@@ -27,54 +27,54 @@
 
 #include"../include/lxutils.h"
 
-String
-eqparse (String & str, String & arg)
+lxString
+eqparse (lxString & str, lxString & arg)
 {
   //FIXME substr	
-  String temp = str;
+  lxString temp = str;
   int pos1 = str.find ("=");
   str = temp.substr (0, pos1);
   arg = temp.substr ((pos1 + 1), temp.size ());
   temp = arg;
   pos1 = temp.find (";");
   arg = temp.substr (0, pos1);
-  String stype = temp.substr ((pos1 + 1), temp.size ());
+  lxString stype = temp.substr ((pos1 + 1), temp.size ());
   return stype;
-};
+}
 
-String
-strndel (const String & str, uint n)
+lxString
+strndel (const lxString & str, uint n)
 {
-  String temp;
+  lxString temp;
   temp = str;
   if ((n > 0) && (n <= str.size ()))
     temp.erase (n - 1, 1);
   return temp;
 }
 
-String
-strnadd (const String & str, char c, uint n)
+lxString
+strnadd (const lxString & str, char c, uint n)
 {
   //FIXME substr	
-  String temp;
+  lxString temp;
   temp = str.substr (0, n) + c + str.substr (n, str.size ());
   return temp;
 };
 
 int
-atoi (const String & str)
+atoi (const lxString & str)
 {
   return atoi (str.c_str ());
 };
 
 float
-atof (const String & str)
+atof (const lxString & str)
 {
   return atof (str.c_str ());
 };
 
 bool
-atob (const String & str)
+atob (const lxString & str)
 {
   bool b;
   if (str.compare ("TRUE") == 0)
@@ -84,34 +84,34 @@ atob (const String & str)
   return b;
 };
 
-String
-itoa (int n, const String & format)
+lxString
+itoa (int n, const lxString & format)
 {
   char temp[200];
   sprintf (temp, format.c_str (), n);
-  return String (temp);
+  return lxString (temp);
 };
 
-String
-itoa (uint n, const String & format)
+lxString
+itoa (uint n, const lxString & format)
 {
   char temp[200];
   sprintf (temp, format.c_str (), n);
-  return String (temp);
+  return lxString (temp);
 };
 
-String
-ftoa (float f, const String & format)
+lxString
+ftoa (float f, const lxString & format)
 {
   char temp[200];
   sprintf (temp, format.c_str (), f);
-  return String (temp);
+  return lxString (temp);
 };
 
-String
+lxString
 btoa (bool b)
 {
-  String str;
+  lxString str;
   if (b)
     str = "TRUE";
   else
@@ -119,33 +119,33 @@ btoa (bool b)
   return str;
 };
 
-String
-uppercase (const String & str)
+lxString
+uppercase (const lxString & str)
 {
   char *buf = new char[str.length ()+1];
   strcpy(buf,str.c_str());
   for (uint i = 0; i < str.length (); i++)
     buf[i] = toupper (buf[i]);
-  String r (buf);
+  lxString r (buf);
   delete[] buf;
   return r;
 }
 
-String
-lowercase (const String & str)
+lxString
+lowercase (const lxString & str)
 {
   char *buf = new char[str.length ()+1];
   strcpy (buf, str.c_str());
   for (uint i = 0; i < str.length (); i++)
     buf[i] = tolower (buf[i]);
-  String r (buf);
+  lxString r (buf);
   delete[]buf;
   return r;
 }
 
 	
 bool
-fgetline (FILE* file, String & str)
+fgetline (FILE* file, lxString & str)
 {	
   char line[5000];
   line[0]=0; 
@@ -177,15 +177,15 @@ fgetline (FILE* file, String & str)
 };
 
 #ifdef NO_STL
-//String _____________________________________________________________
+//lxString _____________________________________________________________
 
 
-String::String (void)
+lxString::lxString (void)
 {
   Str = NULL;
 }
 
-String::String (const String & str)
+lxString::lxString (const lxString & str)
 {
   
    if (str.Str != NULL)
@@ -198,7 +198,7 @@ String::String (const String & str)
     Str = NULL;
 }
 
-String::String (const char &str)
+lxString::lxString (const char &str)
 {
   if (str != '\0')
     {
@@ -210,7 +210,7 @@ String::String (const char &str)
     Str = NULL;
 }
 
-String::String (const char *str)
+lxString::lxString (const char *str)
 {
   if (str != NULL)
     {
@@ -222,7 +222,7 @@ String::String (const char *str)
 }
 
 
-String::String (const char *str, int size)
+lxString::lxString (const char *str, int size)
 {
   if (str)
     {
@@ -235,7 +235,7 @@ String::String (const char *str, int size)
 }
 
 
-String::~String (void)
+lxString::~lxString (void)
 {
   if (Str != NULL)
     {
@@ -245,7 +245,7 @@ String::~String (void)
 }
 
 const char *
-String::c_str (void) const
+lxString::c_str (void) const
 {
   if (Str)
     return Str;
@@ -254,7 +254,7 @@ String::c_str (void) const
 }
 
 const char *
-String::char_str (void) const
+lxString::char_str (void) const
 {
   if (Str)
     return Str;
@@ -263,7 +263,7 @@ String::char_str (void) const
 }
 
 int
-String::Cmp (const char *str) const
+lxString::Cmp (const char *str) const
 {
   if ((Str) && (str))
     return strcmp (Str, str);
@@ -272,7 +272,7 @@ String::Cmp (const char *str) const
 };
 
 int
-String::compare (const char *str) const
+lxString::compare (const char *str) const
 {
   if ((Str) && (str))
     return strcmp (Str, str);
@@ -281,7 +281,7 @@ String::compare (const char *str) const
 };
 
 int
-String::compare (const String & str) const
+lxString::compare (const lxString & str) const
 {
   if ((Str) && (str.Str))
     return strcmp (Str, str.Str);
@@ -290,7 +290,7 @@ String::compare (const String & str) const
 };
 
 uint
-String::size (void) const
+lxString::size (void) const
 {
   if (Str != NULL)
     return strlen (Str);
@@ -299,7 +299,7 @@ String::size (void) const
 };
 
 uint
-String::length (void) const
+lxString::length (void) const
 {
   if (Str != NULL)
     return strlen (Str);
@@ -308,7 +308,7 @@ String::length (void) const
 };
 
 int
-String::erase (uint start, int num = 1)
+lxString::erase (uint start, int num = 1)
 {
   if (start + num <= length ())
     {
@@ -325,12 +325,12 @@ String::erase (uint start, int num = 1)
     return 0;
 };
 
-String
-String::substr (uint start, uint len) const
+lxString
+lxString::substr (uint start, uint len) const
 {
   if (start < length ())
     {
-      String temp;
+      lxString temp;
       char *tmp;
       if (start+len > length ())
 	len = length ()-start;
@@ -346,7 +346,7 @@ String::substr (uint start, uint len) const
 };
 
 int
-String::copy (char *str, uint sz) const
+lxString::copy (char *str, uint sz) const
 {
   if (Str)
     {
@@ -367,7 +367,7 @@ String::copy (char *str, uint sz) const
 };
 
 int
-String::find (const String & str) const
+lxString::find (const lxString & str) const
 {
   if ((Str != NULL) && (str.Str != NULL))
     {
@@ -382,7 +382,7 @@ String::find (const String & str) const
 }
 
 int
-String::Contains (const String & str) const
+lxString::Contains (const lxString & str) const
 {
   return (find(str) >= 0);	
 }
@@ -439,7 +439,7 @@ strrstr (const char *str1, const char *str2)
 
 
 int
-String::rfind (const String & str) const
+lxString::rfind (const lxString & str) const
 {
   if ((Str != NULL) && (str.Str != NULL))
     {
@@ -458,7 +458,7 @@ String::rfind (const String & str) const
 };
 
 
-String & String::operator = (const String & str)
+lxString & lxString::operator = (const lxString & str)
 {
   if (this != &str)
     {
@@ -475,7 +475,7 @@ String & String::operator = (const String & str)
   return *this;
 };
 
-String & String::operator = (const char *str)
+lxString & lxString::operator = (const char *str)
 {
   if (Str != NULL)
     delete[]Str;
@@ -490,8 +490,8 @@ String & String::operator = (const char *str)
   return *this;
 };
   
-String 
-String::Format(const char *fmt, ...)
+lxString 
+lxString::Format(const char *fmt, ...)
 {
   va_list arg;
   char tmp[256];	
@@ -512,8 +512,8 @@ String::Format(const char *fmt, ...)
 };
   
 
-String 
-String::Printf(const char *fmt, ...) 
+lxString 
+lxString::Printf(const char *fmt, ...) 
 {
   va_list arg;
   char tmp[256];	
@@ -533,16 +533,16 @@ String::Printf(const char *fmt, ...)
   return *this;
 }
 
-String
-String::FromAscii(char * str)
+lxString
+lxString::FromAscii(char * str)
 {
-  String temp(str); 	
+  lxString temp(str); 	
   return temp;
 }
 
-String String::operator + (const String & str)
+lxString lxString::operator + (const lxString & str)
 {
-  String
+  lxString
     temp;
 
   if (str.Str != NULL)
@@ -579,9 +579,9 @@ String String::operator + (const String & str)
 };
 
 
-String String::operator + (const char *str)
+lxString lxString::operator + (const char *str)
 {
-  String
+  lxString
     temp;
 
   if (str != NULL)
@@ -608,13 +608,13 @@ String String::operator + (const char *str)
   return temp;
 };
 
-String String::operator + (const char &str)
+lxString lxString::operator + (const char &str)
 {
   char
     str2[2];
   str2[0] = str;
   str2[1] = '\0';
-  String
+  lxString
     temp;
 
   if (Str != NULL)
@@ -632,9 +632,9 @@ String String::operator + (const char &str)
   return temp;
 };
 
-String & String::operator += (const String & str)
+lxString & lxString::operator += (const lxString & str)
 {
-  String temp = Str;
+  lxString temp = Str;
 
   if (Str != NULL)
     {
@@ -675,9 +675,9 @@ String & String::operator += (const String & str)
   return *this;
 };
 
-String & String::operator += (const char *str)
+lxString & lxString::operator += (const char *str)
 {
-  String
+  lxString
     temp =
     Str;
   if (Str != NULL)
@@ -709,13 +709,13 @@ String & String::operator += (const char *str)
   return *this;
 };
 
-String & String::operator += (const char &str)
+lxString & lxString::operator += (const char &str)
 {
   char
     str2[2];
   str2[0] = str;
   str2[1] = '\0';
-  String
+  lxString
     temp =
     Str;
 
@@ -735,19 +735,19 @@ String & String::operator += (const char &str)
 };
 
 char &
-String::operator[] (const uint & index)
+lxString::operator[] (const uint & index)
 {
 //  if((Str)&&(index <= length()))
   return Str[index];
 };
 
-String
-operator + (const char *str1, const String & str2)
+lxString
+operator + (const char *str1, const lxString & str2)
 {
   if (str1)
     {
       if (str2.Str)
-	return string (str1) + str2;
+	return lxString (str1) + str2;
       else
 	return str1;
     }
@@ -759,27 +759,27 @@ operator + (const char *str1, const String & str2)
   return "";
 };
 
-String
-operator + (const char &str1, const String & str2)
+lxString
+operator + (const char &str1, const lxString & str2)
 {
   char temp[2];
   temp[0] = str1;
   temp[1] = '\0';
 
   if (str2.Str)
-     return string (temp) + str2;
+     return lxString (temp) + str2;
   else
      return temp;
 
 }
 
 
-String::operator const char*() const
+lxString::operator const char*() const
 {
   return Str;
 }
   
-bool  String::operator == (const String & str)
+bool  lxString::operator == (const lxString & str)
 {
   if(strcmp(Str,str))
    return false;
@@ -788,22 +788,22 @@ bool  String::operator == (const String & str)
 }
 
 /*
-ostream & operator << (ostream & os, const String & str)
+ostream & operator << (ostream & os, const lxString & str)
 {
   os << str.Str;
   return os;
 };
 */
 
-//CStringList _____________________________________________________________
+//ClxStringList _____________________________________________________________
 
-CStringList::CStringList (void)
+lxStringList::lxStringList (void)
 {
   Lines = NULL;
   LinesCount = -1;
 };
 
-CStringList::CStringList (const CStringList & list)
+lxStringList::lxStringList (const lxStringList & list)
 {
   Lines = NULL;
   LinesCount = -1;
@@ -813,7 +813,7 @@ CStringList::CStringList (const CStringList & list)
     };
 };
 
-CStringList::~CStringList (void)
+lxStringList::~lxStringList (void)
 {
   if (Lines)
     {
@@ -824,12 +824,12 @@ CStringList::~CStringList (void)
 };
 
 void
-CStringList::Create ()
+lxStringList::Create ()
 {
 };
 
-String
-CStringList::GetLine (uint linen) const
+lxString
+lxStringList::GetLine (uint linen) const
 {
   if((int)linen <= LinesCount)	
     return Lines[linen];
@@ -838,14 +838,14 @@ CStringList::GetLine (uint linen) const
 };
 
 void
-CStringList::SetLine (String line, uint linen)
+lxStringList::SetLine (lxString line, uint linen)
 {
   Lines[linen] = line;
 };
 
 
 void
-CStringList::Clear (void)
+lxStringList::Clear (void)
 {
   if (Lines)
     {
@@ -856,12 +856,12 @@ CStringList::Clear (void)
 };
 
 void
-CStringList::AddLine (const String line)
+lxStringList::AddLine (const lxString line)
 {
   if (line.c_str () != NULL)
     {
       LinesCount++;
-      String *ALines = new String[LinesCount + 1];
+      lxString *ALines = new lxString[LinesCount + 1];
       for (int c = 0; c < LinesCount; c++)
 	ALines[c] = Lines[c];
       ALines[LinesCount] = line;
@@ -872,10 +872,10 @@ CStringList::AddLine (const String line)
 };
 
 void
-CStringList::InsertLine (String line, uint linen)
+lxStringList::InsertLine (lxString line, uint linen)
 {
   LinesCount++;
-  String *ALines = new String[LinesCount + 1];
+  lxString *ALines = new lxString[LinesCount + 1];
   for (uint c = 0; c < linen; c++)
     ALines[c] = Lines[c];
   ALines[linen] = line;
@@ -888,16 +888,16 @@ CStringList::InsertLine (String line, uint linen)
 
 
 uint
-CStringList::GetLinesCount (void) const
+lxStringList::GetLinesCount (void) const
 {
   return LinesCount + 1;
 };
 
 void
-CStringList::DelLine (uint linen)
+lxStringList::DelLine (uint linen)
 {
   LinesCount--;
-  String *ALines = new String[LinesCount + 1];
+  lxString *ALines = new lxString[LinesCount + 1];
   for (uint c = 0; c < linen; c++)
     ALines[c] = Lines[c];
   for (int c = linen; c < LinesCount + 1; c++)
@@ -907,13 +907,13 @@ CStringList::DelLine (uint linen)
   Lines = ALines;
 };
 
-bool CStringList::LoadFromFile (String fname)
+bool lxStringList::LoadFromFile (lxString fname)
 {
   FILE* file;
   file=fopen(fname.c_str (),"r");
   if (file)
     {
-      String line;
+      lxString line;
       while (fgetline (file, line))
 	AddLine (line);
       fclose(file);
@@ -925,7 +925,7 @@ bool CStringList::LoadFromFile (String fname)
 };
 
 
-bool CStringList::SaveToFile (String fname)
+bool lxStringList::SaveToFile (lxString fname)
 {
   	
   FILE* file;
@@ -942,7 +942,7 @@ bool CStringList::SaveToFile (String fname)
   
 }
 
-bool CStringList::AppendToFile (String fname)
+bool lxStringList::AppendToFile (lxString fname)
 {
   	
   FILE* file;
@@ -959,7 +959,7 @@ bool CStringList::AppendToFile (String fname)
   
 }
 
-CStringList & CStringList::operator = (const CStringList & list)
+lxStringList & lxStringList::operator = (const lxStringList & list)
 {
   if (this != &list)
     {
@@ -985,13 +985,13 @@ CStringList & CStringList::operator = (const CStringList & list)
 };
 
 #else
-//CStringList _____________________________________________________________
+//ClxStringList _____________________________________________________________
 
-CStringList::CStringList (void)
+lxStringList::lxStringList (void)
 {
 };
 
-CStringList::CStringList (const CStringList & list)
+lxStringList::lxStringList (const lxStringList & list)
 {
   for (uint c = 0; c <= list.GetLinesCount (); c++)
     {
@@ -999,17 +999,17 @@ CStringList::CStringList (const CStringList & list)
     };
 };
 
-CStringList::~CStringList (void)
+lxStringList::~lxStringList (void)
 {
   List.erase (List.begin (), List.end ());
 };
 
 void
-CStringList::Create ()
+lxStringList::Create ()
 {
 };
 
-string CStringList::GetLine (uint linen) const
+lxString lxStringList::GetLine (uint linen) const
 {
   list < string > List2 (List);
   list < string >::iterator itList2;
@@ -1020,7 +1020,7 @@ string CStringList::GetLine (uint linen) const
 };
 
 void
-CStringList::SetLine (string line, uint linen)
+lxStringList::SetLine (string line, uint linen)
 {
   itList = List.begin ();
   for (uint a = 0; a < linen; a++)
@@ -1030,19 +1030,19 @@ CStringList::SetLine (string line, uint linen)
 
 
 void
-CStringList::Clear (void)
+lxStringList::Clear (void)
 {
   List.erase (List.begin (), List.end ());
 };
 
 void
-CStringList::AddLine (string line)
+lxStringList::AddLine (string line)
 {
   List.push_back (line);
 };
 
 void
-CStringList::InsertLine (string line, uint linen)
+lxStringList::InsertLine (string line, uint linen)
 {
   itList = List.begin ();
   for (uint a = 0; a < linen; a++)
@@ -1052,13 +1052,13 @@ CStringList::InsertLine (string line, uint linen)
 
 
 unsigned int
-CStringList::GetLinesCount (void) const
+lxStringList::GetLinesCount (void) const
 {
   return List.size ();
 };
 
 void
-CStringList::DelLine (uint linen)
+lxStringList::DelLine (uint linen)
 {
   itList = List.begin ();
   for (uint a = 0; a < linen; a++)
@@ -1066,7 +1066,7 @@ CStringList::DelLine (uint linen)
   List.erase (itList);
 };
 
-bool CStringList::LoadFromFile (string fname)
+bool lxStringList::LoadFromFile (string fname)
 {
   ifstream
   file (fname.c_str ());
@@ -1081,7 +1081,7 @@ bool CStringList::LoadFromFile (string fname)
     eprint( "File not found!\n");
 };
 
-bool CStringList::SaveToFile (string fname)
+bool lxStringList::SaveToFile (string fname)
 {
   ofstream
   file (fname.c_str ());
@@ -1098,14 +1098,14 @@ bool CStringList::SaveToFile (string fname)
 
 
 
-String
-xml_out (String name, String type, String value)
+lxString
+xml_out (lxString name, lxString type, lxString value)
 {
   return (lxT("  <") + name + lxT(" type=\"") + type + lxT("\">") + value + lxT("</") + name + lxT(">"));
 };
 
 void
-xml_in (String data, String & name, String & type, String & value)
+xml_in (lxString data, lxString & name, lxString & type, lxString & value)
 {
   int p0, p1, p2, p3;
   if(data.size() > 0)
@@ -1128,8 +1128,8 @@ xml_in (String data, String & name, String & type, String & value)
 };
 
 
-String
-basename (const String & str)
+lxString
+basename (const lxString & str)
 {
 #ifndef __WXMSW__
   int pos = str.rfind (lxT("/"));
@@ -1141,8 +1141,8 @@ basename (const String & str)
   return str.substr (pos + 1, str.size () - pos - 1);
 };
 
-String
-dirname (const String & str)
+lxString
+dirname (const lxString & str)
 {
 #ifndef __WXMSW__
   int pos = str.rfind (lxT("/"));

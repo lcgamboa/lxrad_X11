@@ -34,7 +34,7 @@ class CMenu:public CControl
 {
 private:
   bool Press;
-  String MenuItems;	  
+  lxString MenuItems;	  
 public:
   uint NextItemX;
   CMenu (void);
@@ -43,10 +43,10 @@ public:
   void Draw (void);
   void Update (void);
   int Create (CControl * control);
-  void SetMenuItems (String mitens);
-  String GetMenuItems (void);
-  CStringList GetContext (void);
-  void SetContext (CStringList context);
+  void SetMenuItems (lxString mitens);
+  lxString GetMenuItems (void);
+  lxStringList GetContext (void);
+  void SetContext (lxStringList context);
 };
 
 #endif

@@ -83,7 +83,7 @@ CMenu::SetY (int y)
   Y = 0;
 };
 
-CStringList
+lxStringList
 CMenu::GetContext (void)
 {
   CControl::GetContext ();
@@ -98,14 +98,14 @@ CMenu::GetContext (void)
 };
 
 void
-CMenu::SetContext (CStringList context)
+CMenu::SetContext (lxStringList context)
 {
   Erase ();
   CControl::SetContext (context);
   for (uint i = 0; i < context.GetLinesCount (); i++)
     {
-      String line = Context.GetLine (i);
-      String arg;
+      lxString line = Context.GetLine (i);
+      lxString arg;
       eqparse (line, arg);
       
       if (line.compare ("MenuItems") == 0)
@@ -116,12 +116,12 @@ CMenu::SetContext (CStringList context)
   
 
 void 
-CMenu::SetMenuItems (String menuitems)
+CMenu::SetMenuItems (lxString menuitems)
 {
   MenuItems=menuitems;
 };
 
-String 
+lxString 
 CMenu::GetMenuItems (void)
 {
   return MenuItems;

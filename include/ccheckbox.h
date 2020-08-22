@@ -41,14 +41,14 @@ public:
     CCheckBox (void);
    ~CCheckBox (void);
   int Create (CControl * control);
-  CStringList GetContext (void);
-  void SetContext (CStringList context);
+  lxStringList GetContext (void);
+  void SetContext (lxStringList context);
   void Draw (void);
   //propiedades
   void SetCheck (bool check);
   bool GetCheck (void);
-  void SetText (String t);
-  String GetText (void);
+  void SetText (lxString t);
+  lxString GetText (void);
   void SetWidth (uint width);
   void SetHeight (uint height);
   void SetAlign (CAlign align);

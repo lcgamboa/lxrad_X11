@@ -40,9 +40,9 @@ class CDirDialog:public CWindow
 private:
   bool CanDestroyChilds;
   bool Result;
-  String Filter;
+  lxString Filter;
   int Type;
-  String FileName;
+  lxString FileName;
   CButton button1, button2, button3, button4;
   CEdit edit1;
   CFileList filelist1;
@@ -52,14 +52,14 @@ public:
   int Create(CControl* control);
   void Run (void);
   //propriedades
-  String GetFileName (void);
-  void SetFileName (String filename);
-  String GetDirName (void);
-  void SetDir (String dir);
+  lxString GetFileName (void);
+  void SetFileName (lxString filename);
+  lxString GetDirName (void);
+  void SetDir (lxString dir);
   void DestroyChilds (void);
-  CStringList GetContext (void);
-  void SetContext (CStringList context);
-  void SetFilter(String filter);
+  lxStringList GetContext (void);
+  void SetContext (lxStringList context);
+  void SetFilter(lxString filter);
   void SetType(int type);
   int GetType(void);
   //eventos

@@ -46,23 +46,23 @@ CStatusbar::Create (CControl * control)
   return CControl::Create (control);
 }
 
-CStringList 
+lxStringList 
 CStatusbar::GetContext (void)
 {
 //FIXME	
-  CStringList sl;
+  lxStringList sl;
   printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
   return sl;  
 }
 
 void 
-CStatusbar::SetContext (CStringList context)
+CStatusbar::SetContext (lxStringList context)
 {
   printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
 }
 
 void 
-CStatusbar::SetFields (String litems)
+CStatusbar::SetFields (lxString litems)
 {
   int f = 0;
   Fields.Clear ();
@@ -75,10 +75,10 @@ CStatusbar::SetFields (String litems)
     };
 }
 
-String 
+lxString 
 CStatusbar::GetFields (void)
 {
-  String list = lxT("");
+  lxString list = lxT("");
   for (uint c = 0; c < Fields.GetLinesCount (); c++)
     {
       list += Fields.GetLine (c) + lxT(",");
@@ -86,7 +86,7 @@ CStatusbar::GetFields (void)
   return list;
 }
 
-String 
+lxString 
 CStatusbar::GetField (int item)
 {
 if (item < (int) Fields.GetLinesCount ())
@@ -96,7 +96,7 @@ if (item < (int) Fields.GetLinesCount ())
 }
   
 void 
-CStatusbar::SetField (int item, String sitem)
+CStatusbar::SetField (int item, lxString sitem)
 {
   if (item < (int) Fields.GetLinesCount ())
   {
@@ -112,7 +112,7 @@ CStatusbar::GetFieldsCount (void)
 }
 
 void 
-CStatusbar::AddField (String text)
+CStatusbar::AddField (lxString text)
 {
   Fields.AddLine (text);
   Draw();

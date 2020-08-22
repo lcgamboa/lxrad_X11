@@ -43,24 +43,24 @@ CObject::~CObject (void)
 };
 
 void
-CObject::SetName (const String name)
+CObject::SetName (const lxString name)
 {
   Name = name;
 };
 
-String
+lxString
 CObject::GetName (void)
 {
   return Name;
 };
 
 void
-CObject::SetClass (const String classn)
+CObject::SetClass (const lxString classn)
 {
   Class = classn;
 };
 
-String
+lxString
 CObject::GetClass (void)
 {
   return Class;
@@ -92,7 +92,7 @@ CObject::GetAux (void)
 
 
 
-CStringList
+lxStringList
 CObject::GetContext (void)
 {
   Context.Clear ();
@@ -103,9 +103,9 @@ CObject::GetContext (void)
 };
 
 void
-CObject::SetContext (CStringList context)
+CObject::SetContext (lxStringList context)
 {
-  String name, type, value;
+  lxString name, type, value;
   Context.Clear ();
   for (uint i = 0; i < context.GetLinesCount (); i++)
     {

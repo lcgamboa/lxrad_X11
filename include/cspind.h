@@ -61,8 +61,8 @@ public:
   void SetWidth(unsigned width);
   void SetHeight(unsigned height );
   int  Create (CControl * control);
-  CStringList GetContext (void);
-  void SetContext (CStringList context);
+  lxStringList GetContext (void);
+  void SetContext (lxStringList context);
   //void Event (wxEvent & event);
   //propiedades
   void SetValue(double v);

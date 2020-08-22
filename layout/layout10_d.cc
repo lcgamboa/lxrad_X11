@@ -15,6 +15,6 @@ CSplash::CSplash (void)
   draw1.SetY (1);
   draw1.SetWidth (300);
   draw1.SetHeight (200);
-  draw1.SetPixmapFileName (String(_SHARE)+"/splash.xpm");
+  draw1.SetPixmapFileName (lxString(_SHARE)+"/splash.xpm");
   CreateChild (&draw1);
 };

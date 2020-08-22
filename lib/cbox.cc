@@ -84,7 +84,7 @@ CCbox::Draw (void)
   CControl::Draw ();
 };
 
-CStringList CCbox::GetContext (void)
+lxStringList CCbox::GetContext (void)
 {
   CControl::GetContext ();
   Context.AddLine ("Check=" + btoa (GetCheck ()) + ";bool");
@@ -92,14 +92,14 @@ CStringList CCbox::GetContext (void)
 };
 
 void
-CCbox::SetContext (CStringList context)
+CCbox::SetContext (lxStringList context)
 {
   Erase ();
   CControl::SetContext (context);
   for (uint i = 0; i < context.GetLinesCount (); i++)
     {
-      String line = Context.GetLine (i);
-      String arg;
+      lxString line = Context.GetLine (i);
+      lxString arg;
       eqparse (line, arg);
       if (line.compare ("Check") == 0)
 	SetCheck (atob (arg));

@@ -41,7 +41,7 @@ public:
     CMessage (void);
 };
 
-void Message (String str);
-void Message_sz (String str, int Width, int Height);
+void Message (lxString str);
+void Message_sz (lxString str, int Width, int Height);
 
 #endif

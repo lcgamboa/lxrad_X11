@@ -32,7 +32,7 @@ CWindow7::StringListMouseButtonRelease(CControl * control, uint button, uint x, 
 void
 CWindow7::button1_MouseButtonRelease(CControl * control, uint button, uint x, uint y,uint state)
 {
-  String item;
+  lxString item;
   if(Input("Add String: ",item))
   {
   list1.AddItem(item);

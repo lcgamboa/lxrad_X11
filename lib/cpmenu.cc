@@ -94,26 +94,26 @@ CPMenu::Draw (void)
 };
 
 void 
-CPMenu::SetMenuItems (String menuitems)
+CPMenu::SetMenuItems (lxString menuitems)
 {
   MenuItems=menuitems;
 };
 
 void 
-CPMenu::SetText (String text)
+CPMenu::SetText (lxString text)
 {
   IMenu.SetText(text);
 };
 
 
-String 
+lxString 
 CPMenu::GetMenuItems (void)
 {
   return MenuItems;
 };
 
 
-CStringList
+lxStringList
 CPMenu::GetContext (void)
 {
   CControl::GetContext ();
@@ -130,14 +130,14 @@ CPMenu::GetContext (void)
 };
 
 void
-CPMenu::SetContext (CStringList context)
+CPMenu::SetContext (lxStringList context)
 {
   Erase ();
   CControl::SetContext (context);
   for (uint i = 0; i < context.GetLinesCount (); i++)
     {
-      String line = Context.GetLine (i);
-      String arg;
+      lxString line = Context.GetLine (i);
+      lxString arg;
       eqparse (line, arg);
       
       if (line.compare ("MenuItens") == 0)

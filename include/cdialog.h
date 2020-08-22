@@ -41,6 +41,6 @@ public:
     CDialog (void);
 };
 
-bool Dialog (String label);
+bool Dialog (lxString label);
 
 #endif

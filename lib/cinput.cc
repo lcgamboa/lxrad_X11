@@ -77,7 +77,7 @@ CInput::ButtonRelease1 (CControl * control, uint button, uint x, uint y,
 };
 
 bool
-Input (String label, String & str)
+Input (lxString label, lxString & str)
 {
   bool ret;
   CInput *winput;

@@ -149,7 +149,7 @@ CList::Update ()
   CControl::Update ();
 };
 
-CStringList
+lxStringList
 CList::GetContext (void)
 {
   CControl::GetContext ();
@@ -159,14 +159,14 @@ CList::GetContext (void)
 };
 
 void
-CList::SetContext (CStringList context)
+CList::SetContext (lxStringList context)
 {
   Erase ();
   CControl::SetContext (context);
   for (uint i = 0; i < context.GetLinesCount (); i++)
     {
-      String line = Context.GetLine (i);
-      String arg;
+      lxString line = Context.GetLine (i);
+      lxString arg;
       eqparse (line, arg);
       if (line.compare ("Items") == 0)
 	  SetItems (arg);
@@ -180,7 +180,7 @@ CList::SetContext (CStringList context)
 //propriedades
 
 void
-CList::SetItems (String litens)
+CList::SetItems (lxString litens)
 {
   int f = 0;
   ItemsList.Clear ();
@@ -193,10 +193,10 @@ CList::SetItems (String litens)
   Draw ();
 };
 
-String
+lxString
 CList::GetItems (void)
 {
-  String list = "";
+  lxString list = "";
   for (uint c = 0; c < ItemsList.GetLinesCount (); c++)
     {
       list += ItemsList.GetLine (c) + ",";
@@ -205,7 +205,7 @@ CList::GetItems (void)
 };
 
 void
-CList::AddStringItem (String text)
+CList::AddStringItem (lxString text)
 {
   CLabel *item = new CLabel;
   item->SetText (text);
@@ -230,13 +230,13 @@ CList::AddStringItem (String text)
 };
 
 void
-CList::AddItem (String text)
+CList::AddItem (lxString text)
 {
   ItemsList.AddLine (text);
   Draw ();
 };
 
-String CList::GetItem (int item)
+lxString CList::GetItem (int item)
 {
   if (item <= (int) ItemsList.GetLinesCount ())
     return ItemsList.GetLine (item);
@@ -245,7 +245,7 @@ String CList::GetItem (int item)
 };
 
 void
-CList::SetItem (int item,String sitem)
+CList::SetItem (int item,lxString sitem)
 {
   if (item <= (int) ItemsList.GetLinesCount ())
     ItemsList.SetLine (sitem,item);
@@ -263,7 +263,7 @@ CList::SetSelectedItemN (int item)
 };
 
 void
-CList::SetSelectedItem (String item)
+CList::SetSelectedItem (lxString item)
 {
 
   for (uint c = 0; c < ItemsList.GetLinesCount (); c++)
@@ -295,7 +295,7 @@ CList::GetSelectedItemN (void)
     };
 };
 
-String CList::GetSelectedItem (void)
+lxString CList::GetSelectedItem (void)
 {
   if (((uint) (SelectedItem) < ItemsList.GetLinesCount ()))
     {
@@ -385,7 +385,7 @@ CList::SetHeight (uint height)
 };
 
 void
-CList::LoadItemsFromFile (String fname)
+CList::LoadItemsFromFile (lxString fname)
 {
   DeleteItems ();
   ItemsList.LoadFromFile (fname);
@@ -393,7 +393,7 @@ CList::LoadItemsFromFile (String fname)
 };
 
 void
-CList::SaveItemsToFile (String fname)
+CList::SaveItemsToFile (lxString fname)
 {
   ItemsList.SaveToFile (fname);
 };

@@ -52,12 +52,12 @@ public:
   void Kill (void);
   bool TestDestroy (void);
 //propiedades
-  CStringList GetContext (void);
-  void SetContext (CStringList context);
+  lxStringList GetContext (void);
+  void SetContext (lxStringList context);
   int  Run (void);
   bool GetRunState (void);
   void SetRunState (bool rs);
-  void SetName (const String name);
+  void SetName (const lxString name);
   //void Event (wxCommandEvent & te);
   void on_run (void);
   void on_end (void);

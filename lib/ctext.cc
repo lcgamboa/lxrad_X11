@@ -134,7 +134,7 @@ CText::AddLine (const char *line)
 }
 
 void
-CText::AddLine (const String line)
+CText::AddLine (const lxString line)
 {
   Lines.AddLine (line.c_str());
   Draw ();
@@ -168,7 +168,7 @@ CText::SaveToFile (const char *fname)
 };
 
 void
-CText::SaveToFile (const String fname)
+CText::SaveToFile (const lxString fname)
 {
   Lines.SaveToFile (fname.c_str());
 };
@@ -183,7 +183,7 @@ CText::GetCountLines (void)
 
 
 void
-CText::SetText (const String t)
+CText::SetText (const lxString t)
 {
 //  if(Lines.GetLine(GetCursorLin()) != NULL) Lines.DelLine(CursorLin);
   Lines.SetLine (t, CursorLin);
@@ -191,7 +191,7 @@ CText::SetText (const String t)
   //if(Win)DrawLine();
 };
 
-String CText::GetText (void)
+lxString CText::GetText (void)
 {
   return Lines.GetLine (CursorLin);
 };

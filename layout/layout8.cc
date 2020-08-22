@@ -18,7 +18,7 @@ CWindow8::MenuItensMouseButtonRelease(CControl * control, uint button, uint x, u
   if(Window2.GetControlOnFocus () != NULL)
   {	  
   int f ;
-  String litens;
+  lxString litens;
   
   if( Window8.menu)
      litens=Window8.menu->GetMenuItems();
@@ -46,7 +46,7 @@ CWindow8::MenuItensMouseButtonRelease(CControl * control, uint button, uint x, u
 void
 CWindow8::button1_MouseButtonRelease(CControl * control, uint button, uint x, uint y,uint state)
 {
-  String item;
+  lxString item;
   
   if(Input("Item Text",item))
   {
@@ -79,7 +79,7 @@ void
 CWindow8::button3_MouseButtonRelease(CControl * control, uint button, uint x, uint y,uint state)
 {
   int ii;
-  String item;
+  lxString item;
   
   ii=list1.GetSelectedItemN();
   if(ii > 0)
@@ -96,7 +96,7 @@ void
 CWindow8::button4_MouseButtonRelease(CControl * control, uint button, uint x, uint y,uint state)
 {
   int ii;
-  String item;
+  lxString item;
   
   ii=list1.GetSelectedItemN();
   if(ii < (list1.GetItemsCount()-1))
@@ -113,7 +113,7 @@ void
 CWindow8::button5_MouseButtonRelease(CControl * control, uint button, uint x, uint y,uint state)
 {
   
-  String itens = "";
+  lxString itens = "";
   for (int c = 0; c < list1.GetItemsCount (); c++)
     {
       itens += list1.GetItem (c) + ",";

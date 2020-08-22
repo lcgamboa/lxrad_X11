@@ -43,7 +43,7 @@
 class CStatusbar:public CControl
 {
 protected:
-  CStringList Fields;
+  lxStringList Fields;
 public:
   CStatusbar (void);
   void SetX(int x);
@@ -52,15 +52,15 @@ public:
   void Update (void);
    ~CStatusbar (void);
   int Create (CControl * control);
-  CStringList GetContext (void);
-  void SetContext (CStringList context);
+  lxStringList GetContext (void);
+  void SetContext (lxStringList context);
   //propiedades
-  void SetFields (String litens);
-  String GetFields (void);
-  String GetField (int item);
-  void SetField (int item, String sitem);
+  void SetFields (lxString litens);
+  lxString GetFields (void);
+  lxString GetField (int item);
+  void SetField (int item, lxString sitem);
   int GetFieldsCount (void);
-  void AddField (String text);
+  void AddField (lxString text);
 };
 
 #endif

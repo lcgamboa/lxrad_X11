@@ -34,7 +34,7 @@ class CPMenu:public CWindow
 {
 private:
   bool Press;
-  String MenuItems;	  
+  lxString MenuItems;	  
   CItemMenu IMenu;
 public:
   uint NextItemY;
@@ -42,11 +42,11 @@ public:
 //   ~CPMenu (void);
   void Draw (void);
   int Create (CControl * control);
-  void SetMenuItems (String mitens);
-  String GetMenuItems (void);
-  CStringList GetContext (void);
-  void SetContext (CStringList context);
-  void SetText (String text);
+  void SetMenuItems (lxString mitens);
+  lxString GetMenuItems (void);
+  lxStringList GetContext (void);
+  void SetContext (lxStringList context);
+  void SetText (lxString text);
 //events
   void button_press (XEvent event);
   void on_leave (void);

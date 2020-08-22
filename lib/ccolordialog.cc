@@ -53,7 +53,7 @@ CColorDialog::Run (void)
 return;
 }
 
-String 
+lxString 
 CColorDialog::GetColorName (void)
 {
   printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
@@ -61,7 +61,7 @@ return "";
 }
 
 void 
-CColorDialog::SetColorName (String cname)
+CColorDialog::SetColorName (lxString cname)
 {
   printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
 }
@@ -85,17 +85,17 @@ CColorDialog::SetColor (uint r, uint g, uint b)
   Color=ColorByRGB(r,g,b);	
 }
 
-CStringList 
+lxStringList 
 CColorDialog::GetContext (void)
 {
 //FIXME	
-CStringList sl;
+lxStringList sl;
   printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
 return sl;	
 }
 
 void 
-CColorDialog::SetContext (CStringList context)
+CColorDialog::SetContext (lxStringList context)
 {
   printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
 }

@@ -30,10 +30,10 @@ CWindow2::~CWindow2 (void)
 
 extern Bool predicate(Display* display,XEvent *event,XPointer arg);
 
-String
-space2underline(String str)
+lxString
+space2underline(lxString str)
 {
-  String out=str;	
+  lxString out=str;	
   
   for(uint i=0; i<str.size();i++)
     if(str[i] == ' ') out[i]='_';
@@ -305,10 +305,10 @@ CWindow2::Reset (void)
   resetcontrolscount ();
 };
 
-String
+lxString
 CWindow2::getalign (CAlign align)
 {
-  String a;
+  lxString a;
   switch (align)
     {
     case CA_RIGHT:
@@ -325,7 +325,7 @@ CWindow2::getalign (CAlign align)
 };
 
 bool
-CWindow2::testline(String line)
+CWindow2::testline(lxString line)
 {
 int pos;
 for(uint a =0 ; a < linesbak.GetLinesCount();a++)
@@ -341,13 +341,13 @@ void
 CWindow2::MakeList (bool prompt)
 {
   FILE * fbak;
-  String lbak;
+  lxString lbak;
   FILE * file;
-  String filename, filec = "", filec2 = "";
+  lxString filename, filec = "", filec2 = "";
   CControl *controle;
-  String ctname;
+  lxString ctname;
   CStringList List;
-  String line, arg, ctype;
+  lxString line, arg, ctype;
      
   
      if(prompt)
@@ -359,8 +359,8 @@ CWindow2::MakeList (bool prompt)
 	 };
 
   
-      String dirname = PDir;
-      String basename = PName;
+      lxString dirname = PDir;
+      lxString basename = PName;
 
       //dirname += "/" + basename;
       //PName = basename;
@@ -749,9 +749,9 @@ CWindow2::MakeList (bool prompt)
 };
 
 void
-CWindow2::MakeProject (String basename)
+CWindow2::MakeProject (lxString basename)
 {
-  String filename, ctname;
+  lxString filename, ctname;
   FILE* file;
   CStringList List;
   CControl *controle;
@@ -793,16 +793,16 @@ CWindow2::MakeProject (String basename)
 
 
 bool
-CWindow2::LoadProject (String dirname, String filename)
+CWindow2::LoadProject (lxString dirname, lxString filename)
 {
 /*
-  String dirname ="./"+filename.substr(0,filename.find(".lxrad"));
+  lxString dirname ="./"+filename.substr(0,filename.find(".lxrad"));
   cout<<"file= "<<filename<<endl;
   cout<<"dir = "<<dirname<<endl;
 */
-  String basename, name;
+  lxString basename, name;
   FILE* file1,*file2;
-  String line, arg;
+  lxString line, arg;
   CStringList list;
   int pos;
 /*
@@ -888,7 +888,7 @@ CWindow2::LoadProject (String dirname, String filename)
 	  };
 	  while (line.size () > 0)
 	    {
-	      String controlclass;
+	      lxString controlclass;
 	      list.Clear ();
 	      controlclass = line.substr (3, line.size ());
 	      CControl *ncontrol = newcontrol (controlclass, this);
@@ -982,7 +982,7 @@ CWindow2::Window2MouseButtonClick (CControl * control, uint button, uint x,
 void
 CWindow2::ListPropierties (CControl * control)
 {
-  String line, arg, ctype;
+  lxString line, arg, ctype;
   CStringList cList;
   cList.Clear ();
   cList = control->GetContext ();
@@ -1022,7 +1022,7 @@ CWindow2::ListPropierties (CControl * control)
 	  CLabel *control1;
 	  control1 = new CLabel;
 	  control1->SetText ("");
-	  control1->SetName ("cstring" + itoa (c + 1));
+	  control1->SetName ("clxString" + itoa (c + 1));
 	  control1->SetX (0);
 	  control1->SetWidth (85);
 	  control1->SetY (3 + 22 * c);
@@ -1268,11 +1268,11 @@ CWindow2::GMouseMove (CControl * control, uint x, uint y)
     };
 };
 
-String
-CWindow2::WriteEvents (String name, String event)
+lxString
+CWindow2::WriteEvents (lxString name, lxString event)
 {
   int pos = 0;
-  String out = name + "_" + event;
+  lxString out = name + "_" + event;
 
   pos = event.find ("Mouse");
   if (pos >= 0)
@@ -1293,11 +1293,11 @@ CWindow2::WriteEvents (String name, String event)
 
 
 
-String
-CWindow2::WriteControlEvents (String name, String event)
+lxString
+CWindow2::WriteControlEvents (lxString name, lxString event)
 {
-  String SWN = itoa (WN);
-  String
+  lxString SWN = itoa (WN);
+  lxString
     out =
     event + "=" + uppercase (event) + " & CWindow" + SWN + "::" + name + "_" +
     event + ";\n";

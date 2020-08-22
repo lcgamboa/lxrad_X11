@@ -37,8 +37,8 @@ public:
   int Create (CControl * control);
   void SetWidth(unsigned width);
   void SetHeight(unsigned height );
-  void SetItems (String litens);
-  String GetItems (void);
+  void SetItems (lxString litens);
+  lxString GetItems (void);
   void listchange1 (CList * list);
   void buttonpress1 (CControl * control, uint key, uint x, uint y,uint mask);
   CComboDialog (void);

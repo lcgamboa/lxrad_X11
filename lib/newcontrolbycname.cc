@@ -2,7 +2,7 @@
 #include"../include/lxrad.h"
 
 CControl *
-newcontrolbycname (String controltype)
+newcontrolbycname (lxString controltype)
 {
   CControl *ncontrol = NULL;
 

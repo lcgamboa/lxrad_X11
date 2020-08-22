@@ -41,7 +41,7 @@ lxTextFile::lxTextFile()
 }
 
 int 
-lxTextFile::Open(String fname)
+lxTextFile::Open(lxString fname)
 {
   fn=fname;
   f=fopen(fname.c_str(),"rw");
@@ -52,7 +52,7 @@ lxTextFile::Open(String fname)
 }
 
 int 
-lxTextFile::Create(String fname)
+lxTextFile::Create(lxString fname)
 {
   fn=fname;
   f=fopen(fname.c_str(),"rw");
@@ -106,7 +106,7 @@ lxTextFile::Clear(void)
 }
 
 void 
-lxTextFile::AddLine(String line)
+lxTextFile::AddLine(lxString line)
 {
  fprintf(f,"%s\n",line.c_str ());
 }
@@ -131,7 +131,7 @@ lxImage::~lxImage()
 
 
 bool
-lxImage::LoadFile(String fname)
+lxImage::LoadFile(lxString fname)
 {
   Destroy();
 	
@@ -237,7 +237,7 @@ lxBitmap::GetHeight(void)
 //-------------------------------------------------------------------------
 
 bool
-lxSound::Create(String fname)
+lxSound::Create(lxString fname)
 {
 //FIXME	
   printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
@@ -257,7 +257,7 @@ lxSound::Play(int flags)
 }
 //-------------------------------------------------------------------------
 void 
-lxFileName::Assign(String fname)
+lxFileName::Assign(lxString fname)
 {
   FName=fname;
 }
@@ -270,7 +270,7 @@ lxFileName::MakeAbsolute(void)
     FName=resolved_path;
 }
 
-String
+lxString
 lxFileName::GetFullPath(void)
 {
 return FName;
@@ -311,7 +311,7 @@ lxColor::lxColor(const char * name)
   }
 }
 
-String
+lxString
 lxColor::GetAsString(int flags)
 {
    char cname[20];
@@ -369,7 +369,7 @@ void lxSetCursor(lxCursor cursor)
   printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
 }
 
-bool lxFileExists(String fname)
+bool lxFileExists(lxString fname)
 {
   struct stat sb;
   
@@ -383,14 +383,14 @@ bool lxFileExists(String fname)
     return false;
 }
 
-int lxExecute(String cmd,unsigned int flags, void * arg)
+int lxExecute(lxString cmd,unsigned int flags, void * arg)
 {
  if(flags != lxEXEC_SYNC)
     cmd+=lxT(" &");	
   return system(cmd.c_str())+1;
 }
 
-String 
+lxString 
 lxGetCwd(void)
 {
    char cwd[1024];
@@ -401,28 +401,28 @@ lxGetCwd(void)
 }
 
 int 
-lxSetWorkingDirectory(String dir)
+lxSetWorkingDirectory(lxString dir)
 {
   return chdir(dir.c_str ());
 }
 
 bool 
-lxLaunchDefaultBrowser(String url)
+lxLaunchDefaultBrowser(lxString url)
 {
- String cmd= lxT("xdg-open ")+url+lxT("  &");
+ lxString cmd= lxT("xdg-open ")+url+lxT("  &");
  return system(cmd.c_str ());
 }
 
 bool 
-lxLaunchDefaultApplication(String cmd)
+lxLaunchDefaultApplication(lxString cmd)
 {
- String cmd_= lxT("xdg-open ")+cmd+lxT("  &");
+ lxString cmd_= lxT("xdg-open ")+cmd+lxT("  &");
  return system(cmd_.c_str ());
 }
 
 //-------------------------------------------------------------------------
 bool
-lxUnzipDir (const String &in_filename, const String &out_dirname) {
+lxUnzipDir (const lxString &in_filename, const lxString &out_dirname) {
  
  char fname[1024];
  unzFile uzf =unzOpen (in_filename.c_str ());
@@ -441,7 +441,7 @@ lxUnzipDir (const String &in_filename, const String &out_dirname) {
       unzReadCurrentFile(uzf,buff,finfo.uncompressed_size);
       unzCloseCurrentFile(uzf);
       
-      String dname=out_dirname;
+      lxString dname=out_dirname;
       dname+=dirname(fname);
       
       if(dname.length () > 0)
@@ -449,7 +449,7 @@ lxUnzipDir (const String &in_filename, const String &out_dirname) {
         lxCreateDir(dname);
        }
       
-      String name=out_dirname;
+      lxString name=out_dirname;
       name+=fname;
       
       FILE * fout=fopen(name.c_str(),"w");
@@ -470,11 +470,11 @@ lxUnzipDir (const String &in_filename, const String &out_dirname) {
  }
 
 bool
-lxZipDir (const String &in_dirname, const String &out_filename)
+lxZipDir (const lxString &in_dirname, const lxString &out_filename)
 {
-CStringList paths =lxListDirRec(in_dirname);
+lxStringList paths =lxListDirRec(in_dirname);
    
-String dname= basename(in_dirname.substr(0,in_dirname.length ()-1));
+lxString dname= basename(in_dirname.substr(0,in_dirname.length ()-1));
 
  if (paths.GetLinesCount () == 0)
   {
@@ -504,7 +504,7 @@ String dname= basename(in_dirname.substr(0,in_dirname.length ()-1));
      if (size == 0 || fread (buffer, size,1,file))
       {
        zip_fileinfo zfi = {0};
-       String fileName = dname+paths.GetLine (i).substr(in_dirname.length (),paths.GetLine (i).length ()-in_dirname.length ());
+       lxString fileName = dname+paths.GetLine (i).substr(in_dirname.length (),paths.GetLine (i).length ()-in_dirname.length ());
 
        if (0 == zipOpenNewFileInZip (zf, fileName.c_str (), &zfi, NULL, 0, NULL, 0, NULL, Z_DEFLATED, Z_DEFAULT_COMPRESSION))
         {
@@ -539,7 +539,7 @@ bool lxRemoveFile(const char * fname)
 }
 
 bool 
-lxRenameFile(String oldfname, String newfname)
+lxRenameFile(lxString oldfname, lxString newfname)
 {
  return rename(oldfname.c_str(),newfname.c_str());
 }
@@ -599,15 +599,15 @@ lxCreateDir(const char * dirname)
    return 0;
 }
 
-CStringList
-lxListDirRec (const String & dirname)
+lxStringList
+lxListDirRec (const lxString & dirname)
 {
  DIR *dp;
  struct dirent *dent;
  struct stat sb;
  char fname[1024];
 
- CStringList list;
+ lxStringList list;
 
  list.Clear ();
 
@@ -628,7 +628,7 @@ lxListDirRec (const String & dirname)
       {
        if (!(!strcmp (dent->d_name, ".") || !strcmp (dent->d_name, "..")))
         {
-          CStringList list2=lxListDirRec (fname);
+          lxStringList list2=lxListDirRec (fname);
           for(unsigned int i=0;i<list2.GetLinesCount ();i++)
            {
             list.AddLine (list2.GetLine (i));
@@ -642,20 +642,20 @@ lxListDirRec (const String & dirname)
 
 }
 
-String 
-lxGetUserDataDir(String appname)
+lxString 
+lxGetUserDataDir(lxString appname)
 {
-  return String("/home/")+getlogin()+"/."+appname;
+  return lxString("/home/")+getlogin()+"/."+appname;
 }
 
-String 
-lxGetTempDir(String appname)
+lxString 
+lxGetTempDir(lxString appname)
 {
   return "/tmp/";
 }
 
-String 
-lxGetExecutablePath(String appname)
+lxString 
+lxGetExecutablePath(lxString appname)
 {
   return "/usr/bin/";
 }
@@ -664,12 +664,12 @@ lxGetExecutablePath(String appname)
 
 // Useful functions_______________________________________________________
 
-void mprint(String message)
+void mprint(lxString message)
 {
   fprintf(stdout,"%s",message.c_str());
 };
 
-void eprint(String error)
+void eprint(lxString error)
 {
   fprintf(stderr,"%s",error.c_str());
 };
@@ -695,7 +695,7 @@ ColorByRGB (unsigned short r, unsigned short g, unsigned short b)
 };
 
 XColor
-ColorByName (String name)
+ColorByName (lxString name)
 {
   XColor
     colorA,
@@ -728,7 +728,7 @@ XXLookupString (XIC ic, XKeyPressedEvent * event, char *buffer_return,
       *keysym_return = XLookupKeysym (event, 0);
     };
 
-  strcpy (buffer_return, XKeysymToString (*keysym_return));
+  strcpy (buffer_return, XKeysymTolxString (*keysym_return));
   return 1;
 
 #else

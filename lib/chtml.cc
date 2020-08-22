@@ -43,14 +43,14 @@ CHtml::Create (CControl * control)
   return CText::Create(control);
 }
 
-CStringList 
+lxStringList 
 CHtml::GetContext (void)
 {
   return CControl::GetContext();
 }
 
 void 
-CHtml::SetContext (CStringList context)
+CHtml::SetContext (lxStringList context)
 {
   CControl::SetContext(context);
 }
@@ -58,12 +58,12 @@ CHtml::SetContext (CStringList context)
 //void Event (wxEvent & event);
   
 void 
-CHtml::SetLoadText (String t)
+CHtml::SetLoadText (lxString t)
 {
   printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
 }
 
-String 
+lxString 
 CHtml::GetLoadText (void)
 {
   printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
@@ -71,12 +71,12 @@ CHtml::GetLoadText (void)
 }
 
 void 
-CHtml::SetLoadUrl (String url)
+CHtml::SetLoadUrl (lxString url)
 {
   printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
 }
 
-String 
+lxString 
 CHtml::GetLoadUrl (void)
 {
   printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
@@ -84,12 +84,12 @@ CHtml::GetLoadUrl (void)
 }
 
 void 
-CHtml::SetLoadFile (String url)
+CHtml::SetLoadFile (lxString url)
 {
   printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
 }
 
-String 
+lxString 
 CHtml::GetLoadFile (void)
 {
   printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);

@@ -1,6 +1,6 @@
 
 
-String 
+lxString 
 xevent_name(int n)
 {
   switch(n)

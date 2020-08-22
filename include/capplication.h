@@ -61,7 +61,7 @@ private:
   unsigned int AWhiteColor;
   unsigned int ABlackColor;
   int Tag;
-  String Title;
+  lxString Title;
   Atom AWMProtocols;
   Atom AWMDeleteWindow;
   Atom AWMTakeFocus;
@@ -91,7 +91,7 @@ public:
   CWindow *GetAWindow (uint window);
   void SetTag (int x);
   int GetTag ();
-  String GetTitle ();
+  lxString GetTitle ();
   Window *GetADefaultRootWindow (void);
   int *GetADepth (void);
   unsigned int *GetAWhiteColor (void);
@@ -100,8 +100,8 @@ public:
   Atom *GetAWMDeleteWindow (void);
   Atom *GetAWMTakeFocus (void);
   void SetHintControl(CControl* hcontrol,int x,int y);
-  void AddToColorTable (String colorname, XColor color, XColor displaycolor);
-  bool XSearchInColorTable (String name, XColor * color);
+  void AddToColorTable (lxString colorname, XColor color, XColor displaycolor);
+  bool XSearchInColorTable (lxString name, XColor * color);
   bool XSearchInColorTable (XColor * color);
 };
 

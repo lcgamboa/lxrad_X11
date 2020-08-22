@@ -42,6 +42,6 @@ public:
     CInput (void);
 };
 
-bool Input (String label, String & str);
+bool Input (lxString label, lxString & str);
 
 #endif

@@ -4,10 +4,10 @@
 #include<lxrad/lxrad.h>
 
 extern int WN;
-extern string Version;
+extern lxString Version;
 extern int PNW;
-extern string PName;
-extern string PDir;
-extern string POptions;
+extern lxString PName;
+extern lxString PDir;
+extern lxString POptions;
 
 #endif

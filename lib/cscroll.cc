@@ -222,7 +222,7 @@ CScroll::Draw (void)
   CControl::Draw ();
 };
 
-CStringList 
+lxStringList 
 CScroll::GetContext (void)
 {
   CControl::GetContext ();
@@ -231,14 +231,14 @@ CScroll::GetContext (void)
 };
 
 void
-CScroll::SetContext (CStringList context)
+CScroll::SetContext (lxStringList context)
 {
   Erase ();
   CControl::SetContext (context);
   for (uint i = 0; i < context.GetLinesCount (); i++)
     {
-      string line = Context.GetLine (i);
-      string arg;
+      lxString line = Context.GetLine (i);
+      lxString arg;
       eqparse (line, arg);
       if (line.compare ("OnChangePosition") == 0)
 	SetEv (atob (arg));

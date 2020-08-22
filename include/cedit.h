@@ -53,11 +53,11 @@ public:
   void Draw (void);
   void DrawCursor (void);
   int Create (CControl * control);
-  CStringList GetContext (void);
-  void SetContext (CStringList context);
+  lxStringList GetContext (void);
+  void SetContext (lxStringList context);
   //propiedades
-  virtual void SetText (String t);
-  virtual String GetText (void);
+  virtual void SetText (lxString t);
+  virtual lxString GetText (void);
   void SetX (int x);
   void SetY (int y);
   void SetWidth (uint width);

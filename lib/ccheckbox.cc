@@ -67,7 +67,7 @@ CCheckBox::Draw(void)
  CControl::Draw ();
 };
 
-CStringList
+lxStringList
 CCheckBox::GetContext(void)
 {
  CControl::GetContext ();
@@ -77,14 +77,14 @@ CCheckBox::GetContext(void)
 };
 
 void
-CCheckBox::SetContext(CStringList context)
+CCheckBox::SetContext(lxStringList context)
 {
  Erase ();
  CControl::SetContext (context);
  for (uint i = 0; i < context.GetLinesCount (); i++)
   {
-   String line = Context.GetLine (i);
-   String arg;
+   lxString line = Context.GetLine (i);
+   lxString arg;
    eqparse (line, arg);
    if (line.compare ("Text") == 0)
     SetText (arg);
@@ -110,13 +110,13 @@ CCheckBox::GetCheck(void)
 };
 
 void
-CCheckBox::SetText(String t)
+CCheckBox::SetText(lxString t)
 {
  Text->SetText (t);
  Draw ();
 };
 
-String
+lxString
 CCheckBox::GetText(void)
 {
  return Text->GetText ();

@@ -43,18 +43,18 @@ class CWindow;
 
 struct TXColor
 {
-  String name;
+  lxString name;
   XColor color;
   XColor displaycolor;
 };
 
-void mprint(String message);
+void mprint(lxString message);
 
-void eprint(String error);
+void eprint(lxString error);
 
 XColor ColorByRGB (unsigned short r, unsigned short g, unsigned short b);
 
-XColor ColorByName (String name);
+XColor ColorByName (lxString name);
 
 int XXLookupString (XIC ic, XKeyPressedEvent * event, char *buffer_return,
 		    int bytes_buffer, KeySym * keysym_return,
@@ -64,11 +64,11 @@ class lxTextFile
 {
   private:	
   FILE * f;
-  String fn;
+  lxString fn;
   public:
   lxTextFile();
-  int Open(String fname);
-  int Create(String fname);
+  int Open(lxString fname);
+  int Create(lxString fname);
   bool IsOpened(void);
   void Close(void);
   void GoToLine(int l);
@@ -76,7 +76,7 @@ class lxTextFile
   operator FILE*() const;
   void Clear(void);
   void Write(void){};
-  void AddLine(String line);
+  void AddLine(lxString line);
 };
 
 
@@ -87,7 +87,7 @@ Imlib_Image Image;
 public:
 lxImage();
 ~lxImage();
-bool LoadFile(String fname);
+bool LoadFile(lxString fname);
 void Destroy();
 operator Imlib_Image() const;
 };
@@ -122,7 +122,7 @@ class lxSound
 {
 private:
 public:
-  bool Create(String fname);	
+  bool Create(lxString fname);	
   void Stop(void);
   void Play(int flags);
 };
@@ -130,11 +130,11 @@ public:
 class lxFileName
 {
 private:
-String FName;
+lxString FName;
 public:
-  void Assign(String fname);
+  void Assign(lxString fname);
   void MakeAbsolute(void);
-  String GetFullPath(void);
+  lxString GetFullPath(void);
 };
 
 #define lxPoint XPoint
@@ -152,7 +152,7 @@ public:
   lxColor();
   lxColor(XColor color);
   lxColor(const char * name);
-  String GetAsString(int flags =0);
+  lxString GetAsString(int flags =0);
   operator XColor() const;
 };
 
@@ -221,24 +221,24 @@ public:
 
 void lxMilliSleep(unsigned int time);
 void lxSetCursor(lxCursor cursor); 
-bool lxFileExists(String fname);
-int lxExecute(String cmd,unsigned int flags=0, void * arg = NULL);
-String lxGetCwd(void);
-int lxSetWorkingDirectory(String dir);
-bool lxLaunchDefaultBrowser(String url);
-bool lxLaunchDefaultApplication(String cmd);
+bool lxFileExists(lxString fname);
+int lxExecute(lxString cmd,unsigned int flags=0, void * arg = NULL);
+lxString lxGetCwd(void);
+int lxSetWorkingDirectory(lxString dir);
+bool lxLaunchDefaultBrowser(lxString url);
+bool lxLaunchDefaultApplication(lxString cmd);
 
-String lxGetUserDataDir(String appname="");
-String lxGetTempDir(String appname="");
-String lxGetExecutablePath(String appname="");
+lxString lxGetUserDataDir(lxString appname="");
+lxString lxGetTempDir(lxString appname="");
+lxString lxGetExecutablePath(lxString appname="");
 
-CStringList lxListDirRec(const String &dirname);
-bool lxZipDir(const String &in_dirname, const String &out_filename);
-bool lxUnzipDir(const String &in_filename, const String &out_dirname);
+lxStringList lxListDirRec(const lxString &dirname);
+bool lxZipDir(const lxString &in_dirname, const lxString &out_filename);
+bool lxUnzipDir(const lxString &in_filename, const lxString &out_dirname);
 
 bool lxRemoveFile(const char* fname);
 bool lxRemoveDir(const char* dirname);
 bool lxCreateDir(const char * dirname);
-bool lxRenameFile(String oldfname, String newfname);
+bool lxRenameFile(lxString oldfname, lxString newfname);
 
 #endif	/* LXUTILS_H */

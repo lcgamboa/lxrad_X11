@@ -4,11 +4,11 @@
 #include"layout1_d.cc"
 
 int WN = 1;
-string Version = "0.4";
+lxString Version = "0.4";
 int PNW = 1;
-string PName = "untitled";
-string PDir = "~/";
-string POptions = "-Wall -O5";
+lxString PName = "untitled";
+lxString PDir = "~/";
+lxString POptions = "-Wall -O5";
 
 //Implemetation
 
@@ -23,11 +23,11 @@ CWindow1 Window1;
 
 bool Save = false;
 bool Move;
-String operation = "editar";
-String Browser="konqueror";
-String Editor="xterm -e vim";
-String Debuger="ddd";
-String Home="";
+lxString operation = "editar";
+lxString Browser="konqueror";
+lxString Editor="xterm -e vim";
+lxString Debuger="ddd";
+lxString Home="";
 
 #include"layout2.h"
 #include"layout5.h"
@@ -75,7 +75,7 @@ void
 CWindow1::PreferencesMouseButtonPress (CControl * control, uint button, uint x,
 			       uint y, uint state)
 {
-  String temp;
+  lxString temp;
   FILE* fout;
   
   temp=Browser;
@@ -231,14 +231,14 @@ void
 CWindow1::ContentsMouseButtonPress (CControl * control, uint button, uint x, uint y,
 			    uint state)
 {
-  system((Browser+" "+String(_SHARE)+"/../docs/index.html&").c_str());
+  system((Browser+" "+lxString(_SHARE)+"/../docs/index.html&").c_str());
 };
 
 void
 CWindow1::ReferenceMouseButtonPress (CControl * control, uint button, uint x, uint y,
 			    uint state)
 {
-  system((Browser+" "+String(_SHARE)+"/../docs/reference.html&").c_str());
+  system((Browser+" "+lxString(_SHARE)+"/../docs/reference.html&").c_str());
 };
 
 void
@@ -272,7 +272,7 @@ void
 CWindow1::DebugMouseButtonPress (CControl * control, uint button, uint x, uint y,
 			    uint state)
 {	
-  string temp;
+  lxString temp;
   chdir(PDir.c_str());
   temp = POptions;
   POptions="-Wall -ggdb3";

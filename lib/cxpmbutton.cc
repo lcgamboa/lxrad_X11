@@ -87,7 +87,7 @@ CXpmButton::Draw (void)
     };
 };
 
-CStringList CXpmButton::GetContext (void)
+lxStringList CXpmButton::GetContext (void)
 {
   CControl::GetContext ();
   Context.AddLine ("Text=" + GetText () + ";String");
@@ -96,14 +96,14 @@ CStringList CXpmButton::GetContext (void)
 };
 
 void
-CXpmButton::SetContext (CStringList context)
+CXpmButton::SetContext (lxStringList context)
 {
   Erase ();
   CControl::SetContext (context);
   for (uint i = 0; i < context.GetLinesCount (); i++)
     {
-      String line = Context.GetLine (i);
-      String arg;
+      lxString line = Context.GetLine (i);
+      lxString arg;
       eqparse (line, arg);
       if (line.compare ("Text") == 0)
 	SetText (arg);
@@ -128,12 +128,12 @@ CXpmButton::SetPixmapData (char **data)
 };
 
 void
-CXpmButton::SetPixmapFileName (String filename)
+CXpmButton::SetPixmapFileName (lxString filename)
 {
   Xpm->SetPixmapFileName (filename);
 };
 
-String
+lxString
 CXpmButton::GetPixmapFileName (void)
 {
   return Xpm->GetPixmapFileName ();

@@ -38,14 +38,14 @@ public:
    ~CToolButton (void);
   void Draw (void);
   int Create (CControl * control);
-  CStringList GetContext (void);
-  void SetContext (CStringList context);
+  lxStringList GetContext (void);
+  void SetContext (lxStringList context);
   //propiedades
   void SetPixmapData (const char** data);
-  void SetPixmapFileName (String filename);
+  void SetPixmapFileName (lxString filename);
   void SetImgData(const char** data);
-  void SetImgFileName(String filename);
-  String GetPixmapFileName (void);
+  void SetImgFileName(lxString filename);
+  lxString GetPixmapFileName (void);
   void SetWidth (uint width);
   void SetHeight (uint height);
 

@@ -55,7 +55,7 @@ CHint::MouseMove1 (CControl * control,uint button, uint x, uint y, uint state)
 };
 
 void
-WHint (String str,int x, int y)
+WHint (lxString str,int x, int y)
 {
   CHint *whint = new CHint;
   

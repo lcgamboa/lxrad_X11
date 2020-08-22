@@ -46,8 +46,8 @@ public:
   void Draw (void);
   int Create (CControl * control);
   void Destroy (void);
-  CStringList GetContext (void);
-  void SetContext (CStringList context);
+  lxStringList GetContext (void);
+  void SetContext (lxStringList context);
   void SetRunState (bool run);
   bool GetRunState ();
   //propiedades

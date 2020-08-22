@@ -80,7 +80,7 @@ dir_filter (const struct dirent *de)
 };
 
 void
-CFileList::SetDir (String dir)
+CFileList::SetDir (lxString dir)
 {
   struct dirent **dirs = NULL;
   struct dirent **files = NULL;
@@ -223,7 +223,7 @@ CFileList::Draw ()
   Update ();
 };
 
-CStringList 
+lxStringList 
 CFileList::GetContext (void)
 {
   CControl::GetContext ();
@@ -234,14 +234,14 @@ CFileList::GetContext (void)
 };
 
 void
-CFileList::SetContext (CStringList context)
+CFileList::SetContext (lxStringList context)
 {
   Erase ();
   CControl::SetContext (context);
   for (uint i = 0; i < context.GetLinesCount (); i++)
     {
-      String line = Context.GetLine (i);
-      String arg;
+      lxString line = Context.GetLine (i);
+      lxString arg;
       eqparse (line, arg);
       if (line.compare ("OnChangeItem") == 0)
 	SetEv (atob (arg));
@@ -257,7 +257,7 @@ CFileList::SetContext (CStringList context)
 //propriedades
 
 void
-CFileList::AddStringItem (String text)
+CFileList::AddStringItem (lxString text)
 {
   CLabel *item;
   item = new CLabel;
@@ -309,13 +309,13 @@ CFileList::DeleteItems (bool clean)
 };
 
 
-String
+lxString
 CFileList::GetSelectedDir (void)
 {
   return Dir;
 };
 
-String
+lxString
 CFileList::GetSelectedFile (void)
 {
   return (Dir +"/"+ ItemsList.GetLine(SelectedItem));
@@ -326,7 +326,7 @@ CFileList::DirButtonClick (CControl * control, uint button, uint x,
 			   uint y, uint state)
 {
   CLabel *item;
-  String dir = GetSelectedDir ();
+  lxString dir = GetSelectedDir ();
 
   item = dynamic_cast < CLabel * >(control);
 

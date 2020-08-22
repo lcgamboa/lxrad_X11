@@ -37,7 +37,7 @@
 class CFileList:public CList
 {
 protected:
-  String Dir;
+  lxString Dir;
   void dir_selected (void);
   void file_selected (void);
   unsigned char *ItemsType;
@@ -46,15 +46,15 @@ public:
    ~CFileList (void);
   void Draw (void);
   int Create (CControl * control);
-  CStringList GetContext (void);
-  void SetContext (CStringList context);
+  lxStringList GetContext (void);
+  void SetContext (lxStringList context);
   //propiedades
   void AddItem (char *name, unsigned char dtype);
-  void AddStringItem (String text);
+  void AddStringItem (lxString text);
   void DeleteItems (bool clean=true);
-  void SetDir (String dir);
-  String GetSelectedDir (void);
-  String GetSelectedFile (void);
+  void SetDir (lxString dir);
+  lxString GetSelectedDir (void);
+  lxString GetSelectedFile (void);
 //events
   void DirButtonClick (CControl * control, uint button, uint x, uint y,
 			     uint state);

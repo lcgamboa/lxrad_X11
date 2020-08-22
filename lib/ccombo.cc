@@ -126,38 +126,38 @@ CCombo::Draw ()
 
 
 void
-CCombo::AddItem (String text)
+CCombo::AddItem (lxString text)
 {
   dlist1.list1.AddItem (text);
 };
 
 void
-CCombo::LoadItemsFromFile (String fname)
+CCombo::LoadItemsFromFile (lxString fname)
 {
   dlist1.list1.LoadItemsFromFile (fname);
 };
 
 void
-CCombo::SaveItemsToFile (String fname)
+CCombo::SaveItemsToFile (lxString fname)
 {
   dlist1.list1.SaveItemsToFile (fname);
 };
 
-String
+lxString
 CCombo::GetItem (int item)
 {
   return dlist1.list1.GetItem (item);
 };
 
 void
-CCombo::SetSelectedItem (String item)
+CCombo::SetSelectedItem (lxString item)
 {
   dlist1.list1.SetSelectedItem (item);
   edit1.SetText (dlist1.list1.GetSelectedItem ());
   Update ();
 };
 
-String
+lxString
 CCombo::GetSelectedItem (void)
 {
   return dlist1.list1.GetSelectedItem ();
@@ -181,7 +181,7 @@ CCombo::DeleteItems (void)
   dlist1.list1.DeleteItems ();
 };
 
-CStringList
+lxStringList
 CCombo::GetContext (void)
 {
  CControl::GetContext ();
@@ -193,9 +193,9 @@ CCombo::GetContext (void)
 }
 
 void
-CCombo::SetContext (CStringList context)
+CCombo::SetContext (lxStringList context)
 {
- String name, type, value;
+ lxString name, type, value;
  Erase ();
 
  CControl::SetContext (context);
@@ -215,24 +215,24 @@ CCombo::SetContext (CStringList context)
 }
 
 void
-CCombo::SetText (String text)
+CCombo::SetText (lxString text)
 {
   edit1.SetText(text);
 };
 
-String 
+lxString 
 CCombo::GetText(void)
 {
   return edit1.GetText();
 };
   
 void 
-CCombo::SetItems (String litens)
+CCombo::SetItems (lxString litens)
 {
   dlist1.SetItems(litens);
 };
 
-String 
+lxString 
 CCombo::GetItems (void)
 {
   return dlist1.GetItems();

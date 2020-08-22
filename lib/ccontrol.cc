@@ -503,7 +503,7 @@ CControl::OwnerEvent (int x, int y)
     return false;
 }
 
-CStringList CControl::GetContext (void)
+lxStringList CControl::GetContext (void)
 {
   CObject::GetContext ();
 
@@ -539,9 +539,9 @@ CStringList CControl::GetContext (void)
 }
 
 void
-CControl::SetContext (CStringList context)
+CControl::SetContext (lxStringList context)
 {
-  String name, type, value;
+  lxString name, type, value;
 
   CObject::SetContext (context);
   for (uint i = 0; i < context.GetLinesCount (); i++)
@@ -601,9 +601,9 @@ CControl::SetContext (CStringList context)
 
 
 void
-CControl::WriteXMLContext (String filename, bool first)
+CControl::WriteXMLContext (lxString filename, bool first)
 {
-  CStringList list;
+  lxStringList list;
   list = GetContext ();
   list.InsertLine (lxT("<") + Name + lxT(">"), 0);
   if (first)
@@ -627,11 +627,11 @@ CControl::WriteXMLContext (String filename, bool first)
 }
 
 void
-CControl::LoadXMLContext (String filename)
+CControl::LoadXMLContext (lxString filename)
 {
   lxTextFile fin;
-  CStringList list;
-  String line, name;
+  lxStringList list;
+  lxString line, name;
 
   fin.Open(filename);
   fin.GoToLine(0);
@@ -708,7 +708,7 @@ CControl::GetRectangle (void)
 
 
 void
-CControl::SetFont (const String font)
+CControl::SetFont (const lxString font)
 {
   FontName = font;
   if (Win)
@@ -731,7 +731,7 @@ CControl::GetFont (void)
   return CFont;
 }
 
-String CControl::GetFontName (void)
+lxString CControl::GetFontName (void)
 {
   return FontName;
 }
@@ -749,12 +749,12 @@ CControl::GetFontSize (void)
 }
 
 void
-CControl::SetHint(String hint)
+CControl::SetHint(lxString hint)
 {
   Hint=hint;
 }
 
-String
+lxString
 CControl::GetHint(void)
 {
  return Hint;
@@ -885,7 +885,7 @@ CControl::SetColor (XColor c)
 }
 
 void
-CControl::SetColor (const String name)
+CControl::SetColor (const lxString name)
 {
   ColorName = name;
 
@@ -1078,7 +1078,7 @@ CControl::GetChild (uint child)
 }
 
 CControl *
-CControl::GetChildByName (const String child)
+CControl::GetChildByName (const lxString child)
 {
   for (int a = 0; a <= ChildCount; a++)
     if (Child[a]->GetName ().compare (child) == 0)

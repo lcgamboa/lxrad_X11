@@ -91,33 +91,33 @@ CWindow5::CWindow5(void)
   edit2.SetText("");
   edit2.SetEnable(false);
   CreateChild(&edit2);
-  //string1
-  string1.SetFOwner(this);
-  string1.SetName("string1");
-  string1.SetX(50);
-  string1.SetY(45);
-  string1.SetWidth(100);
-  string1.SetHeight(20);
-  string1.SetText("Project file");
-  CreateChild(&string1);
-  //string2
-  string2.SetFOwner(this);
-  string2.SetName("string2");
-  string2.SetX(50);
-  string2.SetY(108);
-  string2.SetWidth(100);
-  string2.SetHeight(20);
-  string2.SetText("Project Dir");
-  CreateChild(&string2);
-  //string3
-  string3.SetFOwner(this);
-  string3.SetName("string3");
-  string3.SetX(52);
-  string3.SetY(131);
-  string3.SetWidth(100);
-  string3.SetHeight(20);
-  string3.SetText("Project Name");
-  CreateChild(&string3);
+  //lxString1
+  lxString1.SetFOwner(this);
+  lxString1.SetName("lxString1");
+  lxString1.SetX(50);
+  lxString1.SetY(45);
+  lxString1.SetWidth(100);
+  lxString1.SetHeight(20);
+  lxString1.SetText("Project file");
+  CreateChild(&lxString1);
+  //lxString2
+  lxString2.SetFOwner(this);
+  lxString2.SetName("lxString2");
+  lxString2.SetX(50);
+  lxString2.SetY(108);
+  lxString2.SetWidth(100);
+  lxString2.SetHeight(20);
+  lxString2.SetText("Project Dir");
+  CreateChild(&lxString2);
+  //lxString3
+  lxString3.SetFOwner(this);
+  lxString3.SetName("lxString3");
+  lxString3.SetX(52);
+  lxString3.SetY(131);
+  lxString3.SetWidth(100);
+  lxString3.SetHeight(20);
+  lxString3.SetText("Project Name");
+  CreateChild(&lxString3);
   //edit3
   edit3.SetFOwner(this);
   edit3.SetName("edit3");

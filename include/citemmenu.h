@@ -42,8 +42,8 @@ public:
 //propiedade;
   void Draw (void);
   int Create (CControl * control);
-  CStringList GetContext (void);
-  void SetContext (CStringList context);
+  lxStringList GetContext (void);
+  void SetContext (lxStringList context);
   void SetSubMenu (CPMenu * submenu);
   CPMenu * GetSubMenu (void);
 //eventos

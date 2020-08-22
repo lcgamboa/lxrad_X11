@@ -51,12 +51,12 @@ protected:
   uint Border;
   XColor Color;
   XColor DisableColor;
-  String ColorName;
+  lxString ColorName;
   bool ColorSet;
   CControl **Child;
   int ChildCount;
   int Pen;
-  String FontName;
+  lxString FontName;
   XFontStruct *CFont;
   uint FontSize;
   CControl *Owner;
@@ -65,7 +65,7 @@ protected:
   CPMenu *PopupMenu;
   CWindow *Win;
   CPaint  *Paint;
-  String  Hint;
+  lxString  Hint;
   bool CanVisible;		///<Can be Visible ?
 public:
   bool GetCanVisible (void);
@@ -80,14 +80,14 @@ public:
   virtual void Erase (void);
   virtual void Draw (void);
   virtual void Update (void);
-  CStringList GetContext (void);
-  void SetContext (CStringList context);
+  lxStringList GetContext (void);
+  void SetContext (lxStringList context);
   XRectangle GetRectangle (void);
 //propiedades
-  void SetFont (const String font);
+  void SetFont (const lxString font);
   void SetFont (XFontStruct * font);
   XFontStruct *GetFont (void);
-  String GetFontName (void);
+  lxString GetFontName (void);
   void SetFontSize (uint size);
   uint GetFontSize (void);
   virtual void SetX (int x);
@@ -104,7 +104,7 @@ public:
   virtual void SetHeight (unsigned h);
   uint GetHeight (void);
   void SetColor (XColor c);
-  void SetColor (const String name);
+  void SetColor (const lxString name);
   void SetColor (unsigned r, unsigned g, unsigned b);
   lxColor GetColor (void);
   bool GetCanExecuteEvent (void);
@@ -124,15 +124,15 @@ public:
   bool GetCanFocus (void);
   bool GetDynamic (void);
   int GetChildCount (void);
-  void SetHint(String hint);
-  String GetHint(void);
+  void SetHint(lxString hint);
+  lxString GetHint(void);
   CControl *GetChild (uint child);
-  CControl *GetChildByName (const String child);
+  CControl *GetChildByName (const lxString child);
   virtual void CreateChild (CControl * control);
   virtual void DestroyChild (CControl * control);
   virtual void DestroyChilds (void);
-  virtual void WriteXMLContext (String filename, bool first = true);
-  virtual void LoadXMLContext (String filename);
+  virtual void WriteXMLContext (lxString filename, bool first = true);
+  virtual void LoadXMLContext (lxString filename);
   
 //operators
   void *operator new (size_t sz);

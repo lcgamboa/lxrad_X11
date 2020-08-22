@@ -63,7 +63,7 @@ CMessage::ButtonRelease1 (CControl * control, uint button, uint x, uint y,
 }
 
 void
-Message (String str)
+Message (lxString str)
 {
   int width, height;  
   CMessage *wmessage = new CMessage;
@@ -82,7 +82,7 @@ Message (String str)
 }
 
 void
-Message_sz (String str, int Width, int Height)
+Message_sz (lxString str, int Width, int Height)
 {
   int width, height;  
   CMessage *wmessage = new CMessage;
