@@ -138,9 +138,9 @@ lxImage::LoadFile(lxString fname)
   //Image = imlib_load_image_immediately_without_cache ((char *) fname.c_str ());
   Image = imlib_load_image_immediately ((char *) fname.c_str ());
   if(Image)
-    return 0;
+    return 1;
   else
-    return 1;  
+    return 0;  
 }
 
 void
