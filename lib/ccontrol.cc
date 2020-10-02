@@ -1217,14 +1217,36 @@ void
 CControl::key_press (XEvent event)
 {
   if ((FOwner) && (EvKeyboardPress))
-    (FOwner->*EvKeyboardPress) (this, event.xkey.keycode, 0 , event.xkey.state);
+  {
+    KeySym keysym;	  
+    if((event.xkey.state & ShiftMask) || (event.xkey.state & LockMask))
+    {
+      keysym = XLookupKeysym (&event.xkey, 1);
+    }
+    else
+    {  
+      keysym = XLookupKeysym (&event.xkey, 0);
+    }
+    (FOwner->*EvKeyboardPress) (this, keysym, 0 , event.xkey.state);
+  }
 }
 
 void
 CControl::key_release (XEvent event)
 {
   if ((FOwner) && (EvKeyboardRelease))
-    (FOwner->*EvKeyboardRelease) (this, event.xkey.keycode, 0 , event.xkey.state);
+  {
+    KeySym keysym;	  
+    if((event.xkey.state & ShiftMask) || (event.xkey.state & LockMask))
+    {
+      keysym = XLookupKeysym (&event.xkey, 1);
+    }
+    else
+    {  
+      keysym = XLookupKeysym (&event.xkey, 0);
+    }
+    (FOwner->*EvKeyboardRelease) (this, keysym, 0 , event.xkey.state);
+  }
 }
 
 
