@@ -109,7 +109,7 @@ CDraw::SetWidth (uint width)
       for(int i=0; i< en; i++)
       {
 	      XNextEvent(disp,&ev); 
-              printf("event type %s  %lX  %lX\n",xevent_name(ev.type).c_str(),ev.xany.window,CPixmap);
+              //printf("event type %s  %lX  %lX\n",xevent_name(ev.type).c_str(),ev.xany.window,CPixmap);
       }
       
       if (CPixmap != 0) XFreePixmap (Win->GetADisplay (), CPixmap);
@@ -136,7 +136,7 @@ CDraw::SetHeight (uint height)
       for(int i=0; i< en; i++)
       {
 	      XNextEvent(disp,&ev); 
-              printf("event type %s  %lX  %lX\n",xevent_name(ev.type).c_str(),ev.xany.window,CPixmap);
+              //printf("event type %s  %lX  %lX\n",xevent_name(ev.type).c_str(),ev.xany.window,CPixmap);
       }
       
       if (CPixmap != 0)XFreePixmap (Win->GetADisplay (), CPixmap);

@@ -60,16 +60,23 @@ CItemMenu::Draw (void)
       X = Menu->NextItemX;
       Menu->NextItemX += Width + 20;
       Height = Menu->GetHeight () - 4;
-    };
+    }
 
   if (PMenu != NULL)
     {
-      X = 4;
+      X = 4+PMenu->NextItemX;
       Y = PMenu->NextItemY + 4;
+       
       PMenu->NextItemY += Height + 4;
-    };
+      
+      if((PMenu->NextItemY / (Height + 4)) == 30)
+       {
+          PMenu->NextItemY=0;
+          PMenu->NextItemX+= PMenu->GetWidth ()/((PMenu->GetChildCount ()/30)+1);
+       }
+    }
   CLabel::Draw ();
-};
+}
 
 
 int 
