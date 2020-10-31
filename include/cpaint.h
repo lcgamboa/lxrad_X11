@@ -87,6 +87,7 @@ public:
   void SetBgColor(lxString cname); 
   void SetFgColor(lxColor c); 
   void SetBgColor(lxColor c); 
+  void SetColor(lxColor c); 
   void Rectangle (bool filled, int x, int y, int w, int h);
   void Circle (bool filled, int x, int y, int radius);
   void Polygon(bool filed, lxPoint * points, int npoints);

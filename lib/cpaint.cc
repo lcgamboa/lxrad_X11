@@ -449,6 +449,13 @@ CPaint::SetColor(unsigned char r,unsigned char g, unsigned char b)
   Pen.SetBGColor (ColorByRGB(r,g,b));
 }
 
+void 
+CPaint::SetColor(lxColor c)
+{
+  Pen.SetColor (c);
+  Pen.SetBGColor (c);
+}
+
 void CPaint::SetFgColor(lxColor c)
 {
   Pen.SetColor (c);
