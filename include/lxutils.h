@@ -152,6 +152,7 @@ public:
   lxColor();
   lxColor(XColor color);
   lxColor(const char * name);
+  lxColor(unsigned char r, unsigned char g, unsigned char b);
   lxString GetAsString(int flags =0);
   operator XColor() const;
 };
