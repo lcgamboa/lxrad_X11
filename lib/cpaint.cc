@@ -179,13 +179,15 @@ CPaint::FillPolygon (XPoint * points, int npoints)
   }	
   XFillPolygon (Disp, DrawIn, Agc, points,
 		npoints, Nonconvex, CoordModeOrigin);
-};
+}
 
 void
 CPaint::Line (int x1, int y1, int x2, int y2)
 {
+  Rotate(&x1,&y1);
+  Rotate(&x2,&y2);
   XDrawLine (Disp, DrawIn, Agc, RX+x1, RY+y1, RX+x2, RY+y2);
-};
+}
 
 void
 CPaint::Lines (XPoint * points, int npoints)
@@ -454,6 +456,7 @@ void
 CPaint::Circle (bool filled, int x, int y, int radius)
 {
   int off=radius;	
+  Rotate(&x,&y);
   if(filled)	
     XFillArc (Disp, DrawIn, Agc, (RX+x-off)*Scalex, (RY+y-off)*Scaley, 2*radius*Scalex, 2*radius*Scaley,0,360*64);
   else
