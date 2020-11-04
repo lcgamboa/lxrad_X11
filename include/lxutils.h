@@ -85,6 +85,7 @@ class lxImage
 private:
 Imlib_Image Image;
 public:
+lxImage(Imlib_Image img);
 lxImage();
 ~lxImage();
 bool LoadFile(lxString fname);
@@ -109,7 +110,7 @@ private:
 Pixmap CPixmap;
 public:
 ~lxBitmap();
-lxBitmap (lxImage img, CWindow * win );
+lxBitmap (lxImage img, CWindow * win ,int orient=0);
 lxBitmap (int width, int height); 
 Pixmap  GetPixmap(void);
 operator Pixmap() const;
@@ -219,6 +220,7 @@ public:
 #define LXK_UP    XK_Up
 #define LXK_CONTROL  XK_Control_L
 
+lxBitmap * lxGetBitmapRotated(lxImage *image, CWindow * win, int orientation); 
 
 void lxMilliSleep(unsigned int time);
 void lxSetCursor(lxCursor cursor); 

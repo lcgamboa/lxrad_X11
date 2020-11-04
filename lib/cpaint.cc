@@ -4,7 +4,7 @@
 
    ########################################################################
 
-   Copyright (c) : 2001-2018  Luis Claudio Gamboa Lopes
+   Copyright (c) : 2001-2020  Luis Claudio Gamboa Lopes
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -43,7 +43,8 @@ CPaint::CPaint (void)
   Scalex=1.0;
   Scaley=1.0;
   Agc=0;
-};
+  orientation=0;
+}
   
 void 
 CPaint::SetDoCalcRXY(bool docalcrxy)
@@ -91,6 +92,8 @@ CPaint::Create (CControl * control, lxBitmap *bitmap)
   Agc = XCreateGC (Disp, DrawIn, 0, NULL);
   XSetGraphicsExposures(Disp, Agc, false);
   Pen.Create (NULL, &Agc);
+  Width = bitmap->GetWidth();
+  Height = bitmap->GetHeight();	  
 }
 
 void
@@ -162,8 +165,9 @@ CPaint::DrawControl (CControl * control)
 void
 CPaint::Point (int x, int y)
 {
+  Rotate(&x,&y);
   XDrawPoint (Disp, DrawIn, Agc, RX+x, RY+y);
-};
+}
 
 void
 CPaint::FillPolygon (XPoint * points, int npoints)
@@ -199,8 +203,13 @@ CPaint::Lines (XPoint * points, int npoints)
 void
 CPaint::Rectangle (int x, int y, int w, int h)
 {
-  XFillRectangle (Disp, DrawIn, Agc, (RX+x)*Scalex, (RY+y)*Scaley, w*Scalex, h*Scaley);
-};
+    int x2,y2; 
+    x2=x+w;
+    y2=y+h;
+    Rotate(&x,&y);
+    Rotate(&x2,&y2);
+    XFillRectangle (Disp, DrawIn, Agc, (RX+x)*Scalex, (RY+y)*Scaley, (x2-x)*Scalex, (y2-y)*Scaley);
+}
 
 void
 CPaint::Frame (int x, int y, int w, int h, uint wb)
@@ -298,14 +307,17 @@ CPaint::Init(void)
 {
   Scalex=1.0;
   Scaley=1.0;  
+  orientation=0;
 }
   
 
 void 
-CPaint::Init(float sx, float sy)
+CPaint::Init(float sx, float sy, int _orientation)
 {
   Scalex=sx;
   Scaley=sy;  
+  
+  orientation = _orientation;
 }
 
 void 
@@ -353,12 +365,28 @@ CPaint::Rectangle (bool filled, int x, int y, int w, int h)
 
 //FIXME
 void 
-CPaint::RotatedText (lxString str, int x, int y, int angle)
+CPaint::RotatedText (lxString str, int x, int y, int _angle)
 {
+     Rotate(&x,&y);
+     switch(orientation)
+     {
+        case 1:
+          _angle+= -90;
+	  break;
+        case 2:
+          _angle+= 180;
+	  break;
+        case 3:
+          _angle+= 90;
+	  break;
+        default:
+	  break;
+     }
+
   //FIXME font size 13
   char sstr[2];
-  int dx=13*cos(angle*3.1416/180.0);
-  int dy=-13*sin(angle*3.1416/180.0);
+  int dx=13*cos(_angle*3.1416/180.0);
+  int dy=-13*sin(_angle*3.1416/180.0);
   
   int size=str.size();
 
@@ -464,5 +492,31 @@ void CPaint::SetFgColor(lxColor c)
 void CPaint::SetBgColor(lxColor c)
 {
   Pen.SetBGColor (c);
+}
+
+void 
+CPaint::Rotate(int *x, int *y)
+{
+  int ox=*x;
+  int oy=*y;
+
+  switch(orientation)
+  {
+    case 1:
+    *x= Width -oy;
+    *y= ox;
+    break;
+    case 2:
+    *x= Width -ox;
+    *y= Height -oy;
+    break;
+    case 3:
+    *x= oy;
+    *y= Height - ox;
+    break;
+    default:
+    break;
+  } 
+
 }
 

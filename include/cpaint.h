@@ -4,7 +4,7 @@
 
    ########################################################################
 
-   Copyright (c) : 2001  Luis Claudio Gambôa Lopes
+   Copyright (c) : 2001  Luis Claudio Gambï¿½a Lopes
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -44,6 +44,10 @@ private:
   bool DoCalcRXY;
   float Scalex;
   float Scaley;
+  int orientation;
+  void Rotate(int *x, int *y);
+  int Width;
+  int Height;
 public:
     GC Agc;
     CPen Pen;
@@ -68,7 +72,7 @@ public:
   void LowerFrame (int x, int y, int w, int h, uint wb = 1);
   void RaiserFrame (int x, int y, int w, int h, uint wb = 1);
   void Text (lxString text, int x, int y);
-  void RotatedText (lxString str, int x, int y, int angle);
+  void RotatedText (lxString str, int x, int y, int orientation);
   void ImgText (int x, int y, lxString text);
   void PutPixmap (int x,int y, int w, int h,Pixmap pixmap);
   void PutBitmap (lxBitmap* bitmap,int x,int y);
@@ -77,7 +81,7 @@ public:
   void TextOnRect (lxString text,lxRect rect,CAlign align);
   void SetLineWidth(int w);
   void Init(void);
-  void Init(float sx, float sy);
+  void Init(float sx, float sy, int orientation = 0);
   void ChangeScale(float sx, float sy);
   void End(void);
   void SetColor(unsigned char r,unsigned char g, unsigned char b); 
