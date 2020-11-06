@@ -412,6 +412,20 @@ CPaint::PutBitmap (lxBitmap* bitmap,int x,int y)
  
   if(Win->GetWWindow())
   {
+     Rotate(&x,&y);
+     switch(orientation)
+     {
+       case 1:
+         x-=bitmap->GetWidth();
+         break;	 
+       case 2:
+         x-=bitmap->GetWidth();
+         y-=bitmap->GetHeight();
+         break;	 
+       case 3:	       
+         y-=bitmap->GetHeight();
+	 break;
+     }
 #ifdef HAVE_LIBIMLIB2
 	Imlib_Image img;
 	img = imlib_create_image(rw, rh);
