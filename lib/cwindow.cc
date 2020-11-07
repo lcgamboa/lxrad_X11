@@ -39,7 +39,7 @@ XFreeTextProperty (XTextProperty & textp)
   textp.encoding = 0;
   textp.format = 0;
   textp.nitems = 0;
-};
+}
 
 //CWindow _______________________________________________________________
 
@@ -101,12 +101,12 @@ CWindow::CWindow (void)
   if (XStringListToTextProperty (&title, 1, &WTextProperty) == 0)
     eprint( "erro\n");
   delete[]title;
-};
+}
 
 CWindow::~CWindow (void)
 {
   XFreeTextProperty (WTextProperty);
-};
+}
 
 void
 CWindow::WCreate (CWindow* window)
@@ -166,7 +166,7 @@ CWindow::WCreate (CWindow* window)
 	}
       else
 	XGetICValues (IC, XNFilterEvents, &FEvent, NULL);
-    };
+    }
 
   WAttributes.event_mask = AllEventMask | FEvent;
 
@@ -205,14 +205,14 @@ CWindow::WCreate (CWindow* window)
   on_create ();
   
   delete[]WClassHints.res_name;
-};
+}
 
 void
 CWindow::Destroy (void)
 {
   CControl::Destroy ();
   DestroyPixmap();
-};
+}
 
 
 void
@@ -223,25 +223,25 @@ CWindow::Draw(void)
   Paint->Pen.SetColor(Color);
   Paint->Rectangle ( 0, 0, Width, Height);
   CControl::Draw ();
-};
+}
 
 void
 CWindow::SetPixmapBuffer(bool pbuffer)
 {
   PixmapBuffer=pbuffer;
-};
+}
 
 bool
 CWindow::GetPixmapBuffer(void)
 {
   return PixmapBuffer;
-};
+}
 
 Pixmap 
 CWindow::GetPixmap(void)
 {
   return WPixmap;
-};
+}
 
 void
 CWindow::DestroyPixmap (void)
@@ -250,8 +250,8 @@ CWindow::DestroyPixmap (void)
     {
       XFreePixmap (ADisplay , WPixmap);
       WPixmap=0;
-    };
-};
+    }
+}
 
 void
 CWindow::CreatePixmap(bool draw)
@@ -266,11 +266,11 @@ CWindow::CreatePixmap(bool draw)
   if(Width > PWidth)PWidth=Width;
   if(Height > PHeight)PHeight=Height;
   if(draw) Draw();
-  };
+  }
   }
   else
    WPixmap=WWindow;
-};
+}
 
 
 
@@ -280,14 +280,14 @@ CWindow::DestroyChild (CControl * control)
   if (control == ControlOnFocus)
     ControlOnFocus = NULL;
   CControl::DestroyChild (control);
-};
+}
 
 void
 CWindow::DestroyChilds (void)
 {
   ControlOnFocus = NULL;
   CControl::DestroyChilds ();
-};
+}
 
 
 void
@@ -302,14 +302,14 @@ CWindow::WDestroy (void)
       if(WParent != NULL)
       {
         XDestroyWindow (ADisplay, GetWWindow ());
-      };
+      }
       if (IC)
 	XDestroyIC (IC);
       Win = NULL;
       Application->ADestroyWindow (this);
       WWindow = 0;
-    };
-};
+    }
+}
 
 void
 CWindow::Show (void)
@@ -321,8 +321,8 @@ CWindow::Show (void)
       XMapWindow (ADisplay, GetWWindow ());
       XFlush(ADisplay);  
       Update ();
-    };
-};
+    }
+}
 
 void
 CWindow::ShowExclusive (void)
@@ -331,7 +331,7 @@ CWindow::ShowExclusive (void)
   CanExitExclusive = true;
   while (CanExitExclusive)
     Application->ProcessEvents (this);
-};
+}
 
 void
 CWindow::Hide (void)
@@ -340,15 +340,15 @@ CWindow::Hide (void)
     {
       XUnmapWindow (ADisplay, GetWWindow ());
       SetVisible (false);
-    };
-};
+    }
+}
 
 void
 CWindow::HideExclusive (void)
 {
   CanExitExclusive = false;
   Hide ();
-};
+}
 
 void
 CWindow::Update (void)
@@ -362,11 +362,11 @@ CWindow::Update (void)
 	    Child[i]->Update ();
 	  else
 	    Child[i]->Draw ();
-	};
-    };
+	}
+    }
   */
   CControl::Update();
-};
+}
 
 void
 CWindow::Update (Region Reg)
@@ -389,26 +389,26 @@ CWindow::Update (Region Reg)
 		    Child[i]->Update ();
 		  else
 		    Child[i]->Draw ();
-		};
-	    };
-	};
+		}
+	    }
+	}
 
       XSetClipMask (GetADisplay (), WPaint.Agc, None);
       XDestroyRegion (Reg);
-    };
-};
+    }
+}
 
 void
 CWindow::SetOverrideRedirect (bool redirect)
 {
   WAttributes.override_redirect = redirect;
-};
+}
 
 void
 CWindow::SetSaveUnder (bool saveunder)
 {
   WAttributes.save_under = saveunder;
-};
+}
 
 
 Bool predicate (Display *display,XEvent *event,XPointer arg)
@@ -417,7 +417,7 @@ Bool predicate (Display *display,XEvent *event,XPointer arg)
     return 1;
   else
     return 0;
-};
+}
 
 
 bool
@@ -431,7 +431,7 @@ CWindow::WEvents (XEvent WEvent)
       if ((Atom) WEvent.xclient.data.l[0] == *AWMTakeFocus)
 	{
 	  //code
-	};
+	}
       if (((Atom) WEvent.xclient.data.l[0] == *AWMDeleteWindow)
 	  && (!CanExitExclusive))
 	WDestroy ();
@@ -540,11 +540,11 @@ CWindow::WEvents (XEvent WEvent)
       rec.width =WEvent.xexpose.width;
       rec.height =WEvent.xexpose.height;
       XUnionRectWithRegion(&rec,Reg,Reg);
-      };
+      }
       Update (Reg);
       ret= 1;
       break;
-    };
+    }
 
 
   if ((LEvent.type != WEvent.type)&&(LEvent.type == ConfigureNotify))
@@ -576,7 +576,7 @@ CWindow::WEvents (XEvent WEvent)
   LEvent=WEvent;
 
   return ret;
-};
+}
 
 
 lxStringList CWindow::GetContext (void)
@@ -591,7 +591,7 @@ lxStringList CWindow::GetContext (void)
   Context.AddLine ("OnEnter=" + btoa (GetEv (false)) + ";event");
   Context.AddLine ("OnLeave=" + btoa (GetEv (false)) + ";event");
   return Context;
-};
+}
 
 void
 CWindow::SetContext (lxStringList context)
@@ -617,9 +617,9 @@ CWindow::SetContext (lxStringList context)
 	SetEv (atob (arg), false);
       if (line.compare ("OnLeave") == 0)
 	SetEv (atob (arg), false);
-    };
+    }
   Draw ();
-};
+}
 
 void
 CWindow::CirculateFocus (bool asc)
@@ -641,9 +641,9 @@ CWindow::CirculateFocus (bool asc)
 		  ControlOnFocus = Child[c + 1];
 		  CirculateFocus (asc);
 		  return;
-		};
-	    };
-	};
+		}
+	    }
+	}
       if (Child[0]->GetCanFocus ())
 	{
 	  Child[0]->SetFocus (true);
@@ -655,7 +655,7 @@ CWindow::CirculateFocus (bool asc)
 	  ControlOnFocus = Child[0];
 	  CirculateFocus (asc);
 	  return;
-	};
+	}
     }
   else
     {
@@ -669,21 +669,21 @@ CWindow::CirculateFocus (bool asc)
 	      }
 	    else
 	      ControlOnFocus = Child[c - 1];
-	  };
-    };
-};
+	  }
+    }
+}
 
 void
 CWindow::SetFocus (void)
 {
   XSetInputFocus (ADisplay, WWindow, RevertToParent, CurrentTime);
-};
+}
 
 XIC
 CWindow::GetIC (void)
 {
   return IC;
-};
+}
 
 
 //propiedades
@@ -691,55 +691,55 @@ Window
 CWindow::GetWWindow (void)
 {
   return WWindow;
-};
+}
 
 Display *
 CWindow::GetADisplay (void)
 {
   return ADisplay;
-};
+}
 
 int *
 CWindow::GetADepth (void)
 {
   return ADepth;
-};
+}
 
 void
 CWindow::SetCanDestroy (bool candestroy)
 {
   CanDestroy = candestroy;
-};
+}
 
 bool
 CWindow::GetCanDestroy (void)
 {
   return CanDestroy;
-};
+}
 
 void
 CWindow::SetXMouse (uint x)
 {
   XMouse = x;
-};
+}
 
 uint
 CWindow::GetXMouse (void)
 {
   return XMouse;
-};
+}
 
 void
 CWindow::SetYMouse (uint y)
 {
   YMouse = y;
-};
+}
 
 uint
 CWindow::GetYMouse (void)
 {
   return YMouse;
-};
+}
 
 void
 CWindow::SetTitle (const lxString & title)
@@ -756,13 +756,13 @@ CWindow::SetTitle (const lxString & title)
     {
       XStoreName (ADisplay, WWindow, Title.c_str ());
       XSetIconName (ADisplay, WWindow, Title.c_str ());
-    };
-};
+    }
+}
 
 lxString CWindow::GetTitle (void)
 {
   return Title;
-};
+}
 
 CControl *
 CWindow::GetControlOnFocus (void)
@@ -771,7 +771,7 @@ CWindow::GetControlOnFocus (void)
     return ControlOnFocus;
   else
     return NULL;
-};
+}
 
 
 void
@@ -782,9 +782,9 @@ CWindow::SetControlOnFocus (CControl * controlonfocus)
       CControl *last = ControlOnFocus;
       ControlOnFocus = NULL;
       last->focus_out ();
-    };
+    }
   ControlOnFocus = controlonfocus;
-};
+}
 
 CControl *
 CWindow::GetLastControl (void)
@@ -793,13 +793,13 @@ CWindow::GetLastControl (void)
     return LastControl;
   else
     return NULL;
-};
+}
 
 void
 CWindow::SetLastControl (CControl * lastcontrol)
 {
   LastControl = lastcontrol;
-};
+}
 
 void
 CWindow::SetX (int x)
@@ -807,7 +807,7 @@ CWindow::SetX (int x)
   CControl::SetX (x);
   if (WWindow)
     XMoveWindow (ADisplay, WWindow, x, Y);
-};
+}
 
 void
 CWindow::SetY (int y)
@@ -815,7 +815,7 @@ CWindow::SetY (int y)
   CControl::SetY (y);
   if (WWindow)
     XMoveWindow (ADisplay, WWindow, X, y);
-};
+}
 
 void
 CWindow::SetWidth (uint width)
@@ -823,7 +823,7 @@ CWindow::SetWidth (uint width)
   CControl::SetWidth (width);
   if (WWindow)
     XResizeWindow (ADisplay, WWindow, width, Height);
-};
+}
 
 void
 CWindow::SetHeight (uint height)
@@ -831,7 +831,7 @@ CWindow::SetHeight (uint height)
   CControl::SetHeight (height);
   if (WWindow)
     XResizeWindow (ADisplay, WWindow, Width, height);
-};
+}
 
 //operators
 
@@ -845,7 +845,7 @@ new (size_t sz)
   m->Dynamic = true;
   m->CanDestroy = true;
   return (void *) m;
-};
+}
 
 //eventos
 
@@ -854,42 +854,42 @@ CWindow::on_create (void)
 {
   if ((FOwner) && (EvOnCreate))
     (FOwner->*EvOnCreate) (this);
-};
+}
 
 void
 CWindow::on_destroy (void)
 {
   if ((FOwner) && (EvOnDestroy))
     (FOwner->*EvOnDestroy) (this);
-};
+}
 
 void
 CWindow::on_show (void)
 {
   if ((FOwner) && (EvOnShow))
     (FOwner->*EvOnShow) (this);
-};
+}
 
 void
 CWindow::on_hide (void)
 {
   if ((FOwner) && (EvOnHide))
     (FOwner->*EvOnHide) (this);
-};
+}
 
 void
 CWindow::on_enter (void)
 {
   if ((FOwner) && (EvOnEnter))
     (FOwner->*EvOnEnter) (this);
-};
+}
 
 void
 CWindow::on_leave (void)
 {
   if ((FOwner) && (EvOnLeave))
     (FOwner->*EvOnLeave) (this);
-};
+}
 
 
 bool 
@@ -946,7 +946,7 @@ CWindow::LoadXMLContextAndCreateChilds(lxString filename, CControl* ctrl)
 		  if (ch->GetClass ().compare (lxT ("CItemMenu")) == 0)
                     {
                       ch->SetVisible (false, false);
-                    };
+                    }
                   */
                   ctrl->CreateChild (ch);
 

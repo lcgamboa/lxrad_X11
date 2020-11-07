@@ -206,10 +206,23 @@ void
 CPaint::Rectangle (int x, int y, int w, int h)
 {
     int x2,y2; 
+    int temp;
     x2=x+w;
     y2=y+h;
     Rotate(&x,&y);
     Rotate(&x2,&y2);
+    if(x > x2)
+    {
+      temp=x;
+      x=x2;
+      x2=temp;
+    }
+    if(y > y2)
+    {
+      temp=y;
+      y=y2;
+      y2=temp;
+    }
     XFillRectangle (Disp, DrawIn, Agc, (RX+x)*Scalex, (RY+y)*Scaley, (x2-x)*Scalex, (y2-y)*Scaley);
 }
 
@@ -410,22 +423,22 @@ CPaint::PutBitmap (lxBitmap* bitmap,int x,int y)
   
   XGetGeometry(Disp, *bitmap,&root,&rx,&ry,&rw,&rh,&rb,&rd);
  
-  if(Win->GetWWindow())
-  {
+  if(DrawOut)
+  {	  
      Rotate(&x,&y);
      switch(orientation)
      {
        case 1:
-         x-=bitmap->GetWidth();
+         x-=rw;
          break;	 
        case 2:
-         x-=bitmap->GetWidth();
-         y-=bitmap->GetHeight();
+         x-=rw;
+         y-=rh;
          break;	 
        case 3:	       
-         y-=bitmap->GetHeight();
+         y-=rh;
 	 break;
-     }
+     }     
 #ifdef HAVE_LIBIMLIB2
 	Imlib_Image img;
 	img = imlib_create_image(rw, rh);
