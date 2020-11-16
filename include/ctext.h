@@ -28,6 +28,7 @@
 
 #include"clxrad.h"
 #include"cwindow.h"
+#include"cscroll.h"
 #include"cedit.h"
 
 class CText:public CEdit
@@ -37,6 +38,7 @@ private:
   uint PLine;
   uint PChar;
   uint CursorLin;
+  CScroll * Scroll;
 public:
     CText (void);
    ~CText (void);
@@ -47,6 +49,7 @@ public:
   void Clear ();
   void AddLine (const char *line);
   void AddLine (const lxString line);
+  void Append (const lxString line);
   void InsertLine (const char *line);
   void DelLine (void);
   void LoadFromFile (const char *fname);
@@ -60,9 +63,15 @@ public:
   //bool GetReadOnly(void);
   //void SetAlign(CAlign align);
   //CAlign GetAlign(void);
+  void SetX (int x);
+  void SetY (int y);
+  void SetWidth (uint width);
+  void SetHeight (uint height);
   unsigned int GetCountLines (void);
   //eventos
   void key_press (XEvent event);
+  void ScrollOnChangePosition (CControl * scroll);
+  void ScrollOnButtonPress (CControl * control, const uint button, const uint x, const uint y,const uint state);
 };
 
 #endif

@@ -30,19 +30,28 @@
 
 CText::CText (void)
 {
-  X = 10;
-  Y = 10;
-  Width = 100;
-  Height = 100;
+  Scroll = new CScroll;
+  Scroll->SetPosition (0);
+  Scroll->SetRange (1);
+  Scroll->SetFOwner (this);
+  Scroll->EvMouseButtonPress = EVMOUSEBUTTONPRESS & CText::ScrollOnButtonPress;
+  Scroll->EvOnChangePosition = EVONCHANGEPOSITION & CText::ScrollOnChangePosition;
+ 
   CursorLin = 1;
   PLine = 0;
   PChar = 0;
+  SetX(10);
+  SetY(10);
+  SetWidth(100);
+  SetHeight(100);
   SetClass ("CText");
-};
+  
+  CreateChild (Scroll);
+}
 
 CText::~CText (void)
 {
-};
+}
 
 void
 CText::Draw (void)
@@ -53,7 +62,7 @@ CText::Draw (void)
   Paint->Pen.SetColor (Color);
   Paint->Rectangle ( 2, 2, Width - 3, Height - 3);
   Paint->Pen.SetColor (ColorByName ("black"));
-  for (unsigned int q = 1; q < Lines.GetLinesCount (); q++)
+  for (unsigned int q = 0; q < Lines.GetLinesCount (); q++)
     Paint->Text (Lines.GetLine(q), 5, 15 + (13 * (q - 1)));
   Paint->LowerFrame ( 0, 0, Width, Height);
   int x =
@@ -64,8 +73,19 @@ CText::Draw (void)
   Paint->Line ( 4 + x, (13 * (CursorLin - 1) + 4), 4 + x,
 		    (13 * (CursorLin - 1) + 4) + y);
   Paint->Pen.SetPen (GXcopy);
+  
+  Scroll->SetVisible (false, false);
+  Scroll->SetX (Width - Scroll->GetWidth ());
+  Scroll->SetHeight (Height);
+  Scroll->SetVisible (true, false);
+      
+  Scroll->SetVisible (false, false);
+  //Scroll->SetRange (lcount - Lines.GetLinesCount ());
+  Scroll->SetVisible (true, false);
+  
+  
   CControl::Draw ();
-};
+}
 
 void
 CText::DrawLine (void)
@@ -92,7 +112,7 @@ CText::DrawLine (void)
   Paint->Pen.SetPen (GXcopy);
   Paint->LowerFrame ( 0, 0, Width, Height);
   CControl::Draw ();
-};
+}
 
 void
 CText::DrawCursor (void)
@@ -108,7 +128,7 @@ CText::DrawCursor (void)
   Paint->Pen.SetPen (GXcopy);
   CControl::Draw ();
 */
-};
+}
 
 
 int
@@ -124,7 +144,7 @@ CText::Clear (void)
 {
   Lines.Clear ();
   Draw ();
-};
+}
 
 void
 CText::AddLine (const char *line)
@@ -141,37 +161,44 @@ CText::AddLine (const lxString line)
 }
 
 void
+CText::Append (const lxString line)
+{
+  Lines.Append (line.c_str());
+  Draw ();
+}
+
+void
 CText::InsertLine (const char *line)
 {
   Lines.InsertLine (line, CursorLin);
   Draw ();
-};
+}
 
 void
 CText::DelLine (void)
 {
   Lines.DelLine (CursorLin);
   Draw ();
-};
+}
 
 void
 CText::LoadFromFile (const char *fname)
 {
   Lines.LoadFromFile (fname);
   Draw ();
-};
+}
 
 void
 CText::SaveToFile (const char *fname)
 {
   Lines.SaveToFile (fname);
-};
+}
 
 void
 CText::SaveToFile (const lxString fname)
 {
   Lines.SaveToFile (fname.c_str());
-};
+}
 
 
 //propiedades
@@ -179,7 +206,7 @@ unsigned int
 CText::GetCountLines (void)
 {
   return Lines.GetLinesCount ();
-};
+}
 
 
 void
@@ -189,12 +216,12 @@ CText::SetText (const lxString t)
   Lines.SetLine (t, CursorLin);
   SetCursorPos (t.size ());
   //if(Win)DrawLine();
-};
+}
 
 lxString CText::GetText (void)
 {
   return Lines.GetLine (CursorLin);
-};
+}
 
 void
 CText::SetCursorPos (uint cursorpos)
@@ -202,7 +229,7 @@ CText::SetCursorPos (uint cursorpos)
   DrawCursor ();
   CursorPos = cursorpos;
   DrawCursor ();
-};
+}
 
 
 //eventos
@@ -221,13 +248,13 @@ CText::key_press (XEvent event)
       if (GetCursorPos () == 0)
 	{
 	  eprint( "del preturn\n");
-	};
+	}
       break;
     case XK_Delete:
       if (GetCursorPos () == Lines.GetLine (CursorLin).size ())
 	{
 	  //code
-	};
+	}
       break;
     case XK_Left:
       //code
@@ -235,7 +262,7 @@ CText::key_press (XEvent event)
     case XK_Right:
       //code
       break;
-    };
+    }
   key = MEdit (this, event);
   switch (key)
     {
@@ -252,8 +279,8 @@ CText::key_press (XEvent event)
 	  else
 	    {
 	      DrawCursor ();
-	    };
-	};
+	    }
+	}
       break;
     case XK_Down:
       if (CursorLin < Lines.GetLinesCount () - 1)
@@ -268,8 +295,8 @@ CText::key_press (XEvent event)
 	  else
 	    {
 	      DrawCursor ();
-	    };
-	};
+	    }
+	}
       break;
     case XK_Return:
       char *str;
@@ -288,6 +315,56 @@ CText::key_press (XEvent event)
     default:
       DrawLine ();
       break;
-    };
+    }
   CControl::key_press (event);
-};
+}
+
+
+
+void
+CText::SetX (int x)
+{
+  Scroll->SetX (Width - Scroll->GetWidth ());
+  CControl::SetX (x);
+}
+
+void
+CText::SetY (int y)
+{
+  Scroll->SetY (0);
+  CControl::SetY (y);
+}
+
+void
+CText::SetWidth (uint width)
+{
+ /*
+  if (Lines.GetLinesCount () >= 0)
+    {
+      //for (int c = 0; c < Lines.GetLinesCount (); c++)
+	Items[c]->SetWidth (width - Scroll->GetWidth () - 10);
+    }
+  */
+  Scroll->SetX (width - Scroll->GetWidth ());
+  CControl::SetWidth (width);
+}
+
+void
+CText::SetHeight (uint height)
+{
+  Scroll->SetHeight (height);
+  CControl::SetHeight (height);
+}
+
+
+void
+CText::ScrollOnButtonPress (CControl * control,const uint button,const uint x,const uint y,const uint state)
+{
+  Update ();
+}
+
+void
+CText::ScrollOnChangePosition (CControl * scroll)
+{
+  Draw ();
+}

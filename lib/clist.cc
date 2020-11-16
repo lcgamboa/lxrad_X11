@@ -47,7 +47,7 @@ CList::CList (void)
   CreateChild (Scroll);
   OnChangeItem = NULL;
   ShowSelection = true;
-};
+}
 
 
 CList::~CList (void)
@@ -56,9 +56,9 @@ CList::~CList (void)
     {
       delete[]Items;
       Items = NULL;
-    };
+    }
   ItemsCount = -1;
-};
+}
 
 int
 CList::Create (CControl * control)
@@ -101,14 +101,14 @@ CList::Draw ()
 	  Items[c]->SetVisible (false, false);
 	  Items[c]->SetY (y);
 	  Items[c]->SetVisible (true, false);
-	};
+	}
       
       Scroll->SetVisible (false, false);
       Scroll->SetX (Width - Scroll->GetWidth ());
       Scroll->SetHeight (Height);
       Scroll->SetVisible (true, false);
-    };
-  };
+    }
+  }
       
   Scroll->SetVisible (false, false);
   Scroll->SetRange (lcount - ItemsCount);
@@ -122,7 +122,7 @@ CList::Draw ()
       else
         Items[c]->SetText ("");
       Items[c]->SetVisible (true, false);
-    };
+    }
 
   CControl::Draw ();
 
@@ -138,16 +138,16 @@ CList::Draw ()
 	  Items[SelectedItem - Scroll->GetPosition ()]->Draw ();
 	  SetColor ("white");
 	  Items[SelectedItem - Scroll->GetPosition ()]->SetColor (color);
-	};
+	}
       Update ();
-    };
-};
+    }
+}
 
 void
 CList::Update ()
 {
   CControl::Update ();
-};
+}
 
 lxStringList
 CList::GetContext (void)
@@ -156,7 +156,7 @@ CList::GetContext (void)
   Context.AddLine ("Items=" + GetItems () + ";StringList");
   Context.AddLine ("OnChangeItem=" + btoa (GetEv ()) + ";event");
   return Context;
-};
+}
 
 void
 CList::SetContext (lxStringList context)
@@ -172,9 +172,9 @@ CList::SetContext (lxStringList context)
 	  SetItems (arg);
       if (line.compare ("OnChangeItem") == 0)
 	SetEv (atob (arg));
-    };
+    }
   Draw ();
-};
+}
 
 
 //propriedades
@@ -189,9 +189,9 @@ CList::SetItems (lxString litens)
       f = litens.find (",");
       ItemsList.AddLine (litens.substr (0, f));
       litens = litens.substr (f + 1, litens.size ());
-    };
+    }
   Draw ();
-};
+}
 
 lxString
 CList::GetItems (void)
@@ -200,9 +200,9 @@ CList::GetItems (void)
   for (uint c = 0; c < ItemsList.GetLinesCount (); c++)
     {
       list += ItemsList.GetLine (c) + ",";
-    };
+    }
   return list;
-};
+}
 
 void
 CList::AddStringItem (lxString text)
@@ -227,14 +227,14 @@ CList::AddStringItem (lxString text)
   if (Items)
     delete[]Items;
   Items = AItems;
-};
+}
 
 void
 CList::AddItem (lxString text)
 {
   ItemsList.AddLine (text);
   Draw ();
-};
+}
 
 lxString CList::GetItem (int item)
 {
@@ -242,14 +242,14 @@ lxString CList::GetItem (int item)
     return ItemsList.GetLine (item);
   else
     return '\0';
-};
+}
 
 void
 CList::SetItem (int item,lxString sitem)
 {
   if (item <= (int) ItemsList.GetLinesCount ())
     ItemsList.SetLine (sitem,item);
-};
+}
 
 void
 CList::SetSelectedItemN (int item)
@@ -258,9 +258,9 @@ CList::SetSelectedItemN (int item)
   if (ItemsCount != -1)
     {
       Draw ();
-    };
+    }
   change_item ();
-};
+}
 
 void
 CList::SetSelectedItem (lxString item)
@@ -274,13 +274,13 @@ CList::SetSelectedItem (lxString item)
 	  if (ItemsCount != -1)
 	    {
 	      Draw ();
-	    };
+	    }
 	  change_item ();
 
 	  break;
-	};
-    };
-};
+	}
+    }
+}
 
 int
 CList::GetSelectedItemN (void)
@@ -292,8 +292,8 @@ CList::GetSelectedItemN (void)
   else
     {
       return -1;
-    };
-};
+    }
+}
 
 lxString CList::GetSelectedItem (void)
 {
@@ -304,14 +304,14 @@ lxString CList::GetSelectedItem (void)
   else
     {
       return "";
-    };
-};
+    }
+}
 
 int
 CList::GetItemsCount (void)
 {
   return ItemsList.GetLinesCount ();
-};
+}
 
 void
 CList::DeleteItem (int item)
@@ -323,8 +323,8 @@ CList::DeleteItem (int item)
       Scroll->SetPosition (0);
       Scroll->SetVisible (true, false);
       Draw ();
-    };
-};
+    }
+}
 
 void
 CList::DeleteItems (bool clean)
@@ -337,33 +337,33 @@ CList::DeleteItems (bool clean)
 	  Items[c]->SetVisible (false, false);
 	  DestroyChild (Items[c]);
 	  Items[c] = NULL;
-	};
+	}
       delete[]Items;
       Items = NULL;
       ItemsCount = -1;
-    };
+    }
   if (clean)
     {
       Scroll->SetPosition (0);
       ItemsList.Clear ();
       SelectedItem = -1;
       Draw ();
-    };
-};
+    }
+}
 
 void
 CList::SetX (int x)
 {
   Scroll->SetX (Width - Scroll->GetWidth ());
   CControl::SetX (x);
-};
+}
 
 void
 CList::SetY (int y)
 {
   Scroll->SetY (0);
   CControl::SetY (y);
-};
+}
 
 void
 CList::SetWidth (uint width)
@@ -372,17 +372,17 @@ CList::SetWidth (uint width)
     {
       for (int c = 0; c < ItemsCount; c++)
 	Items[c]->SetWidth (width - Scroll->GetWidth () - 10);
-    };
+    }
   Scroll->SetX (width - Scroll->GetWidth ());
   CControl::SetWidth (width);
-};
+}
 
 void
 CList::SetHeight (uint height)
 {
   Scroll->SetHeight (height);
   CControl::SetHeight (height);
-};
+}
 
 void
 CList::LoadItemsFromFile (lxString fname)
@@ -390,25 +390,25 @@ CList::LoadItemsFromFile (lxString fname)
   DeleteItems ();
   ItemsList.LoadFromFile (fname);
   Draw();
-};
+}
 
 void
 CList::SaveItemsToFile (lxString fname)
 {
   ItemsList.SaveToFile (fname);
-};
+}
 
 void
 CList::SetShowSelection (bool show)
 {
   ShowSelection = show;
   Draw ();
-};
+}
 
 bool CList::GetShowSelection (void)
 {
   return ShowSelection;
-};
+}
 
 //eventos
 
@@ -416,13 +416,13 @@ void
 CList::ScrollOnButtonPress (CControl * control,const uint button,const uint x,const uint y,const uint state)
 {
   Update ();
-};
+}
 
 void
 CList::ScrollOnChangePosition (CControl * scroll)
 {
   Draw ();
-};
+}
 
 void
 CList::ItemButtonPress (CControl * control,const uint button,const uint x,const uint y,const uint state)
@@ -435,7 +435,7 @@ CList::ItemButtonPress (CControl * control,const uint button,const uint x,const 
 	{
 	  SetColor ("white");
 	  Items[SelectedItem - Scroll->GetPosition ()]->Draw ();
-	};
+	}
       SetColor ("dark blue");
       color = control->GetColor ();
       control->SetColor ("white");
@@ -446,35 +446,35 @@ CList::ItemButtonPress (CControl * control,const uint button,const uint x,const 
   SelectedItem = control->GetTag () + Scroll->GetPosition ();
   Update ();
   change_item ();
-};
+}
 
 void
 CList::change_item (void)
 {
   if ((FOwner) && (OnChangeItem))
     (FOwner->*OnChangeItem) (this);
-};
+}
 
 void
 CList::button_press (XEvent event)
 {
   CControl::button_press (event);
-};
+}
 
 void
 CList::key_press (XEvent event)
 {
   CControl::key_press (event);
-};
+}
 
 void
 CList::focus_in (void)
 {
   CControl::focus_in ();
-};
+}
 
 void
 CList::focus_out (void)
 {
   CControl::focus_out ();
-};
+}

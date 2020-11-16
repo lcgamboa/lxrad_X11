@@ -59,19 +59,19 @@ strnadd (const lxString & str, char c, uint n)
   lxString temp;
   temp = str.substr (0, n) + c + str.substr (n, str.size ());
   return temp;
-};
+}
 
 int
 atoi (const lxString & str)
 {
   return atoi (str.c_str ());
-};
+}
 
 float
 atof (const lxString & str)
 {
   return atof (str.c_str ());
-};
+}
 
 bool
 atob (const lxString & str)
@@ -82,7 +82,7 @@ atob (const lxString & str)
   else
     b = false;
   return b;
-};
+}
 
 lxString
 itoa (int n, const lxString & format)
@@ -90,7 +90,7 @@ itoa (int n, const lxString & format)
   char temp[200];
   sprintf (temp, format.c_str (), n);
   return lxString (temp);
-};
+}
 
 lxString
 itoa (uint n, const lxString & format)
@@ -98,7 +98,7 @@ itoa (uint n, const lxString & format)
   char temp[200];
   sprintf (temp, format.c_str (), n);
   return lxString (temp);
-};
+}
 
 lxString
 ftoa (float f, const lxString & format)
@@ -106,7 +106,7 @@ ftoa (float f, const lxString & format)
   char temp[200];
   sprintf (temp, format.c_str (), f);
   return lxString (temp);
-};
+}
 
 lxString
 btoa (bool b)
@@ -117,7 +117,7 @@ btoa (bool b)
   else
     str = "FALSE";
   return str;
-};
+}
 
 lxString
 uppercase (const lxString & str)
@@ -173,8 +173,8 @@ fgetline (FILE* file, lxString & str)
   {
      eprint("fatal error in function fgetline!\n");
      exit(-1);
-  };
-};
+  }
+}
 
 #ifdef NO_STL
 //lxString _____________________________________________________________
@@ -269,7 +269,7 @@ lxString::Cmp (const char *str) const
     return strcmp (Str, str);
   else
     return -1;
-};
+}
 
 int
 lxString::compare (const char *str) const
@@ -278,7 +278,7 @@ lxString::compare (const char *str) const
     return strcmp (Str, str);
   else
     return -1;
-};
+}
 
 int
 lxString::compare (const lxString & str) const
@@ -287,7 +287,7 @@ lxString::compare (const lxString & str) const
     return strcmp (Str, str.Str);
   else
     return -1;
-};
+}
 
 uint
 lxString::size (void) const
@@ -296,7 +296,7 @@ lxString::size (void) const
     return strlen (Str);
   else
     return 0;
-};
+}
 
 uint
 lxString::length (void) const
@@ -305,7 +305,7 @@ lxString::length (void) const
     return strlen (Str);
   else
     return 0;
-};
+}
 
 int
 lxString::erase (uint start, int num = 1)
@@ -323,7 +323,7 @@ lxString::erase (uint start, int num = 1)
     }
   else
     return 0;
-};
+}
 
 lxString
 lxString::substr (uint start, uint len) const
@@ -343,7 +343,7 @@ lxString::substr (uint start, uint len) const
     }
   else
     return '\0';
-};
+}
 
 int
 lxString::copy (char *str, uint sz) const
@@ -364,7 +364,7 @@ lxString::copy (char *str, uint sz) const
 	}
     }
   return 0;
-};
+}
 
 int
 lxString::find (const lxString & str) const
@@ -424,18 +424,18 @@ strrstr (const char *str1, const char *str2)
 	      c += strlen (temp);
 	      delete[]temp1;
 	      delete[]temp2;
-	    };
+	    }
 	}
       else
 	c = strlen (str1);
-    };
+    }
    }
   if (temp1)
     delete[]temp1;
   if (temp2)
     delete[]temp2;
   return NULL;
-};
+}
 
 
 int
@@ -455,7 +455,7 @@ lxString::rfind (const lxString & str) const
     }
   else
     return -1;			//length () + 1;
-};
+}
 
 
 lxString & lxString::operator = (const lxString & str)
@@ -471,9 +471,9 @@ lxString & lxString::operator = (const lxString & str)
 	}
       else
 	Str = NULL;
-    };
+    }
   return *this;
-};
+}
 
 lxString & lxString::operator = (const char *str)
 {
@@ -488,7 +488,7 @@ lxString & lxString::operator = (const char *str)
   else
     Str = NULL;
   return *this;
-};
+}
   
 lxString 
 lxString::Format(const char *fmt, ...)
@@ -509,7 +509,7 @@ lxString::Format(const char *fmt, ...)
   else
     Str = NULL;
   return *this;
-};
+}
   
 
 lxString 
@@ -574,9 +574,9 @@ lxString lxString::operator + (const lxString & str)
 	}
       else
 	temp.Str = NULL;
-    };
+    }
   return temp;
-};
+}
 
 
 lxString lxString::operator + (const char *str)
@@ -604,9 +604,9 @@ lxString lxString::operator + (const char *str)
 	}
       else
 	temp.Str = NULL;
-    };
+    }
   return temp;
-};
+}
 
 lxString lxString::operator + (const char &str)
 {
@@ -627,10 +627,10 @@ lxString lxString::operator + (const char &str)
     {
       temp.Str = new char[2];
       strcpy (temp.Str, str2);
-    };
+    }
 
   return temp;
-};
+}
 
 lxString & lxString::operator += (const lxString & str)
 {
@@ -671,9 +671,9 @@ lxString & lxString::operator += (const lxString & str)
 	}
       else
 	Str = NULL;
-    };
+    }
   return *this;
-};
+}
 
 lxString & lxString::operator += (const char *str)
 {
@@ -705,9 +705,9 @@ lxString & lxString::operator += (const char *str)
 	}
       else
 	Str = NULL;
-    };
+    }
   return *this;
-};
+}
 
 lxString & lxString::operator += (const char &str)
 {
@@ -730,16 +730,16 @@ lxString & lxString::operator += (const char &str)
     {
       Str = new char[2];
       strcpy (Str, str2);
-    };
+    }
   return *this;
-};
+}
 
 char &
 lxString::operator[] (const uint & index)
 {
 //  if((Str)&&(index <= length()))
   return Str[index];
-};
+}
 
 lxString
 operator + (const char *str1, const lxString & str2)
@@ -755,9 +755,9 @@ operator + (const char *str1, const lxString & str2)
     {
       if (str2.Str)
 	return str2;
-    };
+    }
   return "";
-};
+}
 
 lxString
 operator + (const char &str1, const lxString & str2)
@@ -792,7 +792,7 @@ ostream & operator << (ostream & os, const lxString & str)
 {
   os << str.Str;
   return os;
-};
+}
 */
 
 //ClxStringList _____________________________________________________________
@@ -801,7 +801,7 @@ lxStringList::lxStringList (void)
 {
   Lines = NULL;
   LinesCount = -1;
-};
+}
 
 lxStringList::lxStringList (const lxStringList & list)
 {
@@ -810,8 +810,8 @@ lxStringList::lxStringList (const lxStringList & list)
   for (uint c = 0; c < list.GetLinesCount (); c++)
     {
       AddLine (list.GetLine (c));
-    };
-};
+    }
+}
 
 lxStringList::~lxStringList (void)
 {
@@ -819,14 +819,14 @@ lxStringList::~lxStringList (void)
     {
       delete[]Lines;
       Lines = NULL;
-    };
+    }
   LinesCount = -1;
-};
+}
 
 void
 lxStringList::Create ()
 {
-};
+}
 
 lxString
 lxStringList::GetLine (uint linen) const
@@ -835,13 +835,13 @@ lxStringList::GetLine (uint linen) const
     return Lines[linen];
   else
     return "";
-};
+}
 
 void
 lxStringList::SetLine (lxString line, uint linen)
 {
   Lines[linen] = line;
-};
+}
 
 
 void
@@ -850,10 +850,10 @@ lxStringList::Clear (void)
   if (Lines)
     {
       delete[]Lines;
-    };
+    }
   Lines = NULL;
   LinesCount = -1;
-};
+}
 
 void
 lxStringList::AddLine (const lxString line)
@@ -869,7 +869,35 @@ lxStringList::AddLine (const lxString line)
 	delete[]Lines;
       Lines = ALines;
     }
-};
+}
+
+void
+lxStringList::Append (const lxString line)
+{
+  if (line.c_str () != NULL)
+    {
+      if(LinesCount >= 0)
+      {	      
+	if(strchr(line.c_str(),'\n'))
+	{
+          AddLine(line);
+	}	
+	else if(strchr(line.c_str(),'\r'))
+	{
+          AddLine(line);
+	}	
+	else
+	{
+          Lines[LinesCount]+=line;
+	}
+      }
+      else
+      {
+        AddLine(line);
+      }      
+    }
+}
+
 
 void
 lxStringList::InsertLine (lxString line, uint linen)
@@ -884,14 +912,14 @@ lxStringList::InsertLine (lxString line, uint linen)
   if (Lines)
     delete[]Lines;
   Lines = ALines;
-};
+}
 
 
 uint
 lxStringList::GetLinesCount (void) const
 {
   return LinesCount + 1;
-};
+}
 
 void
 lxStringList::DelLine (uint linen)
@@ -905,7 +933,7 @@ lxStringList::DelLine (uint linen)
   if (Lines)
     delete[]Lines;
   Lines = ALines;
-};
+}
 
 bool lxStringList::LoadFromFile (lxString fname)
 {
@@ -922,7 +950,7 @@ bool lxStringList::LoadFromFile (lxString fname)
   else
     eprint( "File not found!\n");
   return false;
-};
+}
 
 
 bool lxStringList::SaveToFile (lxString fname)
@@ -979,35 +1007,35 @@ lxStringList & lxStringList::operator = (const lxStringList & list)
 	{
 	  Lines = NULL;
 	  LinesCount = -1;
-	};
-    };
+	}
+    }
   return *this;
-};
+}
 
 #else
 //ClxStringList _____________________________________________________________
 
 lxStringList::lxStringList (void)
 {
-};
+}
 
 lxStringList::lxStringList (const lxStringList & list)
 {
   for (uint c = 0; c <= list.GetLinesCount (); c++)
     {
       AddLine (list.GetLine (c));
-    };
-};
+    }
+}
 
 lxStringList::~lxStringList (void)
 {
   List.erase (List.begin (), List.end ());
-};
+}
 
 void
 lxStringList::Create ()
 {
-};
+}
 
 lxString lxStringList::GetLine (uint linen) const
 {
@@ -1017,7 +1045,7 @@ lxString lxStringList::GetLine (uint linen) const
   for (uint a = 0; a < linen; a++)
     itList2++;
   return *itList2;
-};
+}
 
 void
 lxStringList::SetLine (string line, uint linen)
@@ -1026,20 +1054,20 @@ lxStringList::SetLine (string line, uint linen)
   for (uint a = 0; a < linen; a++)
     itList++;
   *itList = line;
-};
+}
 
 
 void
 lxStringList::Clear (void)
 {
   List.erase (List.begin (), List.end ());
-};
+}
 
 void
 lxStringList::AddLine (string line)
 {
   List.push_back (line);
-};
+}
 
 void
 lxStringList::InsertLine (string line, uint linen)
@@ -1048,14 +1076,14 @@ lxStringList::InsertLine (string line, uint linen)
   for (uint a = 0; a < linen; a++)
     itList++;
   List.insert (itList, line);
-};
+}
 
 
 unsigned int
 lxStringList::GetLinesCount (void) const
 {
   return List.size ();
-};
+}
 
 void
 lxStringList::DelLine (uint linen)
@@ -1064,7 +1092,7 @@ lxStringList::DelLine (uint linen)
   for (uint a = 0; a < linen; a++)
     itList++;
   List.erase (itList);
-};
+}
 
 bool lxStringList::LoadFromFile (string fname)
 {
@@ -1079,7 +1107,7 @@ bool lxStringList::LoadFromFile (string fname)
     }
   else
     eprint( "File not found!\n");
-};
+}
 
 bool lxStringList::SaveToFile (string fname)
 {
@@ -1092,7 +1120,7 @@ bool lxStringList::SaveToFile (string fname)
     }
   else
     eprint( "File not create!\n");
-};
+}
 #endif
 
 
@@ -1102,7 +1130,7 @@ lxString
 xml_out (lxString name, lxString type, lxString value)
 {
   return (lxT("  <") + name + lxT(" type=\"") + type + lxT("\">") + value + lxT("</") + name + lxT(">"));
-};
+}
 
 void
 xml_in (lxString data, lxString & name, lxString & type, lxString & value)
@@ -1125,7 +1153,7 @@ xml_in (lxString data, lxString & name, lxString & type, lxString & value)
   type=lxT("");
   value=lxT("");
   }
-};
+}
 
 
 lxString
@@ -1139,7 +1167,7 @@ basename (const lxString & str)
      pos = str.rfind (lxT("/"));
 #endif
   return str.substr (pos + 1, str.size () - pos - 1);
-};
+}
 
 lxString
 dirname (const lxString & str)
@@ -1152,5 +1180,5 @@ dirname (const lxString & str)
      pos = str.rfind (lxT("/"));
 #endif
   return str.substr (0, pos + 1);
-};
+}
 
