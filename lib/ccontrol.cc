@@ -1227,7 +1227,11 @@ CControl::key_press (XEvent event)
     {  
       keysym = XLookupKeysym (&event.xkey, 0);
     }
-    (FOwner->*EvKeyboardPress) (this, keysym, 0 , event.xkey.state);
+    if(keysym == XK_Return)
+    {
+      keysym = 0x0D;
+    }
+    (FOwner->*EvKeyboardPress) (this, keysym, keysym , event.xkey.state);
   }
 }
 
@@ -1245,7 +1249,11 @@ CControl::key_release (XEvent event)
     {  
       keysym = XLookupKeysym (&event.xkey, 0);
     }
-    (FOwner->*EvKeyboardRelease) (this, keysym, 0 , event.xkey.state);
+    if(keysym == XK_Return)
+    {
+      keysym = 0x0D;
+    }
+    (FOwner->*EvKeyboardRelease) (this, keysym, keysym , event.xkey.state);
   }
 }
 

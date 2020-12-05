@@ -39,6 +39,7 @@ private:
   uint PChar;
   uint CursorLin;
   CScroll * Scroll;
+  uint nlines;
 public:
     CText (void);
    ~CText (void);
