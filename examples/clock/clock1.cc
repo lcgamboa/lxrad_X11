@@ -15,7 +15,7 @@ CPWindow1::timer1_EvOnTime(CControl * control)
 {
   time_t t;
   t=time(NULL);
-  label1.SetText(String::FromAscii(ctime(&t)));
+  label1.SetText(lxString::FromAscii(ctime(&t)));
 };
 
 void
@@ -23,7 +23,7 @@ CPWindow1::_EvOnCreate(CControl * control)
 {
   time_t t;
   t=time(NULL);
-  label1.SetText(String::FromAscii(ctime(&t)));
+  label1.SetText(lxString::FromAscii(ctime(&t)));
 };
 
 

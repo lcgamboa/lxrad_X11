@@ -193,6 +193,8 @@ CWindow::WCreate (CWindow* window)
   Create (this);
   Draw();
   
+  on_create ();
+  
   if(Visible) Show ();
   
   XMoveWindow (ADisplay, WWindow, X, Y);
@@ -202,7 +204,6 @@ CWindow::WCreate (CWindow* window)
   AWMWindowProtocol[1] = *AWMTakeFocus;
   XSetWMProtocols (ADisplay, WWindow, AWMWindowProtocol, 2);
   //XFlush (ADisplay);
-  on_create ();
   
   delete[]WClassHints.res_name;
 }
