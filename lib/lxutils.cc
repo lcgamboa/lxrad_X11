@@ -688,7 +688,14 @@ lxGetTempDir(lxString appname)
 lxString
 lxGetExecutablePath(lxString appname)
 {
- return "/usr/bin/";
+ char buff[1024];	
+ int size = readlink("/proc/self/exe",buff,1023);
+ if(size == -1)
+ {
+   return "";
+ }
+ buff[size]=0;
+ return dirname(buff);
 }
 
 
