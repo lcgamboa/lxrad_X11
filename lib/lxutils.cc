@@ -695,7 +695,7 @@ lxGetExecutablePath(lxString appname)
    return "";
  }
  buff[size]=0;
- return dirname(buff);
+ return buff;
 }
 
 
