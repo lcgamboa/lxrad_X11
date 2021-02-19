@@ -199,7 +199,7 @@ CPaint::Lines (XPoint * points, int npoints)
   }	
   XDrawLines (Disp, DrawIn, Agc, points,
 	      npoints, CoordModeOrigin);
-};
+}
 
 
 void
@@ -240,22 +240,22 @@ CPaint::LowerFrame (int x, int y, int w, int h, uint wb)
   XColor OldPen;
   for (uint c = 0; c < wb; c++)
     {
-      OldPen = Pen.GetColor ();
-      Pen.SetColor (ColorByName ("gray35"));
+      OldPen = Pen.GetFgColor ();
+      Pen.SetFgColor (ColorByName ("gray35"));
       Line ( x + c, y + c, x + c, h - 2 - c);
       Line ( x + c, y + c, w - c - 1, y + c);
-      Pen.SetColor (ColorByName ("gray59"));
+      Pen.SetFgColor (ColorByName ("gray59"));
       Line ( x + 1 + c, y + 1 + c, x + 1 + c, h - 2 - c);
       Line ( x + 1 + c, y + 1 + c, w - 2 - c, y + 1 + c);
-      Pen.SetColor (ColorByName ("gray96"));
+      Pen.SetFgColor (ColorByName ("gray96"));
       Line ( x + c, h - c - 1, w - c - 1, h - 1 - c);
       Line ( w - 1 - c, y + 1 + c, w - 1 - c, h - c - 1);
-      Pen.SetColor (ColorByName ("gray82"));
+      Pen.SetFgColor (ColorByName ("gray82"));
       Line ( x + 1 + c, h - 2 - c, w - 2 - c, h - 2 - c);
       Line ( w - 2 - c, y + 2 + c, w - 2 - c, h - 2 - c);
-      Pen.SetColor (OldPen);
-    };
-};
+      Pen.SetFgColor (OldPen);
+    }
+}
 
 
 void
@@ -264,22 +264,22 @@ CPaint::RaiserFrame (int x, int y, int w, int h, uint wb)
   XColor OldPen;
   for (uint c = 0; c < wb; c++)
     {
-      OldPen = Pen.GetColor ();
-      Pen.SetColor (ColorByName ("gray96"));
+      OldPen = Pen.GetFgColor ();
+      Pen.SetFgColor (ColorByName ("gray96"));
       Line ( x + c, y + c, x + c, h - 2 - c);
       Line ( x + c, y + c, w - c - 1, y + c);
-      Pen.SetColor (ColorByName ("gray86"));
+      Pen.SetFgColor (ColorByName ("gray86"));
       Line ( x + 1 + c, y + 1 + c, x + 1 + c, h - 3 - c);
       Line ( x + 1 + c, y + 1 + c, w - 2 - c, y + 1 + c);
-      Pen.SetColor (ColorByName ("gray35"));
+      Pen.SetFgColor (ColorByName ("gray35"));
       Line ( x + c, h - 1 - c, w - c - 1, h - 1 - c);
       Line ( w - 1 - c, y + 1 + c, w - 1 - c, h - c - 1);
-      Pen.SetColor (ColorByName ("gray59"));
+      Pen.SetFgColor (ColorByName ("gray59"));
       Line ( x + 1 + c, h - 2 - c, w - 2 - c, h - 2 - c);
       Line ( w - 2 - c, y + 2 + c, w - 2 - c, h - 2 - c);
-      Pen.SetColor (OldPen);
-    };
-};
+      Pen.SetFgColor (OldPen);
+    }
+}
 
 void
 CPaint::Text (lxString text,  int x1, int y1)
@@ -345,37 +345,41 @@ CPaint::End(void)
 void 
 CPaint::SetFgColor(unsigned char r,unsigned char g, unsigned char b)
 {
-   Pen.SetColor (ColorByRGB(r,g,b));
+   Pen.SetFgColor (ColorByRGB(r,g,b));
 }
 
 void 
 CPaint::SetFgColor(lxString cname)
 {
-   Pen.SetColor (ColorByName(cname));
+   Pen.SetBgColor (ColorByName(cname));
 }
 
 
 void 
 CPaint::SetBgColor(unsigned char r,unsigned char g, unsigned char b)
 {
-   Pen.SetBGColor (ColorByRGB(r,g,b));
+   Pen.SetBgColor (ColorByRGB(r,g,b));
 }
 
 	
 void 
 CPaint::SetBgColor(lxString cname)
 {
-   Pen.SetBGColor (ColorByName(cname));
+   Pen.SetBgColor (ColorByName(cname));
 }
 
 void 
 CPaint::Rectangle (bool filled, int x, int y, int w, int h)
 {
   if(filled)
+  { 
+    lxColor old = Pen.GetFgColor ();
+    Pen.SetFgColor (Pen.GetBgColor ());
     Rectangle ( x, y,  w, h);
-  else
-    Frame ( x, y, w, h,1);
-
+    Pen.SetFgColor (old);
+  }
+  
+  Frame ( x, y, w, h,1);
 }
 
 //FIXME
@@ -484,44 +488,57 @@ CPaint::Circle (bool filled, int x, int y, int radius)
 {
   int off=radius;	
   Rotate(&x,&y);
-  if(filled)	
+
+  if(filled)
+  { 
+    lxColor old = Pen.GetFgColor ();
+    Pen.SetFgColor (Pen.GetBgColor ());
     XFillArc (Disp, DrawIn, Agc, (RX+x-off)*Scalex, (RY+y-off)*Scaley, 2*radius*Scalex, 2*radius*Scaley,0,360*64);
-  else
-    XDrawArc (Disp, DrawIn, Agc, (RX+x-off)*Scalex, (RY+y-off)*Scaley, 2*radius*Scalex, 2*radius*Scaley,0,360*64);
+    Pen.SetFgColor (old);
+  }
+  
+  XDrawArc (Disp, DrawIn, Agc, (RX+x-off)*Scalex, (RY+y-off)*Scaley, 2*radius*Scalex, 2*radius*Scaley,0,360*64);
 }
   
 
 void 
-CPaint::Polygon(bool filed, lxPoint * points, int npoints)
+CPaint::Polygon(bool filled, lxPoint * points, int npoints)
 {
   points[0].x+=RX;
   points[0].y+=RY;
-
-  XFillPolygon(Disp, DrawIn, Agc, points, npoints,  Complex , CoordModeOrigin);
+  
+  if(filled)
+  { 
+    lxColor old = Pen.GetFgColor ();
+    Pen.SetFgColor (Pen.GetBgColor ());
+    XFillPolygon(Disp, DrawIn, Agc, points, npoints,  Complex , CoordModeOrigin);
+    Pen.SetFgColor (old);
+  }
+  
+  XDrawLines (Disp, DrawIn, Agc, points,
+	      npoints, CoordModeOrigin);
 }
 
 void 
 CPaint::SetColor(unsigned char r,unsigned char g, unsigned char b)
 {
   Pen.SetColor (ColorByRGB(r,g,b));
-  Pen.SetBGColor (ColorByRGB(r,g,b));
 }
 
 void 
 CPaint::SetColor(lxColor c)
 {
   Pen.SetColor (c);
-  Pen.SetBGColor (c);
 }
 
 void CPaint::SetFgColor(lxColor c)
 {
-  Pen.SetColor (c);
+  Pen.SetFgColor (c);
 }
 
 void CPaint::SetBgColor(lxColor c)
 {
-  Pen.SetBGColor (c);
+  Pen.SetBgColor (c);
 }
 
 void 

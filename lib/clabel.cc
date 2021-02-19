@@ -123,8 +123,8 @@ CLabel::Draw(void)
  Paint->Text (this, 0, Height - GetTextDes (), VText);
   */
 
- Paint->Pen.SetColor (Color);
- Paint->Pen.SetBGColor (Owner->GetColor ());
+ Paint->Pen.SetFgColor (Color);
+ Paint->Pen.SetBgColor (Owner->GetColor ());
 
  if ((Text.length () > 0)&&(strchr (Text.c_str (), '\n')))
   {

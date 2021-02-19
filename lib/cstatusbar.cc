@@ -150,8 +150,8 @@ CStatusbar::Draw (void)
   Paint->Rectangle ( 2, 2, Owner->GetWidth () - 2, Height - 2);
   Paint->RaiserFrame ( 0, 0, Owner->GetWidth (), Height);
   
-  Paint->Pen.SetColor (ColorByRGB(0,0,0));
-  Paint->Pen.SetBGColor (Color);
+  Paint->Pen.SetFgColor (ColorByRGB(0,0,0));
+  Paint->Pen.SetBgColor (Color);
   for (unsigned int i = 0; i < Fields.GetLinesCount (); i++)
   {
     Paint->ImgText ((Owner->GetWidth()*i/Fields.GetLinesCount())+5 , 15 , Fields.GetLine(i).c_str());
