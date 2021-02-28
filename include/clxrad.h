@@ -70,7 +70,7 @@ using namespace std;
                      ButtonMotionMask| EnterWindowMask | LeaveWindowMask | ExposureMask | \
 		     StructureNotifyMask | FocusChangeMask | PointerMotionMask
 
-#define Parent 99999
+//#define Parent 99999
 #define EVMAX 100
 #define DOUBLECLICKTIME 400
 

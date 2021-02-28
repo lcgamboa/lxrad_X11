@@ -34,6 +34,10 @@
 #include <minizip/zip.h>
 #include <minizip/unzip.h>
 
+#include"../../lunasvg/include/svgdocument.h"
+
+using namespace lunasvg;
+
 //-------------------------------------------------------------------------
 
 lxTextFile::lxTextFile()
@@ -134,17 +138,82 @@ lxImage::~lxImage()
   }
 }
 
+unsigned int
+lxImage::GetWidth(void)
+{
+ imlib_context_set_image (Image);
+ return imlib_image_get_width ();
+}
+
+unsigned int
+lxImage::GetHeight(void)
+{
+ imlib_context_set_image (Image);
+ return imlib_image_get_height ();
+}
+
 bool
-lxImage::LoadFile(lxString fname)
+lxImage::LoadFile(const lxString fname, int orientation, float scalex, float scaley)
 {
  Destroy ();
 
- //Image = imlib_load_image_immediately_without_cache ((char *) fname.c_str ());
- Image = imlib_load_image_immediately ((char *) fname.c_str ());
- if (Image)
-  return 1;
- else
-  return 0;
+ if (fname.Contains (".svg"))
+  {
+   int width;
+   int height;
+
+   SVGDocument document;
+   if (document.loadFromFile ((const char *) fname.c_str ()))
+    {
+     width = document.documentWidth (96.0) * scalex;
+     height = document.documentHeight (96.0) * scaley;
+
+     Bitmap bitmap = document.renderToBitmap (width, height, 96.0, 0);
+
+     const unsigned char * bmp = bitmap.data ();
+     int size = bitmap.width () * bitmap.height ();
+     unsigned char * data = (unsigned char *) malloc (size * 4);
+
+     //RGBA to  ARGB 
+     for (int i = 0; i < size; i++)
+      {
+       data[(4 * i) + 0] = bmp[(4 * i) + 2];
+       data[(4 * i) + 1] = bmp[(4 * i) + 1];
+       data[(4 * i) + 2] = bmp[(4 * i) + 0];
+       data[(4 * i) + 3] = bmp[(4 * i) + 3];
+      }
+
+     Image = imlib_create_image_using_copied_data (bitmap.width (), bitmap.height (), (unsigned int*) data);
+
+     free (data);
+
+     imlib_context_set_image (Image);
+     imlib_image_orientate (orientation);
+
+     return 1;
+    }
+
+  }
+ else //png
+  {
+   lxImage image = imlib_load_image_immediately ((char *) fname.c_str ());
+
+   if (image)
+    {
+
+     imlib_context_set_image (image);
+     imlib_image_orientate (orientation);
+
+     Image = imlib_create_cropped_scaled_image (0, 0, imlib_image_get_width (), imlib_image_get_height (),
+                                                imlib_image_get_width () * scalex, imlib_image_get_height () * scaley);
+
+     image.Destroy ();
+     return 1;
+    }
+  }
+
+ return 0;
+
 }
 
 void
@@ -688,13 +757,13 @@ lxGetTempDir(lxString appname)
 lxString
 lxGetExecutablePath(lxString appname)
 {
- char buff[1024];	
- int size = readlink("/proc/self/exe",buff,1023);
- if(size == -1)
- {
+ char buff[1024];
+ int size = readlink ("/proc/self/exe", buff, 1023);
+ if (size == -1)
+  {
    return "";
- }
- buff[size]=0;
+  }
+ buff[size] = 0;
  return buff;
 }
 

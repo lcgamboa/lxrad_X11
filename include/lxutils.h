@@ -88,9 +88,11 @@ public:
 lxImage(Imlib_Image img);
 lxImage();
 ~lxImage();
-bool LoadFile(lxString fname);
+bool LoadFile(const lxString fname, int orientation = 0, float scalex = 1.0, float scaley = 1.0);
 void Destroy();
 operator Imlib_Image() const;
+unsigned int GetWidth(void);
+unsigned int GetHeight(void);
 };
 
 class lxSize
