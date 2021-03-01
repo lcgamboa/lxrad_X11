@@ -240,11 +240,11 @@ lxBitmap::~lxBitmap()
   XFreePixmap (Application->GetADisplay (), CPixmap);
 }
 
-lxBitmap::lxBitmap(lxImage img, CWindow *win, int orient)
+lxBitmap::lxBitmap(lxImage * img, CWindow *win, int orient)
 {
  //FIXME use win parameter
  //
- imlib_context_set_image (img);
+ imlib_context_set_image (*img);
  int w = imlib_image_get_width ();
  int h = imlib_image_get_height ();
 
@@ -858,6 +858,6 @@ XXLookupString(XIC ic, XKeyPressedEvent * event, char *buffer_return,
 lxBitmap *
 lxGetBitmapRotated(lxImage *image, CWindow * win, int orientation)
 {
- return new lxBitmap (*image, win, orientation);
+ return new lxBitmap (image, win, orientation);
 }
 

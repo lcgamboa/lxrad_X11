@@ -112,7 +112,7 @@ private:
 Pixmap CPixmap;
 public:
 ~lxBitmap();
-lxBitmap (lxImage img, CWindow * win ,int orient=0);
+lxBitmap (lxImage * img, CWindow * win ,int orient=0);
 lxBitmap (int width, int height); 
 Pixmap  GetPixmap(void);
 operator Pixmap() const;
