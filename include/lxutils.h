@@ -86,7 +86,7 @@ private:
 Imlib_Image Image;
 public:
 lxImage(Imlib_Image img);
-lxImage();
+lxImage(CPWindow * win);
 ~lxImage();
 bool LoadFile(const lxString fname, int orientation = 0, float scalex = 1.0, float scaley = 1.0);
 void Destroy();

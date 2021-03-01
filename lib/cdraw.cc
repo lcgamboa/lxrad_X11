@@ -419,7 +419,7 @@ CDraw::SetImgFileName(lxString filename, float sx, float sy)
     }
    CMask = XCreatePixmap (Win->GetADisplay (), Win->GetWWindow (), Width, Height, 1);
 
-   lxImage img_;
+   lxImage img_(Win);
 
    if (img_.LoadFile (FileName, 0, sx, sy))
     {

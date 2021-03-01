@@ -118,7 +118,7 @@ lxTextFile::AddLine(lxString line)
 
 //-------------------------------------------------------------------------
 
-lxImage::lxImage()
+lxImage::lxImage(CPWindow * win)
 {
  Image = NULL;
 }
