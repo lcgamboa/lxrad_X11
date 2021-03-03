@@ -158,6 +158,9 @@ public:
   lxColor(unsigned char r, unsigned char g, unsigned char b);
   lxString GetAsString(int flags =0);
   operator XColor() const;
+  unsigned char Red(void){return (Color.red/256);};
+  unsigned char Green(void){return (Color.green/256);};
+  unsigned char Blue(void){return (Color.blue/256);};
 };
 
 class lxCursor

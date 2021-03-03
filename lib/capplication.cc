@@ -674,7 +674,10 @@ CApplication::RemoveTimer (CTimer *tm)
      if(TimerCount == -1)
      {
        if (TimerList)
+       {
          delete[]TimerList;
+         TimerList = NULL;
+       }
      }
     }
    //printf("Timer %i Removed: %s\n",TimerCount,tm->GetName().c_str()); 
@@ -715,7 +718,10 @@ CApplication::RemoveThread (CThread *td)
      if(ThreadCount == -1)
      {
        if (ThreadList)
+       {
          delete[]ThreadList;
+         ThreadList = NULL;
+       }
      }
     }
   }
