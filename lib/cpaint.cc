@@ -222,6 +222,26 @@ CPaint::Rectangle(int x, int y, int w, int h)
 void
 CPaint::Frame(int x, int y, int w, int h, uint wb)
 {
+ int x2, y2;
+ int temp;
+ x2 = x + w;
+ y2 = y + h;
+ Rotate (&x, &y);
+ Rotate (&x2, &y2);
+ if (x > x2)
+  {
+   temp = x;
+   x = x2;
+   x2 = temp;
+  }
+ if (y > y2)
+  {
+   temp = y;
+   y = y2;
+   y2 = temp;
+  }
+  w = x2-x;
+  h = y2-y;	 
  for (uint c = 0; c < wb; c++)
   XDrawRectangle (Disp, DrawIn, Agc, (RX + x + c) * Scalex,
                   (RY + y + c) * Scaley, (w - (c * 2)) * Scalex, (h - (c * 2)) * Scaley);
@@ -552,16 +572,16 @@ CPaint::Rotate(int *x, int *y)
  switch (orientation)
   {
   case 1:
-   *x = Width - oy;
+   *x = Width/Scalex - oy;
    *y = ox;
    break;
   case 2:
-   *x = Width - ox;
-   *y = Height - oy;
+   *x = Width/Scalex - ox;
+   *y = Height/Scaley - oy;
    break;
   case 3:
    *x = oy;
-   *y = Height - ox;
+   *y = Height/Scaley - ox;
    break;
   default:
    break;
