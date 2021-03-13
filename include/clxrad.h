@@ -70,7 +70,6 @@ using namespace std;
                      ButtonMotionMask| EnterWindowMask | LeaveWindowMask | ExposureMask | \
 		     StructureNotifyMask | FocusChangeMask | PointerMotionMask
 
-//#define Parent 99999
 #define EVMAX 100
 #define DOUBLECLICKTIME 400
 
@@ -86,6 +85,7 @@ using namespace std;
 #define EVONDRAW                 (void(CControl::*)(CControl*))
 #define EVONFOCUSIN              (void(CControl::*)(CControl*))
 #define EVONFOCUSOUT             (void(CControl::*)(CControl*))
+#define EVMOUSEWHEEL             (void(CControl::*)(CControl*,const int))
 
 #define EVONCHECKBOX            (void(CControl::*)(CControl*))
 #define EVMENUACTIVE            (void(CControl::*)(CControl*))

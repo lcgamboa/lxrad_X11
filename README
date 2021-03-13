@@ -14,6 +14,7 @@ libpthreads
 
 Installation:
 
+./make_deps.sh
 ./configure
 make           - Compile the liblxrad dynamic
 make static    - Compile the liblxrad static

@@ -151,6 +151,7 @@ public:
   virtual void pointer_in (void);
   virtual void pointer_out (void);
   virtual void on_draw (void);
+  virtual void mouse_wheel (XEvent event);
 
   void (CControl::*EvMouseMove) (CControl * control, uint button, uint x, uint y, uint mask);
   void (CControl::*EvMouseButtonPress) (CControl * control, uint button, uint x, uint y, uint mask);
@@ -165,5 +166,7 @@ public:
   void (CControl::*EvOnDraw) (CControl * control);
   void (CControl::*EvOnFocusIn) (CControl * control);
   void (CControl::*EvOnFocusOut) (CControl * control);
+  void (CControl::*EvMouseWheel) (CControl * control, int rotation);
+  
 };
 #endif
