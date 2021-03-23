@@ -249,4 +249,7 @@ bool lxRemoveDir(const char* dirname);
 bool lxCreateDir(const char * dirname);
 bool lxRenameFile(lxString oldfname, lxString newfname);
 
+unsigned int lxGetDisplayWidth(int disp);
+unsigned int lxGetDisplayHeight(int disp);
+
 #endif	/* LXUTILS_H */
