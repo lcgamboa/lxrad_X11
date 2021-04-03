@@ -180,7 +180,7 @@ CPaint::Line(int x1, int y1, int x2, int y2)
 {
  Rotate (&x1, &y1);
  Rotate (&x2, &y2);
- XDrawLine (Disp, DrawIn, Agc, RX + x1, RY + y1, RX + x2, RY + y2);
+ XDrawLine (Disp, DrawIn, Agc, (RX + x1)*Scalex, (RY + y1)*Scaley, (RX + x2)*Scalex, (RY + y2)*Scaley);
 }
 
 void
@@ -325,7 +325,7 @@ CPaint::PutPixmap(int x, int y, int w, int h, Pixmap pixmap)
 void
 CPaint::SetLineWidth(int w)
 {
- Pen.SetWidth (w);
+ Pen.SetWidth (w * Scalex);
 }
 
 void
