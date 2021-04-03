@@ -88,7 +88,7 @@ public:
 lxImage(Imlib_Image img);
 lxImage(CPWindow * win);
 ~lxImage();
-bool LoadFile(const lxString fname, int orientation = 0, float scalex = 1.0, float scaley = 1.0, int useAlpha = 0);
+bool LoadFile(const lxString fname, int orientation = 0, float scalex = 1.0, float scaley = 1.0, int useAlpha = 0, double * ret_sx=NULL, double * ret_sy=NULL);
 void Destroy();
 operator Imlib_Image() const;
 unsigned int GetWidth(void);
