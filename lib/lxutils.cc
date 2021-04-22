@@ -466,6 +466,15 @@ lxFont::lxFont(int size, int family, int style, int weight)
  printf ("Incomplete: %s -> %s :%i\n", __func__, __FILE__, __LINE__);
 #endif
 }
+
+void 
+lxFont::SetPointSize(int size)
+{
+#ifdef _DEBUG 
+ printf ("Incomplete: %s -> %s :%i\n", __func__, __FILE__, __LINE__);
+#endif
+}
+
 //-------------------------------------------------------------------------
 
 void
