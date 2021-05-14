@@ -180,6 +180,29 @@ public:
   void SetPointSize(int size);
 };
 
+class lxMutex
+{
+private:
+  void * Mutex;  
+public:
+  void * GetMutex(void);     
+  lxMutex();
+  ~lxMutex();  
+  void Lock(void);
+  void Unlock(void);  
+};
+
+class lxCondition
+{
+private:
+  void * Cond;  
+  void * Mutex;  
+public:       
+  lxCondition(lxMutex & mutex);  
+  ~lxCondition();
+  void Signal(void);   
+  void Wait(void);   
+};
 
 #define lxFONTFAMILY_DEFAULT  0x00
 #define lxFONTFAMILY_TELETYPE 0x01

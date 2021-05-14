@@ -898,3 +898,57 @@ lxGetDisplayHeight(int disp)
 {
  return XDisplayHeight (Application->GetADisplay (), DefaultScreen (Application->GetADisplay ()));
 }
+
+
+lxMutex::lxMutex()
+{
+ Mutex = (void *) new pthread_mutex_t;
+ pthread_mutex_init ((pthread_mutex_t*) Mutex, NULL);
+}
+
+lxMutex::~lxMutex()
+{
+ delete (pthread_mutex_t*) Mutex;
+}
+
+void *
+lxMutex::GetMutex(void)
+{
+ return Mutex;
+}
+
+void
+lxMutex::Lock(void)
+{
+ pthread_mutex_lock ((pthread_mutex_t*) Mutex);
+}
+
+void
+lxMutex::Unlock(void)
+{
+ pthread_mutex_unlock ((pthread_mutex_t*) Mutex);
+}
+
+lxCondition::lxCondition(lxMutex & mutex)
+{
+ Mutex = mutex.GetMutex ();
+ Cond = (void *) new pthread_cond_t;
+ pthread_cond_init ((pthread_cond_t *) Cond, NULL);
+}
+
+lxCondition::~lxCondition()
+{
+ delete (pthread_cond_t*) Cond;
+}
+
+void
+lxCondition::Signal(void)
+{
+ pthread_cond_signal ((pthread_cond_t *) Cond);
+}
+
+void
+lxCondition::Wait(void)
+{
+ pthread_cond_wait ((pthread_cond_t *) Cond, (pthread_mutex_t*) Mutex);
+}
