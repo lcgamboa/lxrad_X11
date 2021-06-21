@@ -937,17 +937,29 @@ lxStringList::GetLinesCount(void) const
 }
 
 void
-lxStringList::DelLine(uint linen)
+lxStringList::DelLine(unsigned int linen)
 {
- LinesCount--;
- lxString *ALines = new lxString[LinesCount + 1];
- for (uint c = 0; c < linen; c++)
-  ALines[c] = Lines[c];
- for (int c = linen; c < LinesCount + 1; c++)
-  ALines[c] = Lines[c + 1];
- if (Lines)
-  delete[]Lines;
- Lines = ALines;
+ if(linen <= (unsigned int)LinesCount)
+  {
+   LinesCount--;
+   if(LinesCount >= 0)
+   {
+     lxString *ALines = new lxString[LinesCount + 1];
+     for (unsigned int c = 0; c < linen; c++)
+      ALines[c] = Lines[c];
+     for (int c = linen; c < LinesCount + 1; c++)
+      ALines[c] = Lines[c + 1];
+     if (Lines)
+      delete[]Lines;
+     Lines = ALines;
+   }
+   else
+   {
+     if (Lines)
+      delete[]Lines;
+     Lines = NULL; 
+   } 
+  }
 }
 
 bool
