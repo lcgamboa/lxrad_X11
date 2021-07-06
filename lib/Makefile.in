@@ -71,7 +71,7 @@ static :: $(LIBSTLIBNAME)
 
 clean-lib:
 	$(RM) *.ld *.ad
-	$(RM) *.lo *.ao *.a
+	$(RM) *.lo *.ao ${LIBSTLIBNAME}
 	$(RM) $(LIBTARGETS) $(LIBEXTRACLEAN)
 clean :: clean-lib
 

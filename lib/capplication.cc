@@ -365,19 +365,19 @@ CApplication::ProcessEvents (void)
    {
      trun = 1;	   
 
-   gettimeofday (&tv, NULL);
    //printf("---------------------\n");
    for (int t = 0; t <= TimerCount; t++)
     {
+     gettimeofday (&tv, NULL);
      elapsed = (((tv.tv_usec - TimerList[t]->tv.tv_usec) / 1000L) + 1000L * (tv.tv_sec - TimerList[t]->tv.tv_sec));
 
      //printf("Elapsed %i = %lu de %lu\n",t,elapsed,TimerList[t]->GetTime());
      if (elapsed >= TimerList[t]->GetTime ())
       {
-       //printf("===>>Timer %i reseted\n",t);	       
        TimerList[t]->tv = tv;
        TimerList[t]->SetOverTime (elapsed - TimerList[t]->GetTime ());
        TimerList[t]->on_time ();
+       //printf("===>>Timer %i reseted Overtime=%i\n",t,TimerList[t]->GetOverTime ());	       
       }
     }
 
