@@ -95,6 +95,8 @@ using namespace std;
 #define EVTHREADEND	        (void(CControl::*)(CControl*))
 #define EVONCHANGESPINDOUBLE    (void(CControl::*)(CControl*))
 #define EVONCLOSE        	(void(CControl::*)(const int))
+#define EVONDROPFILE            (void(CControl::*)(CControl*,const lxString fname))
+
 
 typedef unsigned int uint;
 

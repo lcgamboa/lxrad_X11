@@ -42,6 +42,7 @@ protected:
   bool CanExecuteEventOld;
   bool CanFocus;
   bool PointerOn;
+  bool DragAcceptFiles;
   bool Enable;
   timeval LastDrawTime;
   Time BTimePress, BTimeRelease, BTimeClick;
@@ -82,6 +83,7 @@ public:
   virtual void Update (void);
   lxStringList GetContext (void);
   void SetContext (lxStringList context);
+  void SetDragAcceptFiles(bool accept);
   XRectangle GetRectangle (void);
 //propiedades
   void SetFont (const lxString font);
@@ -152,6 +154,7 @@ public:
   virtual void pointer_out (void);
   virtual void on_draw (void);
   virtual void mouse_wheel (XEvent event);
+  virtual void on_drop_files(XEvent event);
 
   void (CControl::*EvMouseMove) (CControl * control, uint button, uint x, uint y, uint mask);
   void (CControl::*EvMouseButtonPress) (CControl * control, uint button, uint x, uint y, uint mask);
@@ -167,6 +170,7 @@ public:
   void (CControl::*EvOnFocusIn) (CControl * control);
   void (CControl::*EvOnFocusOut) (CControl * control);
   void (CControl::*EvMouseWheel) (CControl * control, int rotation);
-  
+  void (CControl::*EvOnDropFile) (CControl * control, const lxString fname);
+
 };
 #endif
