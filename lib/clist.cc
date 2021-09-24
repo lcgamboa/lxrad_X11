@@ -184,7 +184,7 @@ CList::SetItems (lxString litens)
 {
   int f = 0;
   ItemsList.Clear ();
-  while (f + 1 <= (int) litens.size ())
+  while (litens.size () > 1)
     {
       f = litens.find (",");
       ItemsList.AddLine (litens.substr (0, f));
