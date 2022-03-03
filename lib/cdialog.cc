@@ -25,6 +25,7 @@
 
 
 #include"../include/cdialog.h"
+#include"../include/capplication.h"
 
 
 // CDialog__________________________________________________________
@@ -87,4 +88,42 @@ Dialog (lxString label)
   winput->WDestroy ();
   delete winput;
   return ret;
-};
+}
+
+
+bool
+Dialog_sz (lxString label, int Width, int Height)
+{
+  bool ret;
+  CDialog *winput;
+  winput = new CDialog;
+
+  int width, height;  
+	  
+  winput->SetWidth (Width);
+  winput->SetHeight (Height);
+  winput->button1.SetX ((Width- 3*winput->button1.GetWidth())/2);
+  winput->button1.SetY (Height-65);
+  winput->button2.SetX (((Width- 3*winput->button1.GetWidth())/2)+(2*winput->button1.GetWidth()));
+  winput->button2.SetY (Height-65);
+  winput->string1.SetWidth (Width-5);
+  winput->string1.SetHeight (Height-90);
+
+  width=XDisplayWidth(Application->GetADisplay(),DefaultScreen(Application->GetADisplay()));
+  height=XDisplayHeight(Application->GetADisplay(),DefaultScreen(Application->GetADisplay()));
+  
+  winput->SetX ((width  - winput->GetWidth  ())/2);
+  winput->SetY ((height - winput->GetHeight ())/2);
+
+  winput->string1.SetText (label);
+  winput->WCreate ();
+  winput->Return=0;
+  winput->SetCanDestroy (false);
+  winput->Draw ();
+  winput->ShowExclusive ();
+  winput->SetCanDestroy (true);
+  ret = winput->Return;
+  winput->WDestroy ();
+  return ret;
+}
+

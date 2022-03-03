@@ -43,5 +43,6 @@ public:
 };
 
 bool Input (lxString label, lxString & str);
+bool Input_sz (lxString label, lxString & str, int Width, int Height);
 
 #endif

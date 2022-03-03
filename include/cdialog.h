@@ -42,5 +42,6 @@ public:
 };
 
 bool Dialog (lxString label);
+bool Dialog_sz (lxString label, int Width, int Height);
 
 #endif
