@@ -223,7 +223,7 @@ CPaint::Rectangle(int x, int y, int w, int h)
    y = y2;
    y2 = temp;
   }
- XFillRectangle (Disp, DrawIn, Agc, (RX + x) * Scalex, (RY + y) * Scaley, (x2 - x) * Scalex, (y2 - y) * Scaley);
+ XFillRectangle (Disp, DrawIn, Agc, (RX + x) * Scalex, (RY + y) * Scaley, (x2 - x +0.95) * Scalex, (y2 - y+ 0.95) * Scaley);
 }
 
 void
