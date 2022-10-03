@@ -147,6 +147,8 @@ typedef struct
 int x,y,width,height;	
 }lxRect;
 
+#define lxCOLOR_WINDOWTEXT 8
+
 class lxColor
 {
 private:	
@@ -161,7 +163,8 @@ public:
   unsigned char Red(void){return (Color.red/256);};
   unsigned char Green(void){return (Color.green/256);};
   unsigned char Blue(void){return (Color.blue/256);};
-  void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char alpha = 0xFF);
+  static lxColor SystemColor(int id);
+  void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char alpha = 0xFF);  
 };
 
 class lxCursor

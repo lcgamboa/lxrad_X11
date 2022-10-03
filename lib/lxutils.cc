@@ -442,6 +442,11 @@ lxColor::Set(unsigned char r, unsigned char g, unsigned char b, unsigned char al
  Color = ColorByRGB (r, g, b); 
 }
 
+lxColor lxColor::SystemColor(int id)
+{
+   return lxColor(0, 0, 0);
+}
+
 //-------------------------------------------------------------------------
 
 lxCursor::lxCursor()
