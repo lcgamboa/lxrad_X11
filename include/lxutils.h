@@ -163,9 +163,10 @@ public:
   unsigned char Red(void){return (Color.red/256);};
   unsigned char Green(void){return (Color.green/256);};
   unsigned char Blue(void){return (Color.blue/256);};
-  static lxColor SystemColor(int id);
   void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char alpha = 0xFF);  
 };
+  
+lxColor SystemColor(int id);
 
 class lxCursor
 {
