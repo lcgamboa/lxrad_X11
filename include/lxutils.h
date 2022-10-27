@@ -148,6 +148,7 @@ int x,y,width,height;
 }lxRect;
 
 #define lxCOLOR_WINDOWTEXT 8
+#define lxCOLOR_BTNFACE 15
 
 class lxColor
 {
@@ -163,6 +164,7 @@ public:
   unsigned char Red(void){return (Color.red/256);};
   unsigned char Green(void){return (Color.green/256);};
   unsigned char Blue(void){return (Color.blue/256);};
+  unsigned char Alpha(void){return 0xFF;};
   void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char alpha = 0xFF);  
 };
   
