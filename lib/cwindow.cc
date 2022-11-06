@@ -834,6 +834,19 @@ CWindow::SetHeight (uint height)
     XResizeWindow (ADisplay, WWindow, Width, height);
 }
 
+int
+CWindow::GetClientWidth(void)
+{
+ return Width;
+}
+
+
+int
+CWindow::GetClientHeight(void)
+{
+ return Height;
+}
+
 //operators
 
 void *

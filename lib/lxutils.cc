@@ -163,6 +163,7 @@ lxImage::LoadFile(const lxString fname, int orientation, float scalex, float sca
   {
    int width;
    int height;
+   unsigned int bgrcolor;
 
    auto document = Document::loadFromFile (std::string (fname.c_str()));
 
@@ -178,8 +179,15 @@ lxImage::LoadFile(const lxString fname, int orientation, float scalex, float sca
      if (ret_sy)
       *ret_sy = ((double) height) / document->height ();
 
-     lxColor backgrd =  SystemColor(lxCOLOR_BTNFACE);
-     auto bitmap = document->renderToBitmap (width, height,  (backgrd.Red()<<24) | (backgrd.Blue()<<16) | (backgrd.Green()<<8)| backgrd.Alpha());
+     if(useAlpha){
+    	bgrcolor = 0;
+     }
+     else{
+	    lxColor backgrd =  SystemColor(lxCOLOR_BTNFACE);
+        bgrcolor = (backgrd.Red()<<24) | (backgrd.Blue()<<16) | (backgrd.Green()<<8)| backgrd.Alpha();  
+	 }
+	 
+	 auto bitmap = document->renderToBitmap (width, height, bgrcolor);
      bitmap.convertToRGBA();
 
      const unsigned char * bmp = bitmap.data ();
