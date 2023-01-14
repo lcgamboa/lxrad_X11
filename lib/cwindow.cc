@@ -861,6 +861,11 @@ new (size_t sz)
   return (void *) m;
 }
 
+void CWindow::operator delete(void* p)
+{
+  free(p);
+}
+
 //eventos
 
 void
@@ -914,12 +919,11 @@ CWindow::LoadXMLContextAndCreateChilds(lxString filename, CControl* ctrl)
   lxString line;
 
   file2 = fopen (filename.c_str(),"r");
-  rewind(file2);
   
-
   if (file2)
     {
-
+      rewind(file2);
+      
       if(ctrl == NULL)//for owner window
       {
         if(fgetline (file2, line))

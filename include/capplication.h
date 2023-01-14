@@ -49,7 +49,7 @@ private:
   Display *ADisplay;
   Screen *AScreen;
   XIM IM;
-  int PixelsCount;
+  unsigned int PixelsCount;
   TXColor *ColorTable;
   bool Exit;
   Window FWindow;

@@ -849,7 +849,7 @@ lxStringList::AddLine(const lxString line)
  if (line.c_str () != NULL)
   {
    LinesCount++;
-   lxString *ALines = new lxString[LinesCount + 1];
+   lxString *ALines = new lxString[(unsigned int)LinesCount + 1];
    for (int c = 0; c < LinesCount; c++)
     ALines[c] = Lines[c];
    ALines[LinesCount] = line;
@@ -919,7 +919,7 @@ void
 lxStringList::InsertLine(lxString line, uint linen)
 {
  LinesCount++;
- lxString *ALines = new lxString[LinesCount + 1];
+ lxString *ALines = new lxString[(unsigned int)LinesCount + 1];
  for (uint c = 0; c < linen; c++)
   ALines[c] = Lines[c];
  ALines[linen] = line;

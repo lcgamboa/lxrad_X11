@@ -124,6 +124,7 @@ public:
   int GetClientWidth (void);
   //operator
   void *operator new (size_t sz);
+  void operator delete(void* p);
   //eventos
   virtual void on_create (void);
   virtual void on_destroy (void);
