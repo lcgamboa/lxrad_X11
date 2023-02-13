@@ -46,12 +46,12 @@ CApplication::CApplication (void)
  ThreadCount = -1;
  ThreadList = NULL;
  Tag = 0;
-  PixelsCount = -1;
-  ColorTable = NULL;
-  Exit = false;
+ PixelsCount = 0;
+ ColorTable = NULL;
+ Exit = false;
 
-  IM=NULL;
-  ADisplay=NULL;
+ IM=NULL;
+ ADisplay=NULL;
  HintControl = NULL;
  HintTime = time(NULL);
  HintX = 0;
@@ -60,7 +60,7 @@ CApplication::CApplication (void)
 
 CApplication::~CApplication (void)
 {
-  PixelsCount = -1;
+  PixelsCount = 0;
   if (ColorTable)
     delete[]ColorTable;
   ColorTable = NULL;
@@ -597,7 +597,6 @@ void
 CApplication::AddToColorTable (lxString colorname, XColor color,
 			       XColor displaycolor)
 {
-  PixelsCount++;
   TXColor *TempTable;
   TempTable = new TXColor[PixelsCount + 1];
 
@@ -607,6 +606,7 @@ CApplication::AddToColorTable (lxString colorname, XColor color,
   TempTable[PixelsCount].name = colorname;
   TempTable[PixelsCount].color = color;
   TempTable[PixelsCount].displaycolor = displaycolor;
+  PixelsCount++;
   if (ColorTable)
     delete[]ColorTable;
   ColorTable = TempTable;
@@ -614,7 +614,7 @@ CApplication::AddToColorTable (lxString colorname, XColor color,
 
 bool CApplication::XSearchInColorTable (lxString name, XColor * color)
 {
-  for (unsigned int c = 0; c <= PixelsCount; c++)
+  for (unsigned int c = 0; c < PixelsCount; c++)
     if (ColorTable[c].name.compare (name) == 0)
       {
 	*color = ColorTable[c].color;
@@ -626,7 +626,7 @@ bool CApplication::XSearchInColorTable (lxString name, XColor * color)
 
 bool CApplication::XSearchInColorTable (XColor * color)
 {
-  for (unsigned int c = 0; c <= PixelsCount; c++)
+  for (unsigned int c = 0; c < PixelsCount; c++)
     if ((ColorTable[c].color.red == color->red)
 	&& (ColorTable[c].color.green == color->green)
 	&& (ColorTable[c].color.blue == color->blue))
