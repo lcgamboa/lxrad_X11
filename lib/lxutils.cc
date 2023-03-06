@@ -236,6 +236,17 @@ lxImage::LoadFile(const lxString fname, int orientation, float scalex, float sca
 
 }
 
+bool 
+lxImage::CreateBlank(const unsigned int width, const unsigned int height, int orientation, double scalex, double  scaley ){
+	
+     Image = imlib_create_image(width * scalex, height * scaley);
+
+     imlib_context_set_image (Image);
+     imlib_image_orientate (orientation);
+
+     return 1;	
+}
+
 void
 lxImage::Destroy(void)
 {
