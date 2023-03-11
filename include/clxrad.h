@@ -93,6 +93,7 @@ using namespace std;
 #define EVONTOGGLEBUTTON        (void(CControl::*)(CControl*))
 #define EVTHREADRUN     	(void(CControl::*)(CControl*))
 #define EVTHREADEND	        (void(CControl::*)(CControl*))
+#define EVONCHANGESPIN		   (void(CControl::*)(CControl*))
 #define EVONCHANGESPINDOUBLE    (void(CControl::*)(CControl*))
 #define EVONCLOSE        	(void(CControl::*)(const int))
 #define EVONDROPFILE            (void(CControl::*)(CControl*,const lxString fname))
