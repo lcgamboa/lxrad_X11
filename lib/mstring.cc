@@ -488,7 +488,7 @@ lxString
 lxString::Format(const char *fmt, ...)
 {
  va_list arg;
- char tmp[256];
+ char tmp[4096];
  if (Str != NULL)
   delete[]Str;
 
@@ -509,7 +509,7 @@ lxString
 lxString::Printf(const char *fmt, ...)
 {
  va_list arg;
- char tmp[256];
+ char tmp[4096];
  if (Str != NULL)
   delete[]Str;
 
@@ -939,7 +939,7 @@ lxStringList::GetLinesCount(void) const
 void
 lxStringList::DelLine(unsigned int linen)
 {
- if(linen <= (unsigned int)LinesCount)
+ if((int)linen <= LinesCount)
   {
    LinesCount--;
    if(LinesCount >= 0)

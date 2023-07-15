@@ -311,9 +311,42 @@ CPaint::Text(lxString text, int x1, int y1)
 void
 CPaint::TextOnRect(lxString text, lxRect rect, CAlign align)
 {
- //FIXME font size 13	
- XDrawString (Disp, DrawIn, Agc, RX + rect.x, RY + rect.y + 13,
-              text.c_str (), text.size ());
+
+ int x,y,w, h;
+ char buffer[4096];
+ int linecount=0;
+ int texth = 0;
+ char * line;
+ int ln;
+ 
+
+ strcpy(buffer,(const char *)text.c_str());
+ line =strtok(buffer,"\n");
+ while(line){
+   h=13;
+   texth += h;
+   linecount++;
+   line =strtok(NULL,"\n");
+ }
+ 
+ strcpy(buffer,(const char *)text.c_str());
+ line =strtok(buffer,"\n");
+ ln=0;
+
+ while(line){
+   w= 6 * strlen(line);
+   h=13;
+   x = rect.x + (rect.width - w * Scalex) / 2;
+   y = rect.y + ((rect.height - texth * Scaley) / (linecount + 1)) + ( ln * h * Scaley);
+   //FIXME font size 13	
+   XDrawString (Disp, DrawIn, Agc, RX + x, RY + y + 13, line, strlen(line));
+   line =strtok(NULL,"\n");
+   ln++;
+ }
+
+
+
+
 }
 
 void
