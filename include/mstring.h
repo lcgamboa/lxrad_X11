@@ -31,6 +31,7 @@
 #include<string.h>
 #include<ctype.h>
 #include<stdarg.h>
+#include<string>
 
 #define NO_STL
 
@@ -46,6 +47,7 @@ public:
     lxString (const lxString & str);
     lxString (const char &str);
     lxString (const char *str);
+    lxString (const std::string str);
     lxString (const char *str, int size);
    ~lxString (void);
   const char *c_str (void) const;

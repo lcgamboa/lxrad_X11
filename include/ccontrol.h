@@ -88,6 +88,7 @@ public:
 //propiedades
   void SetFont (const lxString font);
   void SetFont (XFontStruct * font);
+  void SetFontFamily (int family);
   XFontStruct *GetFont (void);
   lxString GetFontName (void);
   void SetFontSize (uint size);

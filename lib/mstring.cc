@@ -231,6 +231,17 @@ lxString::lxString(const char *str, int size)
   Str = NULL;
 }
 
+lxString::lxString(const std::string str)
+{
+ if (str.size())
+  {
+   Str = new char[str.size() + 1];
+   strcpy (Str, str.c_str());
+  }
+ else
+  Str = NULL;
+}
+
 lxString::~lxString(void)
 {
  if (Str != NULL)
