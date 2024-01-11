@@ -52,20 +52,23 @@ public:
    ~lxString (void);
   const char *c_str (void) const;
   const char *char_str (void) const;
+  const char *utf8_str (void) const;
   int Cmp (const char *str) const;
   int compare (const char *str) const;
   int compare (const lxString & str) const;
   lxString Format(const char *fmt, ...) __attribute__((format (printf, 2, 3)));
   lxString Printf(const char *fmt, ...) __attribute__((format (printf, 2, 3)));
-  uint size (void) const;
-  uint length (void) const;
-  lxString substr (uint start, uint len) const;
+  unsigned int size (void) const;
+  unsigned int length (void) const;
+  lxString substr (unsigned int start, unsigned int len) const;
   int find (const lxString & str) const;
   int Contains(const lxString & str) const;
   int rfind (const lxString & str) const;
-  int erase (uint start, int num);
-  static lxString FromAscii(char * str);
-  int copy (char *str, uint sz) const;
+  int erase (unsigned int start, int num);
+  static lxString FromAscii(const char * str);
+  static lxString FromUTF8(const char * str);
+  static lxString FromUTF8(const std::string str);
+  int copy (char *str, unsigned int sz) const;
   bool  operator == (const lxString & str);
   lxString & operator = (const lxString & str);
   lxString & operator = (const char *str);
@@ -75,7 +78,7 @@ public:
   lxString & operator += (const lxString & str);
   lxString & operator += (const char *str);
   lxString & operator += (const char &str);
-  char &operator[] (const uint & index);
+  char &operator[] (const unsigned int & index);
   operator const char*() const;
   friend lxString operator + (const char *str1, const lxString & str2);
   friend lxString operator + (const char &str1, const lxString & str2);
@@ -95,16 +98,18 @@ public:
   void Clear ();
   void AddLine (const lxString line);
   void Append (const lxString line);
-  void InsertLine (lxString line, uint linen);
-  void DelLine (uint linen);
+  void InsertLine (lxString line, unsigned int linen);
+  void DelLine (unsigned int linen);
   bool LoadFromFile (lxString fname);
   bool SaveToFile (lxString fname);
   bool AppendToFile (lxString fname);
     lxStringList & operator = (const lxStringList & list);
   //propiedades
-  lxString GetLine (uint linen) const;
-  void SetLine (lxString line, uint linen);
-  uint GetLinesCount (void) const;
+  lxString GetLine (unsigned int linen) const;
+  void SetLine (lxString line, unsigned int linen);
+  unsigned int GetLinesCount (void) const;
+  lxString GetBuffer (void);
+  void SetBuffer (lxString buff);
 };
 
 
@@ -130,13 +135,13 @@ public:
   void Create ();
   void Clear ();
   void AddLine (string line);
-  void InsertLine (string line, uint linen);
-  void DelLine (uint linen);
+  void InsertLine (string line, unsigned int linen);
+  void DelLine (unsigned int linen);
   bool LoadFromFile (string fname);
   bool SaveToFile (string fname);
   //propiedades
-  string GetLine (uint linen) const;
-  void SetLine (string line, uint linen);
+  string GetLine (unsigned int linen) const;
+  void SetLine (string line, unsigned int linen);
   unsigned int GetLinesCount (void) const;
 };
 #endif
@@ -144,8 +149,8 @@ lxString xml_out (lxString name, lxString type, lxString value);
 void xml_in (lxString data, lxString & name, lxString & type, lxString & value);
 
 lxString eqparse (lxString & str, lxString & arg);
-lxString strndel (const lxString & str, uint n);
-lxString strnadd (const lxString & str, char c, uint n);
+lxString strndel (const lxString & str, unsigned int n);
+lxString strnadd (const lxString & str, char c, unsigned int n);
 int atoi (const lxString & str);
 float atof (const lxString & str);
 bool atob (const lxString & str);

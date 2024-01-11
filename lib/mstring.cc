@@ -269,6 +269,15 @@ lxString::char_str(void) const
   return NULL;
 }
 
+const char *
+lxString::utf8_str(void) const
+{
+ if (Str)
+  return Str;
+ else
+  return NULL;
+}
+
 int
 lxString::Cmp(const char *str) const
 {
@@ -538,13 +547,30 @@ lxString::Printf(const char *fmt, ...)
 }
 
 lxString
-lxString::FromAscii(char * str)
+lxString::FromAscii(const char * str)
 {
  lxString temp (str);
  return temp;
 }
 
-lxString lxString::operator+(const lxString & str)
+
+lxString
+lxString::FromUTF8(const char * str)
+{
+ lxString temp (str);
+ return temp;
+}
+
+lxString
+lxString::FromUTF8(const std::string str)
+{
+ lxString temp (str);
+ return temp;
+}
+
+
+
+lxString lxString::operator + (const lxString & str)
 {
  lxString
  temp;
