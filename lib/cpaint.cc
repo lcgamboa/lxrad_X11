@@ -525,6 +525,20 @@ CPaint::SetFont(lxFont font)
 #endif
 }
 
+void 
+CPaint::SetFontSize (const int pointsize){
+#ifdef _DEBUG 
+ printf ("Incomplete: %s -> %s :%i\n", __func__, __FILE__, __LINE__);
+#endif
+}
+
+void 
+CPaint::SetFontWeight (const int weight){
+#ifdef _DEBUG 
+ printf ("Incomplete: %s -> %s :%i\n", __func__, __FILE__, __LINE__);
+#endif
+}
+
 void
 CPaint::ChangeScale(float sx, float sy)
 {

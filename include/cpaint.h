@@ -62,6 +62,8 @@ public:
   void Create (CControl * control, lxBitmap *bitmap);
   void Destroy (void);
   void SetFont (CControl * control);
+  void SetFontSize (const int pointsize);
+  void SetFontWeight (const int weight);
   void SetPen (int function);
   void Point (int x, int y);
   void FillPolygon (XPoint * points, int npoints);
