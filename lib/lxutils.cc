@@ -951,16 +951,16 @@ lxMutex::GetMutex(void)
  return Mutex;
 }
 
-void
+int
 lxMutex::Lock(void)
 {
- pthread_mutex_lock ((pthread_mutex_t*) Mutex);
+ return pthread_mutex_lock ((pthread_mutex_t*) Mutex);
 }
 
-void
+int
 lxMutex::Unlock(void)
 {
- pthread_mutex_unlock ((pthread_mutex_t*) Mutex);
+ return pthread_mutex_unlock ((pthread_mutex_t*) Mutex);
 }
 
 lxCondition::lxCondition(lxMutex & mutex)

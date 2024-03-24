@@ -195,8 +195,8 @@ public:
   void * GetMutex(void);     
   lxMutex();
   ~lxMutex();  
-  void Lock(void);
-  void Unlock(void);  
+  int Lock(void);
+  int Unlock(void);  
 };
 
 class lxCondition
