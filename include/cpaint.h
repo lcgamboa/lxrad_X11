@@ -99,6 +99,8 @@ public:
   void Rectangle (bool filled, int x, int y, int w, int h);
   void Circle (bool filled, int x, int y, int radius);
   void Polygon(bool filed, lxPoint * points, int npoints);
+  void Arc (bool filled, int x1, int y1, int x2, int y2, int xc, int yc);
+  void EllipticArc(bool filled, int x, int y, int width, int height, double start, double end);
 };
 
 #endif

@@ -195,8 +195,11 @@ CPaint::Lines(XPoint * points, int npoints)
 {
  for (int c = 0; c < npoints; c++)
   {
-   points[c].x += RX;
-   points[c].y += RY;
+   int x = points[c].x;
+   int y=  points[c].y;
+   Rotate (&x, &y); 
+   points[c].x = (x + RX) * Scalex;
+   points[c].y = (y + RY) * Scaley;
   }
  XDrawLines (Disp, DrawIn, Agc, points,
              npoints, CoordModeOrigin);
@@ -563,11 +566,103 @@ CPaint::Circle(bool filled, int x, int y, int radius)
  XDrawArc (Disp, DrawIn, Agc, (RX + x - off) * Scalex, (RY + y - off) * Scaley, 2 * radius*Scalex, 2 * radius*Scaley, 0, 360 * 64);
 }
 
+void CPaint::Arc (bool filled, int x1, int y1, int x2, int y2, int xc, int yc)
+{
+ int temp;
+ Rotate (&x1, &y1);
+ Rotate (&x2, &y2);
+ Rotate (&xc, &yc);
+ if (x1 > x2)
+  {
+   temp = x1;
+   x1 = x2;
+   x2 = temp;
+  }
+ if (y1 > y2)
+  {
+   temp = y1;
+   y1 = y2;
+   y2 = temp;
+  }
+
+ if (filled)
+  {
+   lxColor old = Pen.GetFgColor ();
+   Pen.SetFgColor (Pen.GetBgColor ());
+   XFillArc (Disp, DrawIn, Agc, (RX + x1 ) * Scalex, (RY + y1 ) * Scaley, (RX + x2 ) *Scalex, (RY + y2 )*Scaley, 0, 360 * 64);
+   Pen.SetFgColor (old);
+  }
+
+ XDrawArc (Disp, DrawIn, Agc, (RX + x1 ) * Scalex, (RY + y1 ) * Scaley, (RX + x2 ) *Scalex, (RY + y2 )*Scaley, 0, 360 * 64);
+}
+  
+void CPaint::EllipticArc(bool filled, int x, int y, int width, int height, double start, double end)
+{
+   int x2, y2, w, h;
+   x2 = x + width;
+   y2 = y + height;
+   Rotate (&x, &y);
+   Rotate (&x2, &y2);
+   w = x2 - x;
+   h = y2 - y;
+
+   end = fabs(start -end);
+
+ 
+   switch (orientation)
+   {
+     case 1:
+       start -= 90;
+       //end -= 90;
+       x += w;
+       w = -w;
+       break; 
+     case 2:
+       start -= 180;
+       //end -= 180;
+       x += w;
+       y += h;
+       w = -w;
+       h = -h;
+       break; 
+     case 3:
+       start -= 270;
+       //end -= 270;
+       y += h;
+       h = -h;
+       break; 
+     default:
+      break; 
+   }
+
+  x = (x + RX ) * Scalex;
+  y = (y + RY ) * Scaley;
+  w *= Scalex;
+  h *= Scaley;
+
+ if (filled)
+  {
+   lxColor old = Pen.GetFgColor ();
+   Pen.SetFgColor (Pen.GetBgColor ());
+   XFillArc (Disp, DrawIn, Agc, x, y, w, h, start * 64, end * 64);
+   Pen.SetFgColor (old);
+  }
+
+ XDrawArc (Disp, DrawIn, Agc, x, y, w, h, start * 64, end * 64);
+}
+
 void
 CPaint::Polygon(bool filled, lxPoint * points, int npoints)
 {
- points[0].x += RX;
- points[0].y += RY;
+ 
+ for(int c = 0; c < npoints; c++)
+ {
+   int x = points[c].x;
+   int y=  points[c].y;
+   Rotate (&x, &y); 
+   points[c].x = (x + RX) * Scalex;
+   points[c].y = (y + RY) * Scaley;
+ }
 
  if (filled)
   {
@@ -577,8 +672,8 @@ CPaint::Polygon(bool filled, lxPoint * points, int npoints)
    Pen.SetFgColor (old);
   }
 
- XDrawLines (Disp, DrawIn, Agc, points,
-             npoints, CoordModeOrigin);
+ XDrawLines (Disp, DrawIn, Agc, points, npoints, CoordModeOrigin);
+ XDrawLine(Disp, DrawIn, Agc, points[0].x, points[0].y, points[npoints-1].x, points[npoints-1].y);
 }
 
 void
