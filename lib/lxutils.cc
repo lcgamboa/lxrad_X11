@@ -33,6 +33,7 @@
 #include<sys/stat.h>
 #include <minizip/zip.h>
 #include <minizip/unzip.h>
+#include <fcntl.h>
 
 #include <iostream>
 #include <cstring>
@@ -695,6 +696,48 @@ bool
 lxRemoveFile(const char * fname)
 {
  return remove (fname);
+}
+
+bool
+lxCopyFile(lxString srcfname, lxString dstfname)
+{
+  int fd_in, fd_out;
+  off_t        size, ret;
+  struct stat  stat;
+
+  fd_in = open(srcfname.c_str (), O_RDONLY);
+  if (fd_in == -1) {
+    perror("open (argv[1])");
+    return -1;
+  }
+
+  if (fstat(fd_in, &stat) == -1) {
+    perror("fstat");
+    return -1 ;
+  }
+
+  size = stat.st_size;
+
+  fd_out = open(dstfname.c_str (), O_CREAT | O_WRONLY | O_TRUNC, 0644);
+  if (fd_out == -1) {
+    perror("open (argv[2])");
+    return -1;
+  }
+
+  do {
+    ret = copy_file_range(fd_in, NULL, fd_out, NULL, size, 0);
+    if (ret == -1) {
+      perror("copy_file_range");
+      return -1;
+    }
+
+    size -= ret;
+  } while (size > 0 && ret > 0);
+
+  close(fd_in);
+  close(fd_out);
+           
+ return 0;
 }
 
 bool
