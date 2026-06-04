@@ -307,8 +307,13 @@ CWindow::WDestroy (void)
       if (IC)
 	XDestroyIC (IC);
       Win = NULL;
-      Application->ADestroyWindow (this);
-      WWindow = 0;
+      if(GetDynamic ()){
+        Application->ADestroyWindow (this);
+      }
+      else{
+        Application->ADestroyWindow (this);
+        WWindow = 0;
+      }
     }
 }
 

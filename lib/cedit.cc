@@ -70,12 +70,13 @@ CEdit::CEdit (void)
   SetClass ("CEdit");
   CreateChild (Text);
   CreateChild (Cursor);
-};
+}
 
 
 CEdit::~CEdit (void)
 {
-};
+  delete Cursor;
+}
 
 int
 CEdit::Create (CControl * control)

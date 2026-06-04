@@ -428,6 +428,31 @@ lxColor::lxColor(const char * name)
   }
 }
 
+lxColor::lxColor(lxString sname)
+{
+ if (sname.c_str ()[0] == '#')
+  {
+   unsigned int r, g, b;
+   char tmp[3];
+   tmp[2] = 0;
+   tmp[0] = sname.c_str ()[1];
+   tmp[1] = sname.c_str ()[2];
+   sscanf (tmp, "%02X", &r);
+   tmp[0] = sname.c_str ()[3];
+   tmp[1] = sname.c_str ()[4];
+   sscanf (tmp, "%02X", &g);
+   tmp[0] = sname.c_str ()[5];
+   tmp[1] = sname.c_str ()[6];
+   sscanf (tmp, "%02X", &b);
+
+   Color = ColorByRGB (r, g, b);
+  }
+ else
+  {
+   Color = ColorByName (sname.c_str ());
+  }	
+}
+
 lxColor::lxColor(unsigned char r, unsigned char g, unsigned char b)
 {
  Color = ColorByRGB (r, g, b);

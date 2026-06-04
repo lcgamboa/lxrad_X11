@@ -96,9 +96,11 @@ CPaint::Create(CControl * control, lxBitmap *bitmap)
 void
 CPaint::Destroy(void)
 {
- if (Agc != 0)
-  XFreeGC (Disp, Agc);
-};
+ if (Agc != 0){
+     XFreeGC (Disp, Agc);
+     Agc = 0;
+  }
+}
 
 void
 CPaint::SetFont(CControl * control)

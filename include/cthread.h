@@ -44,6 +44,7 @@ protected:
   // wxThread *Thread;
   bool runstate;
   bool tdestroy;
+  bool tcreated;
 public:
     CThread (void);
    ~CThread (void);
