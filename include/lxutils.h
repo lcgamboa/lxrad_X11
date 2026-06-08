@@ -263,6 +263,7 @@ lxBitmap * lxGetBitmapRotated(lxImage *image, CWindow * win, int orientation);
 void lxMilliSleep(unsigned int time);
 void lxSetCursor(lxCursor cursor); 
 bool lxFileExists(lxString fname);
+bool lxDirExists(lxString dirname);
 int lxExecute(lxString cmd,unsigned int flags=0, void * arg = NULL);
 lxString lxGetCwd(void);
 int lxSetWorkingDirectory(lxString dir);
