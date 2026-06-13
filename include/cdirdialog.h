@@ -55,7 +55,7 @@ public:
   lxString GetFileName (void);
   void SetFileName (lxString filename);
   lxString GetDirName (void);
-  void SetDir (lxString dir);
+  void SetDirName (lxString dir);
   void DestroyChilds (void);
   lxStringList GetContext (void);
   void SetContext (lxStringList context);

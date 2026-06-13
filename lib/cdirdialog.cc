@@ -191,7 +191,7 @@ CDirDialog::SetFileName (lxString filename)
 };
 
 void
-CDirDialog::SetDir (lxString dir)
+CDirDialog::SetDirName (lxString dir)
 {
  filelist1.SetDir (dir);
 };
