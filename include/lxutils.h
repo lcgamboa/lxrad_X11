@@ -270,6 +270,7 @@ int lxSetWorkingDirectory(lxString dir);
 bool lxLaunchDefaultBrowser(lxString url);
 bool lxLaunchDefaultApplication(lxString cmd);
 
+lxString lxGetDocumentsDir(lxString appname="");
 lxString lxGetUserDataDir(lxString appname="");
 lxString lxGetTempDir(lxString appname="");
 lxString lxGetExecutablePath(lxString appname="");
