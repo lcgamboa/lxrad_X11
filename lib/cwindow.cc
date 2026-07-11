@@ -849,8 +849,31 @@ CWindow::GetClientWidth(void)
 int
 CWindow::GetClientHeight(void)
 {
+if(HasMenu)
+     return Height - 50; 
  return Height;
 }
+
+
+void
+CWindow::SetClientWidth (uint width)
+{
+  CControl::SetWidth (width);
+  if (WWindow)
+    XResizeWindow (ADisplay, WWindow, width, Height);
+}
+
+void
+CWindow::SetClientHeight (uint height)
+{
+  if(HasMenu)
+     height += 50;
+
+  CControl::SetHeight (height);
+  if (WWindow)
+    XResizeWindow (ADisplay, WWindow, Width, height);
+}
+
 
 //operators
 
