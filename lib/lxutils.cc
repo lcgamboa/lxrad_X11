@@ -916,6 +916,13 @@ lxGetDocumentsDir(lxString appname)
 }
 
 lxString
+lxGetHomeDir(void)
+{
+ return lxString ("/home/") + getlogin () + "/";
+}
+
+
+lxString
 lxGetUserDataDir(lxString appname)
 {
  return lxString ("/home/") + getlogin () + "/." + appname;
