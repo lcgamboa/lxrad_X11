@@ -345,7 +345,7 @@ CText::key_press(XEvent event)
    for (uint a = 1; a <= GetCursorPos (); a++)
     Lines.SetLine (strndel (Lines.GetLine (CursorLin), 1), CursorLin);
    InsertLine (str);
-   delete str;
+   delete[] str;
    SetCursorPos (0);
    CursorLin++;
    DrawLine ();
