@@ -75,7 +75,6 @@ CEdit::CEdit (void)
 
 CEdit::~CEdit (void)
 {
-  delete Cursor;
 }
 
 int
